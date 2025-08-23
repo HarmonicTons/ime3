@@ -7,9 +7,9 @@ import { DIRECTION, Logo } from "./Logo";
 import type { MainScreen } from "./MainScreen";
 
 export class Bouncer {
-  private static readonly LOGO_COUNT = 30000;
+  private static readonly LOGO_COUNT = 10;
   private static readonly ANIMATION_DURATION = 1;
-  private static readonly WAIT_DURATION = 0;
+  private static readonly WAIT_DURATION = 1;
 
   public screen!: MainScreen;
 
