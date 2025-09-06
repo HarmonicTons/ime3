@@ -10,44 +10,81 @@ type Neighbors = {
   down: boolean;
 };
 
+const quadrantVariants = [
+  "11",
+  "12",
+  "13",
+  "14",
+  "21",
+  "22",
+  "23",
+  "24",
+  "31",
+  "32",
+  "33",
+  "34",
+] as const;
+type QuadrantVariant = (typeof quadrantVariants)[number];
+const quadrantVariantVisibilityConditions: Record<
+  QuadrantVariant,
+  (keyof Neighbors)[]
+> = {
+  "11": ["up"],
+  "12": ["up"],
+  "13": ["up"],
+  "14": ["up"],
+  "21": ["up", "west"],
+  "22": ["up", "west"],
+  "23": ["up", "east"],
+  "24": ["up", "east"],
+  "31": ["west"],
+  "32": ["west"],
+  "33": ["east"],
+  "34": ["east"],
+};
+
 export class Tile extends Container {
-  constructor({ type, neighbors }: { type: string; neighbors: Neighbors }) {
+  constructor({
+    type,
+    neighbors,
+    z,
+  }: {
+    type: string;
+    neighbors: Neighbors;
+    z: number;
+  }) {
     super();
 
-    new Quadrant({
-      type,
-      variant: "11",
-      neighbors,
-      tile: this,
-    });
-    new Quadrant({
-      type,
-      variant: "12",
-      neighbors,
-      tile: this,
-    });
-    new Quadrant({
-      type,
-      variant: "13",
-      neighbors,
-      tile: this,
-    });
-    new Quadrant({
-      type,
-      variant: "14",
-      neighbors,
-      tile: this,
+    quadrantVariants.forEach((variant) => {
+      const visibilityConditions = quadrantVariantVisibilityConditions[variant];
+      const isHidden = visibilityConditions.every(
+        (side) => neighbors[side] === false
+      );
+      if (isHidden) return;
+      new Quadrant({
+        type,
+        variant,
+        neighbors,
+        z,
+        tile: this,
+      });
     });
   }
 }
-
-type QuadrantVariant = "11" | "12" | "13" | "14";
 
 const quadrantPosition: Record<QuadrantVariant, { x: number; y: number }> = {
   "11": { x: 0, y: 0 },
   "12": { x: 8, y: 0 },
   "13": { x: 16, y: 0 },
   "14": { x: 24, y: 0 },
+  "21": { x: 0, y: 8 },
+  "22": { x: 8, y: 8 },
+  "23": { x: 16, y: 8 },
+  "24": { x: 24, y: 8 },
+  "31": { x: 0, y: 16 },
+  "32": { x: 8, y: 16 },
+  "33": { x: 16, y: 16 },
+  "34": { x: 24, y: 16 },
 };
 
 class Quadrant extends Sprite {
@@ -56,10 +93,12 @@ class Quadrant extends Sprite {
     variant,
     tile,
     neighbors,
+    z,
   }: {
     type: string;
     variant: QuadrantVariant;
     neighbors: Neighbors;
+    z: number;
     tile: Tile;
   }) {
     const neighborsString = neighborsToString(neighbors);
@@ -69,18 +108,18 @@ class Quadrant extends Sprite {
       k.startsWith(`${type}-${variant}-`)
     );
     const texturesScores = quadrantTextures.map((textureName) => {
-      const [, , end] = textureName.split("-");
-      const [n] = end.split(".png");
+      const regex = /^([a-z]+)-(\d+)-([a-z]+)(?:_(\d+))?\.png$/;
+      const [, , , n, h] = textureName.match(regex)!;
       const score = n
         .split("")
         .filter((c) => neighborsString.includes(c)).length;
-      const isValid = score === n.length;
+      const isValidHeight = h ? (z % 2) + 1 === Number(h) : true;
+      const isValid = score === n.length && isValidHeight;
       return { textureName, score: isValid ? score : -1 };
     });
 
-    console.log(texturesScores);
     const best = maxBy(texturesScores, "score")!;
-    console.log(best);
+    console.log({ variant, neighborsString, texturesScores, best });
 
     const texture = Texture.from(best.textureName);
     if (!texture) {

@@ -19,13 +19,14 @@ export class GameScreen extends Container {
     const tile = new Tile({
       type: "wall",
       neighbors: {
-        up: true,
+        up: false,
         north: true,
         east: true,
         south: true,
         west: true,
-        down: true,
+        down: false,
       },
+      z: 0,
     });
     this.mainContainer.addChild(tile);
 
