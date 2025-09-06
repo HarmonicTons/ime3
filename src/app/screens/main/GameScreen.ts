@@ -1,6 +1,6 @@
 import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
-import { Tile } from "./Tile";
+import { Map } from "./Map";
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
@@ -15,20 +15,8 @@ export class GameScreen extends Container {
 
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
-
-    const tile = new Tile({
-      type: "wall",
-      neighbors: {
-        up: false,
-        north: true,
-        east: true,
-        south: true,
-        west: true,
-        down: false,
-      },
-      z: 0,
-    });
-    this.mainContainer.addChild(tile);
+    const map = new Map(4, 4, 8);
+    this.mainContainer.addChild(map);
 
     this.mainContainer.scale.set(4, 4);
   }
