@@ -20,7 +20,8 @@ export class Map extends Container {
             this.mapData.push("empty");
             continue;
           }
-          this.mapData.push("wall");
+          this.mapData.push("rock");
+          //this.mapData.push("wall");
         }
       }
     }
