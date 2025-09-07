@@ -68,6 +68,9 @@ const quadrantPosition: Record<QuadrantVariant, { x: number; y: number }> = {
  * A tile
  */
 export class Tile extends Container {
+  public type: string;
+  public z: number;
+  public neighbors: Neighbors;
   constructor({
     type,
     neighbors,
@@ -87,34 +90,51 @@ export class Tile extends Container {
     z: number;
   }) {
     super();
+    this.type = type;
+    this.z = z;
+    this.neighbors = neighbors;
 
     this.interactive = true;
+    // The hit area is a polygon that covers the entire tile (hexagon shape)
     this.hitArea = new Polygon([
       0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
     ]);
 
+    this.setQuadrants();
+  }
+
+  public updateNeighbors(neighbors: Neighbors) {
+    this.removeChildren();
+    this.neighbors = neighbors;
+    this.setQuadrants();
+  }
+
+  public setQuadrants() {
     quadrantVariants.forEach((variant) => {
       const visibilityConditions = quadrantVariantVisibilityConditions[variant];
       const isHidden = visibilityConditions.every(
-        (side) => neighbors[side] === false
+        (side) => this.neighbors[side] === false
       );
       if (isHidden) return;
       new Quadrant({
-        type,
+        type: this.type,
         variant,
-        neighbors,
-        z,
+        neighbors: this.neighbors,
+        z: this.z,
         tile: this,
       });
     });
   }
 
+  /**
+   * Get the side of the tile that was clicked based on the local coordinates of the click
+   */
   public static getSide({ x, y }: { x: number; y: number }): Side {
     if (x < 16) {
       if (5 + x / 2 >= y) {
         return "up";
       }
-      return "west";
+      return "south";
     }
     if (22 - x / 2 >= y) {
       return "up";

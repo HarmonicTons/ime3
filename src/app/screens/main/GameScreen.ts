@@ -9,6 +9,7 @@ export class GameScreen extends Container {
 
   public mainContainer: Container;
   private paused = false;
+  private map: Map;
 
   constructor() {
     super();
@@ -16,6 +17,7 @@ export class GameScreen extends Container {
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
     const map = new Map(4, 4, 8);
+    this.map = map;
     this.mainContainer.addChild(map);
 
     this.mainContainer.scale.set(4, 4);
@@ -25,9 +27,10 @@ export class GameScreen extends Container {
   public prepare() {}
 
   /** Update the screen */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public update(_time: Ticker) {
+
+  public update(time: Ticker) {
     if (this.paused) return;
+    this.map.update(time);
   }
 
   /** Pause gameplay - automatically fired when a popup is presented */
