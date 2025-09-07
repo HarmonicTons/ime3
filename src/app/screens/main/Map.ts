@@ -51,14 +51,10 @@ export class Map extends Container {
             0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
           ]);
           tile.on("pointerdown", (e) => {
-            console.log(
-              "click",
-              x,
-              y,
-              z,
-              Math.floor(e.getLocalPosition(tile).x),
-              Math.floor(e.getLocalPosition(tile).y)
-            );
+            const localX = Math.floor(e.getLocalPosition(tile).x);
+            const localY = Math.floor(e.getLocalPosition(tile).y);
+            const side = Tile.getSide({ x: localX, y: localY });
+            console.log("click", x, y, z, side);
           });
         }
       }

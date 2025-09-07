@@ -1,18 +1,13 @@
 import { maxBy } from "lodash";
 import { Assets, Container, Sprite, Texture } from "pixi.js";
 
+type Side = "up" | "north" | "east" | "south" | "west" | "down";
+
 /**
  * Neighbors of a tile
  * false means there is a tile, true means there is nothing (kinda backward)
  */
-type Neighbors = {
-  up: boolean;
-  north: boolean;
-  east: boolean;
-  south: boolean;
-  west: boolean;
-  down: boolean;
-};
+type Neighbors = Record<Side, boolean>;
 
 /**
  * The name of the 12 quadrants of a tile
@@ -36,10 +31,7 @@ type QuadrantVariant = (typeof quadrantVariants)[number];
 /**
  * The quadriant is hidden if all these conditions are met (their is a neighbor in each direction)
  */
-const quadrantVariantVisibilityConditions: Record<
-  QuadrantVariant,
-  (keyof Neighbors)[]
-> = {
+const quadrantVariantVisibilityConditions: Record<QuadrantVariant, Side[]> = {
   "11": ["up"],
   "12": ["up"],
   "13": ["up"],
@@ -110,6 +102,19 @@ export class Tile extends Container {
         tile: this,
       });
     });
+  }
+
+  public static getSide({ x, y }: { x: number; y: number }): Side {
+    if (x < 16) {
+      if (5 + x / 2 >= y) {
+        return "up";
+      }
+      return "west";
+    }
+    if (22 - x / 2 >= y) {
+      return "up";
+    }
+    return "east";
   }
 }
 
