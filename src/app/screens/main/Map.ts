@@ -1,4 +1,4 @@
-import { Container, Polygon } from "pixi.js";
+import { Container } from "pixi.js";
 import { Tile } from "./Tile";
 
 export class Map extends Container {
@@ -46,10 +46,6 @@ export class Map extends Container {
           this.tiles.push(tile);
           this.addChild(tile);
 
-          tile.interactive = true;
-          tile.hitArea = new Polygon([
-            0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
-          ]);
           tile.on("pointerdown", (e) => {
             const localX = Math.floor(e.getLocalPosition(tile).x);
             const localY = Math.floor(e.getLocalPosition(tile).y);

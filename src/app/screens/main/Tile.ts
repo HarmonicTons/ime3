@@ -1,5 +1,5 @@
 import { maxBy } from "lodash";
-import { Assets, Container, Sprite, Texture } from "pixi.js";
+import { Assets, Container, Polygon, Sprite, Texture } from "pixi.js";
 
 type Side = "up" | "north" | "east" | "south" | "west" | "down";
 
@@ -87,6 +87,11 @@ export class Tile extends Container {
     z: number;
   }) {
     super();
+
+    this.interactive = true;
+    this.hitArea = new Polygon([
+      0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
+    ]);
 
     quadrantVariants.forEach((variant) => {
       const visibilityConditions = quadrantVariantVisibilityConditions[variant];
