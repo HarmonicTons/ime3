@@ -114,6 +114,15 @@ export class Tile extends Container {
       0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
     ]);
 
+    this.on("mouseenter", () => {
+      // change tint
+      this.tint = 0x00aaaa;
+    });
+    this.on("mouseleave", () => {
+      // reset tint
+      this.tint = 0xffffff;
+    });
+
     this.setQuadrants();
   }
 
