@@ -1,5 +1,5 @@
 import { Container, Ticker } from "pixi.js";
-import { Tile } from "./Tile";
+import { Neighbors, Tile } from "./Tile";
 import { orderBy } from "lodash";
 
 export class Map extends Container {
@@ -25,7 +25,7 @@ export class Map extends Container {
         for (let u = 0; u < uMax; u++) {
           const type = mapData[`${s},${e},${u}`];
           if (type === undefined) continue;
-          const neighbors = {
+          const neighbors: Neighbors = {
             up: mapData[`${s},${e},${u + 1}`] === undefined,
             north: mapData[`${s - 1},${e},${u}`] === undefined,
             east: mapData[`${s},${e + 1},${u}`] === undefined,
@@ -33,40 +33,50 @@ export class Map extends Container {
             west: mapData[`${s},${e - 1},${u}`] === undefined,
             down: mapData[`${s},${e},${u - 1}`] === undefined,
           };
-          const tile = new Tile({ type, neighbors, e, s, u });
-          tile.x = e * 16 - s * 16;
-          tile.y = e * 8 + s * 8 - u * 8;
-          this.tiles[`${s},${e},${u}`] = tile;
-          this.addChild(tile);
-
-          tile.on("rightdown", (evt) => {
-            evt.stopPropagation();
-            const localX = Math.floor(evt.getLocalPosition(tile).x);
-            const localY = Math.floor(evt.getLocalPosition(tile).y);
-            const side = Tile.getSide({ x: localX, y: localY });
-            console.log("rightdown", s, e, u, side);
-            this.removeTileAt(s, e, u);
-          });
-
-          tile.on("mousedown", (evt) => {
-            evt.stopPropagation();
-            const localX = Math.floor(evt.getLocalPosition(tile).x);
-            const localY = Math.floor(evt.getLocalPosition(tile).y);
-            const side = Tile.getSide({ x: localX, y: localY });
-            console.log("mousedown", s, e, u, side);
-            if (side === "up") {
-              this.addTileAt(s, e, u + 1, "rock");
-            }
-            if (side === "south") {
-              this.addTileAt(s + 1, e, u, "rock");
-            }
-            if (side === "east") {
-              this.addTileAt(s, e + 1, u, "rock");
-            }
-          });
+          this.createTile(s, e, u, type, neighbors);
         }
       }
     }
+  }
+
+  private createTile(
+    s: number,
+    e: number,
+    u: number,
+    type: string,
+    neighbors: Neighbors
+  ) {
+    const tile = new Tile({ type, neighbors, e, s, u });
+    tile.x = e * 16 - s * 16;
+    tile.y = e * 8 + s * 8 - u * 8;
+    this.tiles[`${s},${e},${u}`] = tile;
+    this.addChild(tile);
+
+    tile.on("rightdown", (evt) => {
+      evt.stopPropagation();
+      const localX = Math.floor(evt.getLocalPosition(tile).x);
+      const localY = Math.floor(evt.getLocalPosition(tile).y);
+      const side = Tile.getSide({ x: localX, y: localY });
+      console.log("rightdown", s, e, u, side);
+      this.removeTileAt(s, e, u);
+    });
+
+    tile.on("mousedown", (evt) => {
+      evt.stopPropagation();
+      const localX = Math.floor(evt.getLocalPosition(tile).x);
+      const localY = Math.floor(evt.getLocalPosition(tile).y);
+      const side = Tile.getSide({ x: localX, y: localY });
+      console.log("mousedown", s, e, u, side);
+      if (side === "up") {
+        this.addTileAt(s, e, u + 1, "rock");
+      }
+      if (side === "south") {
+        this.addTileAt(s + 1, e, u, "rock");
+      }
+      if (side === "east") {
+        this.addTileAt(s, e + 1, u, "rock");
+      }
+    });
   }
 
   private getTileAt(s: number, e: number, u: number): Tile | undefined {
@@ -101,7 +111,7 @@ export class Map extends Container {
       return;
     }
     console.log("adding tile at", s, e, u);
-    const neighbors = {
+    const neighbors: Neighbors = {
       up: this.getTileAt(s, e, u + 1) === undefined,
       north: this.getTileAt(s - 1, e, u) === undefined,
       east: this.getTileAt(s, e + 1, u) === undefined,
@@ -109,41 +119,10 @@ export class Map extends Container {
       west: this.getTileAt(s, e - 1, u) === undefined,
       down: this.getTileAt(s, e, u - 1) === undefined,
     };
-    const tile = new Tile({ type, neighbors, e, s, u });
-    tile.x = e * 16 - s * 16;
-    tile.y = e * 8 + s * 8 - u * 8;
-    this.tiles[`${s},${e},${u}`] = tile;
-    // this will add the tile on top of others
-    this.addChild(tile);
-    // but we want to reorder the children so that the tile is at the correct position
+    this.createTile(s, e, u, type, neighbors);
+
+    // Reorder the tiles
     this.sortTiles();
-
-    tile.on("rightdown", (evt) => {
-      evt.stopPropagation();
-      const localX = Math.floor(evt.getLocalPosition(tile).x);
-      const localY = Math.floor(evt.getLocalPosition(tile).y);
-      const side = Tile.getSide({ x: localX, y: localY });
-      console.log("rightdown", s, e, u, side);
-      this.removeTileAt(s, e, u);
-    });
-
-    tile.on("mousedown", (evt) => {
-      evt.stopPropagation();
-      const localX = Math.floor(evt.getLocalPosition(tile).x);
-      const localY = Math.floor(evt.getLocalPosition(tile).y);
-      const side = Tile.getSide({ x: localX, y: localY });
-      console.log("mousedown", s, e, u, side);
-      if (side === "up") {
-        this.addTileAt(s, e, u + 1, "rock");
-      }
-      if (side === "south") {
-        this.addTileAt(s + 1, e, u, "rock");
-      }
-      if (side === "east") {
-        this.addTileAt(s, e + 1, u, "rock");
-      }
-    });
-
     // Update neighbors
     this.updateTileNeighbors(s, e, u);
   }

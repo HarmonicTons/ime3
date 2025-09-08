@@ -7,7 +7,7 @@ type Side = "up" | "north" | "east" | "south" | "west" | "down";
  * Neighbors of a tile
  * false means there is a tile, true means there is nothing (kinda backward)
  */
-type Neighbors = Record<Side, boolean>;
+export type Neighbors = Record<Side, boolean>;
 
 /**
  * The name of the 12 quadrants of a tile
