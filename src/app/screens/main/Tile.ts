@@ -114,16 +114,43 @@ export class Tile extends Container {
       0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
     ]);
 
-    this.on("mouseenter", () => {
-      // change tint
-      this.tint = 0x00aaaa;
+    this.setQuadrants();
+
+    const cursorUSprite = new Sprite(Texture.from("cursor-u.png"));
+    const cursorESprite = new Sprite(Texture.from("cursor-e.png"));
+    cursorESprite.anchor.set(-1, -0.5);
+    const cursorSSprite = new Sprite(Texture.from("cursor-s.png"));
+    cursorSSprite.anchor.set(0, -0.5);
+
+    this.on("mousemove", (evt) => {
+      const side = Tile.getSide(evt.getLocalPosition(this));
+      if (side === "up") {
+        this.addChild(cursorUSprite);
+      }
+      if (side === "east") {
+        this.addChild(cursorESprite);
+      }
+      if (side === "south") {
+        this.addChild(cursorSSprite);
+      }
+    });
+    this.on("mousemove", (evt) => {
+      const side = Tile.getSide(evt.getLocalPosition(this));
+      if (side !== "up") {
+        this.removeChild(cursorUSprite);
+      }
+      if (side !== "east") {
+        this.removeChild(cursorESprite);
+      }
+      if (side !== "south") {
+        this.removeChild(cursorSSprite);
+      }
     });
     this.on("mouseleave", () => {
-      // reset tint
-      this.tint = 0xffffff;
+      this.removeChild(cursorUSprite);
+      this.removeChild(cursorESprite);
+      this.removeChild(cursorSSprite);
     });
-
-    this.setQuadrants();
   }
 
   public updateNeighbors(neighbors: Neighbors) {
