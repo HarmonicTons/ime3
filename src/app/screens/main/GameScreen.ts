@@ -9,6 +9,7 @@ export class GameScreen extends Container {
   public static assetBundles = ["game"];
   public rockButton: FancyButton;
   public wallButton: FancyButton;
+  public dirtButton: FancyButton;
 
   public mainContainer: Container;
   private paused = false;
@@ -19,11 +20,11 @@ export class GameScreen extends Container {
 
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
-    const map = new Map(4, 4, 8, "wall");
+    const map = new Map(15, 10, 3, "rock");
     this.map = map;
     this.mainContainer.addChild(map);
 
-    this.mainContainer.scale.set(4, 4);
+    this.mainContainer.scale.set(2, 2);
 
     const buttonAnimations = {
       hover: {
@@ -54,6 +55,14 @@ export class GameScreen extends Container {
     });
     this.wallButton.onPress.connect(() => (this.map.type = "wall"));
     this.addChild(this.wallButton);
+
+    this.dirtButton = new FancyButton({
+      defaultView: "dirt.png",
+      anchor: 0,
+      animations: buttonAnimations,
+    });
+    this.dirtButton.onPress.connect(() => (this.map.type = "dirt"));
+    this.addChild(this.dirtButton);
   }
 
   /** Prepare the screen just before showing */
@@ -92,6 +101,8 @@ export class GameScreen extends Container {
     this.rockButton.y = 10;
     this.wallButton.x = 80;
     this.wallButton.y = 10;
+    this.dirtButton.x = 150;
+    this.dirtButton.y = 10;
   }
 
   /** Show screen with animations */

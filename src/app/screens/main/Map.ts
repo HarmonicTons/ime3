@@ -9,7 +9,7 @@ export class Map extends Container {
     sMax: number,
     eMax: number,
     uMax: number,
-    public type: "wall" | "rock"
+    public type: "wall" | "rock" | "dirt"
   ) {
     super();
 
@@ -17,10 +17,7 @@ export class Map extends Container {
     for (let s = 0; s < sMax; s++) {
       for (let e = 0; e < eMax; e++) {
         for (let u = 0; u < uMax; u++) {
-          const hasTile = Math.random() > 0.1;
-          if (hasTile) {
-            mapData[`${s},${e},${u}`] = type;
-          }
+          mapData[`${s},${e},${u}`] = type;
         }
       }
     }
