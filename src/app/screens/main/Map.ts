@@ -48,7 +48,6 @@ export class Map extends Container {
 
           tile.on("rightdown", (evt) => {
             evt.stopPropagation();
-            evt.preventDefault();
             const localX = Math.floor(evt.getLocalPosition(tile).x);
             const localY = Math.floor(evt.getLocalPosition(tile).y);
             const side = Tile.getSide({ x: localX, y: localY });
@@ -59,7 +58,6 @@ export class Map extends Container {
 
           tile.on("mousedown", (evt) => {
             evt.stopPropagation();
-            evt.preventDefault();
             const localX = Math.floor(evt.getLocalPosition(tile).x);
             const localY = Math.floor(evt.getLocalPosition(tile).y);
             const side = Tile.getSide({ x: localX, y: localY });
@@ -148,7 +146,6 @@ export class Map extends Container {
 
     tile.on("rightdown", (evt) => {
       evt.stopPropagation();
-      evt.preventDefault();
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSide({ x: localX, y: localY });
@@ -159,7 +156,6 @@ export class Map extends Container {
 
     tile.on("mousedown", (evt) => {
       evt.stopPropagation();
-      evt.preventDefault();
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSide({ x: localX, y: localY });

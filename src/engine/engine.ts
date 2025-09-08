@@ -43,6 +43,10 @@ export class CreationEngine extends Application {
 
     // Append the application canvas to the document body
     document.getElementById("pixi-container")!.appendChild(this.canvas);
+    // Disable context menu on right click
+    document.getElementById("pixi-container")!.oncontextmenu = (e) => {
+      e.preventDefault();
+    };
     // Add a visibility listener, so the app can pause sounds and screens
     document.addEventListener("visibilitychange", this.visibilityChange);
 
@@ -58,7 +62,7 @@ export class CreationEngine extends Application {
 
   public override destroy(
     rendererDestroyOptions: RendererDestroyOptions = false,
-    options: DestroyOptions = false,
+    options: DestroyOptions = false
   ): void {
     document.removeEventListener("visibilitychange", this.visibilityChange);
     super.destroy(rendererDestroyOptions, options);
