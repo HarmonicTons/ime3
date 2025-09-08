@@ -1,11 +1,14 @@
 import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
 import { Map } from "./Map";
+import { FancyButton } from "@pixi/ui";
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
   /** Assets bundles required by this screen */
   public static assetBundles = ["game"];
+  public rockButton: FancyButton;
+  public wallButton: FancyButton;
 
   public mainContainer: Container;
   private paused = false;
@@ -16,11 +19,41 @@ export class GameScreen extends Container {
 
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
-    const map = new Map(4, 4, 8);
+    const map = new Map(4, 4, 8, "wall");
     this.map = map;
     this.mainContainer.addChild(map);
 
     this.mainContainer.scale.set(4, 4);
+
+    const buttonAnimations = {
+      hover: {
+        props: {
+          scale: { x: 1.1, y: 1.1 },
+        },
+        duration: 100,
+      },
+      pressed: {
+        props: {
+          scale: { x: 0.9, y: 0.9 },
+        },
+        duration: 100,
+      },
+    };
+    this.rockButton = new FancyButton({
+      defaultView: "rock.png",
+      anchor: 0,
+      animations: buttonAnimations,
+    });
+    this.rockButton.onPress.connect(() => (this.map.type = "rock"));
+    this.addChild(this.rockButton);
+
+    this.wallButton = new FancyButton({
+      defaultView: "wall.png",
+      anchor: 0,
+      animations: buttonAnimations,
+    });
+    this.wallButton.onPress.connect(() => (this.map.type = "wall"));
+    this.addChild(this.wallButton);
   }
 
   /** Prepare the screen just before showing */
@@ -55,6 +88,10 @@ export class GameScreen extends Container {
 
     this.mainContainer.x = centerX;
     this.mainContainer.y = centerY;
+    this.rockButton.x = 10;
+    this.rockButton.y = 10;
+    this.wallButton.x = 80;
+    this.wallButton.y = 10;
   }
 
   /** Show screen with animations */

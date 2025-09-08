@@ -4,7 +4,13 @@ import { orderBy } from "lodash";
 
 export class Map extends Container {
   public tiles: Record<string, Tile> = {};
-  constructor(sMax: number, eMax: number, uMax: number) {
+
+  constructor(
+    sMax: number,
+    eMax: number,
+    uMax: number,
+    public type: "wall" | "rock"
+  ) {
     super();
 
     const mapData: Record<string, string> = {};
@@ -13,7 +19,7 @@ export class Map extends Container {
         for (let u = 0; u < uMax; u++) {
           const hasTile = Math.random() > 0.1;
           if (hasTile) {
-            mapData[`${s},${e},${u}`] = "rock";
+            mapData[`${s},${e},${u}`] = type;
           }
         }
       }
@@ -68,13 +74,13 @@ export class Map extends Container {
       const side = Tile.getSide({ x: localX, y: localY });
       console.log("mousedown", s, e, u, side);
       if (side === "up") {
-        this.addTileAt(s, e, u + 1, "rock");
+        this.addTileAt(s, e, u + 1, this.type);
       }
       if (side === "south") {
-        this.addTileAt(s + 1, e, u, "rock");
+        this.addTileAt(s + 1, e, u, this.type);
       }
       if (side === "east") {
-        this.addTileAt(s, e + 1, u, "rock");
+        this.addTileAt(s, e + 1, u, this.type);
       }
     });
   }
@@ -105,7 +111,7 @@ export class Map extends Container {
     }
   }
 
-  private addTileAt(s: number, e: number, u: number, type: string) {
+  public addTileAt(s: number, e: number, u: number, type: string) {
     if (this.getTileAt(s, e, u)) {
       console.warn("Tile already exists at", s, e, u);
       return;
