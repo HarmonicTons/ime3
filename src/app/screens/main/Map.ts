@@ -1,27 +1,20 @@
 import { Container, Ticker } from "pixi.js";
 import { Tile } from "./Tile";
+import { orderBy } from "lodash";
 
 export class Map extends Container {
-  public mapData: string[] = [];
   public tiles: Record<string, Tile> = {};
-  constructor(
-    public readonly sMax: number,
-    public readonly eMax: number,
-    public readonly uMax: number
-  ) {
+  constructor(sMax: number, eMax: number, uMax: number) {
     super();
 
-    this.mapData = [];
+    const mapData: Record<string, string> = {};
     for (let s = 0; s < sMax; s++) {
       for (let e = 0; e < eMax; e++) {
         for (let u = 0; u < uMax; u++) {
           const hasTile = Math.random() > 0.1;
-          if (!hasTile) {
-            this.mapData.push("empty");
-            continue;
+          if (hasTile) {
+            mapData[`${s},${e},${u}`] = "rock";
           }
-          this.mapData.push("rock");
-          //this.mapData.push("wall");
         }
       }
     }
@@ -30,17 +23,17 @@ export class Map extends Container {
     for (let e = 0; e < eMax; e++) {
       for (let s = 0; s < sMax; s++) {
         for (let u = 0; u < uMax; u++) {
-          const type = this.getMapData(s, e, u);
-          if (type === "empty") continue;
+          const type = mapData[`${s},${e},${u}`];
+          if (type === undefined) continue;
           const neighbors = {
-            up: this.getMapData(s, e, u + 1) === "empty",
-            north: this.getMapData(s - 1, e, u) === "empty",
-            east: this.getMapData(s, e + 1, u) === "empty",
-            south: this.getMapData(s + 1, e, u) === "empty",
-            west: this.getMapData(s, e - 1, u) === "empty",
-            down: this.getMapData(s, e, u - 1) === "empty",
+            up: mapData[`${s},${e},${u + 1}`] === undefined,
+            north: mapData[`${s - 1},${e},${u}`] === undefined,
+            east: mapData[`${s},${e + 1},${u}`] === undefined,
+            south: mapData[`${s + 1},${e},${u}`] === undefined,
+            west: mapData[`${s},${e - 1},${u}`] === undefined,
+            down: mapData[`${s},${e},${u - 1}`] === undefined,
           };
-          const tile = new Tile({ type, neighbors, z: u });
+          const tile = new Tile({ type, neighbors, e, s, u });
           tile.x = e * 16 - s * 16;
           tile.y = e * 8 + s * 8 - u * 8;
           this.tiles[`${s},${e},${u}`] = tile;
@@ -53,7 +46,6 @@ export class Map extends Container {
             const side = Tile.getSide({ x: localX, y: localY });
             console.log("rightdown", s, e, u, side);
             this.removeTileAt(s, e, u);
-            this.setMapData(s, e, u, "empty");
           });
 
           tile.on("mousedown", (evt) => {
@@ -63,37 +55,18 @@ export class Map extends Container {
             const side = Tile.getSide({ x: localX, y: localY });
             console.log("mousedown", s, e, u, side);
             if (side === "up") {
-              this.setMapData(s, e, u + 1, "rock");
               this.addTileAt(s, e, u + 1, "rock");
             }
             if (side === "south") {
-              this.setMapData(s + 1, e, u, "rock");
               this.addTileAt(s + 1, e, u, "rock");
             }
             if (side === "east") {
-              this.setMapData(s, e + 1, u, "rock");
               this.addTileAt(s, e + 1, u, "rock");
             }
           });
         }
       }
     }
-  }
-
-  private getMapData(s: number, e: number, u: number): string {
-    if (s < 0 || s >= this.sMax) return "empty";
-    if (e < 0 || e >= this.eMax) return "empty";
-    if (u < 0 || u >= this.uMax) return "empty";
-    const index = s + e * this.sMax + u * this.sMax * this.eMax;
-    return this.mapData[index] ?? "empty";
-  }
-
-  private setMapData(s: number, e: number, u: number, value: string) {
-    if (s < 0 || s >= this.sMax) return;
-    if (e < 0 || e >= this.eMax) return;
-    if (u < 0 || u >= this.uMax) return;
-    const index = s + e * this.sMax + u * this.sMax * this.eMax;
-    this.mapData[index] = value;
   }
 
   private getTileAt(s: number, e: number, u: number): Tile | undefined {
@@ -104,11 +77,21 @@ export class Map extends Container {
     console.log("removing tile at", s, e, u);
     const existingTile = this.getTileAt(s, e, u);
     if (existingTile) {
-      this.setMapData(s, e, u, "empty");
       this.removeChild(existingTile);
       delete this.tiles[`${s},${e},${u}`];
       // Update neighbors
       this.updateTileNeighbors(s, e, u);
+    }
+  }
+
+  private sortTiles() {
+    const sortedTiles = orderBy(
+      Object.values(this.tiles),
+      ["e", "s", "u"],
+      ["asc", "asc", "asc"]
+    );
+    for (let i = 0; i < sortedTiles.length; i++) {
+      this.setChildIndex(sortedTiles[i], i);
     }
   }
 
@@ -117,32 +100,23 @@ export class Map extends Container {
       console.warn("Tile already exists at", s, e, u);
       return;
     }
+    console.log("adding tile at", s, e, u);
     const neighbors = {
-      up: this.getMapData(s, e, u + 1) === "empty",
-      north: this.getMapData(s - 1, e, u) === "empty",
-      east: this.getMapData(s, e + 1, u) === "empty",
-      south: this.getMapData(s + 1, e, u) === "empty",
-      west: this.getMapData(s, e - 1, u) === "empty",
-      down: this.getMapData(s, e, u - 1) === "empty",
+      up: this.getTileAt(s, e, u + 1) === undefined,
+      north: this.getTileAt(s - 1, e, u) === undefined,
+      east: this.getTileAt(s, e + 1, u) === undefined,
+      south: this.getTileAt(s + 1, e, u) === undefined,
+      west: this.getTileAt(s, e - 1, u) === undefined,
+      down: this.getTileAt(s, e, u - 1) === undefined,
     };
-    const tile = new Tile({ type, neighbors, z: u });
+    const tile = new Tile({ type, neighbors, e, s, u });
     tile.x = e * 16 - s * 16;
     tile.y = e * 8 + s * 8 - u * 8;
     this.tiles[`${s},${e},${u}`] = tile;
     // this will add the tile on top of others
     this.addChild(tile);
     // but we want to reorder the children so that the tile is at the correct position
-    for (let u = 0; u < this.uMax; u++) {
-      for (let s = 0; s < this.sMax; s++) {
-        for (let e = 0; e < this.eMax; e++) {
-          const t = this.getTileAt(s, e, u);
-          if (t) {
-            this.setChildIndex(t, this.children.length - 1);
-          }
-        }
-      }
-    }
-    this.setMapData(s, e, u, type);
+    this.sortTiles();
 
     tile.on("rightdown", (evt) => {
       evt.stopPropagation();
@@ -151,7 +125,6 @@ export class Map extends Container {
       const side = Tile.getSide({ x: localX, y: localY });
       console.log("rightdown", s, e, u, side);
       this.removeTileAt(s, e, u);
-      this.setMapData(s, e, u, "empty");
     });
 
     tile.on("mousedown", (evt) => {
@@ -161,15 +134,12 @@ export class Map extends Container {
       const side = Tile.getSide({ x: localX, y: localY });
       console.log("mousedown", s, e, u, side);
       if (side === "up") {
-        this.setMapData(s, e, u + 1, "rock");
         this.addTileAt(s, e, u + 1, "rock");
       }
       if (side === "south") {
-        this.setMapData(s + 1, e, u, "rock");
         this.addTileAt(s + 1, e, u, "rock");
       }
       if (side === "east") {
-        this.setMapData(s, e + 1, u, "rock");
         this.addTileAt(s, e + 1, u, "rock");
       }
     });
@@ -195,17 +165,17 @@ export class Map extends Container {
       const neighborTile = this.getTileAt(neighborS, neighborE, neighborU);
       if (neighborTile) {
         const neighbors = {
-          up: this.getMapData(neighborS, neighborE, neighborU + 1) === "empty",
+          up: this.getTileAt(neighborS, neighborE, neighborU + 1) === undefined,
           north:
-            this.getMapData(neighborS - 1, neighborE, neighborU) === "empty",
+            this.getTileAt(neighborS - 1, neighborE, neighborU) === undefined,
           east:
-            this.getMapData(neighborS, neighborE + 1, neighborU) === "empty",
+            this.getTileAt(neighborS, neighborE + 1, neighborU) === undefined,
           south:
-            this.getMapData(neighborS + 1, neighborE, neighborU) === "empty",
+            this.getTileAt(neighborS + 1, neighborE, neighborU) === undefined,
           west:
-            this.getMapData(neighborS, neighborE - 1, neighborU) === "empty",
+            this.getTileAt(neighborS, neighborE - 1, neighborU) === undefined,
           down:
-            this.getMapData(neighborS, neighborE, neighborU - 1) === "empty",
+            this.getTileAt(neighborS, neighborE, neighborU - 1) === undefined,
         };
         neighborTile.updateNeighbors(neighbors);
       }

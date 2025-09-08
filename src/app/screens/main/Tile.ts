@@ -69,12 +69,16 @@ const quadrantPosition: Record<QuadrantVariant, { x: number; y: number }> = {
  */
 export class Tile extends Container {
   public type: string;
-  public z: number;
+  public e: number;
+  public s: number;
+  public u: number;
   public neighbors: Neighbors;
   constructor({
     type,
     neighbors,
-    z,
+    e,
+    s,
+    u,
   }: {
     /**
      * the type, ex: wall or stone
@@ -85,13 +89,23 @@ export class Tile extends Container {
      */
     neighbors: Neighbors;
     /**
-     * The Z coordinate of the tile
+     * The E coordinate
      */
-    z: number;
+    e: number;
+    /**
+     * The S coordinate
+     */
+    s: number;
+    /**
+     * The U coordinate
+     */
+    u: number;
   }) {
     super();
     this.type = type;
-    this.z = z;
+    this.e = e;
+    this.s = s;
+    this.u = u;
     this.neighbors = neighbors;
 
     this.interactive = true;
@@ -120,7 +134,7 @@ export class Tile extends Container {
         type: this.type,
         variant,
         neighbors: this.neighbors,
-        z: this.z,
+        z: this.u,
         tile: this,
       });
     });
