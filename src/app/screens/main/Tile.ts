@@ -160,7 +160,8 @@ export class Tile extends Container {
           z: this.u,
           tile: this,
         });
-      } catch {
+      } catch (e) {
+        if (!(e instanceof NoTextureFound)) throw e;
         // can safely ignore, just means no texture found for this quadrant
       }
     });
@@ -182,6 +183,8 @@ export class Tile extends Container {
     return "east";
   }
 }
+
+class NoTextureFound extends Error {}
 
 /**
  * A quadrant
@@ -231,16 +234,16 @@ class Quadrant extends Sprite {
         })
       );
       const bestIgnoreUp = maxBy(texturesScoresIgnoreUp, "score")!;
-      if (bestIgnoreUp.score === -1) {
-        throw new Error(
-          `No texture found for tile "${type}" variant "${variant}" with neighbors "${neighborsString}" at height ${z}`
-        );
-      }
       best = bestIgnoreUp;
+    }
+    if (best.score === -1) {
+      throw new NoTextureFound(
+        `No texture found for tile "${type}" variant "${variant}" with neighbors "${neighborsString}" at height ${z}`
+      );
     }
     const texture = Texture.from(best.textureName);
     if (!texture) {
-      throw new Error(`Texture not found: "${best.textureName}"`);
+      throw new NoTextureFound(`Texture not found: "${best.textureName}"`);
     }
     // keep pixel art style
     texture.source.scaleMode = "nearest";
@@ -284,7 +287,7 @@ const scoreTexture = ({
   z: number;
   ignoreUp?: boolean;
 }) => {
-  const regex = /^([a-z]+)-(\d+)-([a-z]+)(?:_(\d+))?\.png$/;
+  const regex = /^([a-z0-9]+)-(\d+)-([a-z]+)(?:_(\d+))?\.png$/;
   const [, , , n, h] = textureName.match(regex)!;
   const sides = ignoreUp ? n.replace("u", "") : n;
   const score = sides
