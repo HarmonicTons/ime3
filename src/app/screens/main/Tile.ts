@@ -29,24 +29,6 @@ const quadrantVariants = [
 type QuadrantVariant = (typeof quadrantVariants)[number];
 
 /**
- * The quadriant is hidden if all these conditions are met (their is a neighbor in each direction)
- */
-const quadrantVariantVisibilityConditions: Record<QuadrantVariant, Side[]> = {
-  "11": ["up"],
-  "12": ["up"],
-  "13": ["up"],
-  "14": ["up"],
-  "21": ["up", "south"],
-  "22": ["up", "south"],
-  "23": ["up", "east"],
-  "24": ["up", "east"],
-  "31": ["south"],
-  "32": ["south"],
-  "33": ["east"],
-  "34": ["east"],
-};
-
-/**
  * The X,Y position of each quadrant
  */
 const quadrantPosition: Record<QuadrantVariant, { x: number; y: number }> = {
@@ -107,6 +89,7 @@ export class Tile extends Container {
     this.s = s;
     this.u = u;
     this.neighbors = neighbors;
+    this.alpha = 1;
 
     this.interactive = true;
     // The hit area is a polygon that covers the entire tile (hexagon shape)
@@ -169,18 +152,17 @@ export class Tile extends Container {
 
   public setQuadrants() {
     quadrantVariants.forEach((variant) => {
-      const visibilityConditions = quadrantVariantVisibilityConditions[variant];
-      const isHidden = visibilityConditions.every(
-        (side) => this.neighbors[side] === false
-      );
-      if (isHidden) return;
-      new Quadrant({
-        type: this.type,
-        variant,
-        neighbors: this.neighbors,
-        z: this.u,
-        tile: this,
-      });
+      try {
+        new Quadrant({
+          type: this.type,
+          variant,
+          neighbors: this.neighbors,
+          z: this.u,
+          tile: this,
+        });
+      } catch {
+        // can safely ignore, just means no texture found for this quadrant
+      }
     });
   }
 
@@ -237,7 +219,25 @@ class Quadrant extends Sprite {
     );
 
     // find the best texture for this quadrant
-    const best = maxBy(texturesScores, "score")!;
+    let best = maxBy(texturesScores, "score")!;
+    // if no texture match, try again ignoring the "up" side
+    if (best.score === -1) {
+      const texturesScoresIgnoreUp = quadrantTextures.map((textureName) =>
+        scoreTexture({
+          neighborsString,
+          textureName,
+          z,
+          ignoreUp: true,
+        })
+      );
+      const bestIgnoreUp = maxBy(texturesScoresIgnoreUp, "score")!;
+      if (bestIgnoreUp.score === -1) {
+        throw new Error(
+          `No texture found for tile "${type}" variant "${variant}" with neighbors "${neighborsString}" at height ${z}`
+        );
+      }
+      best = bestIgnoreUp;
+    }
     const texture = Texture.from(best.textureName);
     if (!texture) {
       throw new Error(`Texture not found: "${best.textureName}"`);
@@ -269,20 +269,28 @@ const neighborsToString = (neighbors: Neighbors): string => {
 /**
  * Score a texture for a quadrant
  * The higher the score the best this texture fit the neighbors of this quadrant
+ * If no valid texture is found, the score is -1
+ * A texture is valid if all the sides it needs are free (no neighbor) and if the height condition is met
+ * When ignoreUp is true, the "up" side is ignored in the scoring
  */
 const scoreTexture = ({
   textureName,
   neighborsString,
   z,
+  ignoreUp = false,
 }: {
   textureName: string;
   neighborsString: string;
   z: number;
+  ignoreUp?: boolean;
 }) => {
   const regex = /^([a-z]+)-(\d+)-([a-z]+)(?:_(\d+))?\.png$/;
   const [, , , n, h] = textureName.match(regex)!;
-  const score = n.split("").filter((c) => neighborsString.includes(c)).length;
+  const sides = ignoreUp ? n.replace("u", "") : n;
+  const score = sides
+    .split("")
+    .filter((c) => neighborsString.includes(c)).length;
   const isValidHeight = h ? (z % 2) + 1 === Number(h) : true;
-  const isValid = score === n.length && isValidHeight;
+  const isValid = score === sides.length && isValidHeight;
   return { textureName, score: isValid ? score : -1 };
 };
