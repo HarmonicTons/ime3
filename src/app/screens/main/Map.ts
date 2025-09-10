@@ -43,19 +43,16 @@ export class Map extends Container {
 
     tile.on("rightdown", (evt) => {
       evt.stopPropagation();
-      const localX = Math.floor(evt.getLocalPosition(tile).x);
-      const localY = Math.floor(evt.getLocalPosition(tile).y);
-      const side = Tile.getSide({ x: localX, y: localY });
-      console.log("rightdown", s, e, u, side);
       this.removeTileAt(s, e, u);
     });
 
     tile.on("mousedown", (evt) => {
+      // ignore right and middle clicks
+      if (evt.button !== 0) return;
       evt.stopPropagation();
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSide({ x: localX, y: localY });
-      console.log("mousedown", s, e, u, side);
       if (side === "up") {
         this.addTileAt(s, e, u + 1, this.type);
       }
