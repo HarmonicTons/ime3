@@ -3,6 +3,8 @@ import { Container } from "pixi.js";
 import { Map } from "./Map";
 import { FancyButton } from "@pixi/ui";
 import mapData from "./map-data.json";
+import { Viewport } from "pixi-viewport";
+import { engine } from "../../getEngine";
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
@@ -12,15 +14,19 @@ export class GameScreen extends Container {
   public wallButton: FancyButton;
   public dirtButton: FancyButton;
 
-  public mainContainer: Container;
+  public mainContainer: Viewport;
   private paused = false;
   private map: Map;
 
   constructor() {
     super();
 
-    this.mainContainer = new Container();
+    this.mainContainer = new Viewport({
+      events: engine().renderer.events,
+    });
     this.addChild(this.mainContainer);
+    this.mainContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
+
     const map = new Map(mapData, "rock");
     this.map = map;
     this.mainContainer.addChild(map);
