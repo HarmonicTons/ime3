@@ -160,7 +160,8 @@ export class Tile extends Container {
           z: this.u,
           tile: this,
         });
-      } catch {
+      } catch (e) {
+        console.info(e);
         // can safely ignore, just means no texture found for this quadrant
       }
     });
