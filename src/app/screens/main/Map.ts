@@ -6,39 +6,25 @@ export class Map extends Container {
   public tiles: Record<string, Tile> = {};
 
   constructor(
-    sMax: number,
-    eMax: number,
-    uMax: number,
+    mapData: Record<string, string | null>,
     public type: "wall" | "rock" | "dirt"
   ) {
     super();
 
-    const mapData: Record<string, string> = {};
-    for (let s = 0; s < sMax; s++) {
-      for (let e = 0; e < eMax; e++) {
-        for (let u = 0; u < uMax; u++) {
-          mapData[`${s},${e},${u}`] = type;
-        }
-      }
-    }
-
     this.tiles = {};
-    for (let e = 0; e < eMax; e++) {
-      for (let s = 0; s < sMax; s++) {
-        for (let u = 0; u < uMax; u++) {
-          const type = mapData[`${s},${e},${u}`];
-          if (type === undefined) continue;
-          const neighbors: Neighbors = {
-            up: mapData[`${s},${e},${u + 1}`] === undefined,
-            north: mapData[`${s - 1},${e},${u}`] === undefined,
-            east: mapData[`${s},${e + 1},${u}`] === undefined,
-            south: mapData[`${s + 1},${e},${u}`] === undefined,
-            west: mapData[`${s},${e - 1},${u}`] === undefined,
-            down: mapData[`${s},${e},${u - 1}`] === undefined,
-          };
-          this.createTile(s, e, u, type, neighbors);
-        }
-      }
+    for (const key in mapData) {
+      const type = mapData[key];
+      if (!type) continue;
+      const [s, e, u] = key.split(",").map(Number);
+      const neighbors: Neighbors = {
+        up: !mapData[`${s},${e},${u + 1}`],
+        north: !mapData[`${s - 1},${e},${u}`],
+        east: !mapData[`${s},${e + 1},${u}`],
+        south: !mapData[`${s + 1},${e},${u}`],
+        west: !mapData[`${s},${e - 1},${u}`],
+        down: !mapData[`${s},${e},${u - 1}`],
+      };
+      this.createTile(s, e, u, type, neighbors);
     }
   }
 

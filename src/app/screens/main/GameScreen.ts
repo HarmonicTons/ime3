@@ -2,6 +2,7 @@ import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
 import { Map } from "./Map";
 import { FancyButton } from "@pixi/ui";
+import mapData from "./map-data.json";
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
@@ -20,7 +21,7 @@ export class GameScreen extends Container {
 
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
-    const map = new Map(15, 10, 3, "rock");
+    const map = new Map(mapData, "rock");
     this.map = map;
     this.mainContainer.addChild(map);
 
