@@ -220,8 +220,8 @@ class Quadrant extends Sprite {
 
     // find the best texture for this quadrant
     let best = maxBy(texturesScores, "score")!;
-    // if no texture match, try again ignoring the "up" side
-    if (best.score === -1) {
+    // if no texture match, try again ignoring the "up" side for some variants
+    if (best.score === -1 && ["11", "14", "21", "24"].includes(variant)) {
       const texturesScoresIgnoreUp = quadrantTextures.map((textureName) =>
         scoreTexture({
           neighborsString,
