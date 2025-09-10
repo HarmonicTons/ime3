@@ -116,10 +116,18 @@ export class Tile extends Container {
 
     this.setQuadrants();
 
-    const cursorUSprite = new Sprite(Texture.from("cursor-u.png"));
-    const cursorESprite = new Sprite(Texture.from("cursor-e.png"));
+    const cursorUTexture = Texture.from("cursor-u.png");
+    cursorUTexture.source.scaleMode = "nearest";
+    const cursorUSprite = new Sprite(cursorUTexture);
+
+    const cursorETexture = Texture.from("cursor-e.png");
+    cursorETexture.source.scaleMode = "nearest";
+    const cursorESprite = new Sprite(cursorETexture);
     cursorESprite.anchor.set(-1, -0.5);
-    const cursorSSprite = new Sprite(Texture.from("cursor-s.png"));
+
+    const cursorSTexture = Texture.from("cursor-s.png");
+    cursorSTexture.source.scaleMode = "nearest";
+    const cursorSSprite = new Sprite(cursorSTexture);
     cursorSSprite.anchor.set(0, -0.5);
 
     this.on("mousemove", (evt) => {
