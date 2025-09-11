@@ -8,13 +8,13 @@ import mapData from "./map-data.json";
 import { Tile, TileNeighborhood } from "./Tile";
 import { IsoCoordinates } from "./IsometricCoordinate";
 
+const tilesets = ["wall", "rock", "dirt", "grass1", "grass2", "moss"] as const;
+
 /** The screen that holds the app */
 export class GameScreen extends Container {
   /** Assets bundles required by this screen */
   public static assetBundles = ["game"];
-  public rockButton!: FancyButton;
-  public wallButton!: FancyButton;
-  public dirtButton!: FancyButton;
+  public controls: Array<FancyButton> = [];
 
   public mainContainer: Viewport;
   private paused = false;
@@ -30,7 +30,7 @@ export class GameScreen extends Container {
     this.addChild(this.mainContainer);
     this.mainContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
 
-    const map = new Map(mapData, "rock");
+    const map = new Map(mapData, tilesets[0]);
     this.map = map;
     this.mainContainer.addChild(map);
 
@@ -83,12 +83,10 @@ export class GameScreen extends Container {
 
     this.mainContainer.x = centerX;
     this.mainContainer.y = centerY;
-    this.rockButton.x = 10;
-    this.rockButton.y = 10;
-    this.wallButton.x = 10;
-    this.wallButton.y = 44;
-    this.dirtButton.x = 10;
-    this.dirtButton.y = 78;
+    this.controls.forEach((control, i) => {
+      control.x = 10;
+      control.y = 10 + i * 34;
+    });
   }
 
   /** Show screen with animations */
@@ -122,45 +120,23 @@ export class GameScreen extends Container {
     };
 
     const isoCoordinates = new IsoCoordinates(0, 0, 0);
-    this.rockButton = new FancyButton({
-      defaultView: new Tile({
-        isoCoordinates,
-        type: "rock",
-        neighborhood,
-        disableCursor: true,
-      }),
-      anchor: 0,
-      animations: buttonAnimations,
-    });
-    this.rockButton.onPress.connect(() => {
-      this.map.type = "rock";
-    });
-    this.addChild(this.rockButton);
 
-    this.wallButton = new FancyButton({
-      defaultView: new Tile({
-        isoCoordinates,
-        type: "wall",
-        neighborhood,
-        disableCursor: true,
-      }),
-      anchor: 0,
-      animations: buttonAnimations,
+    tilesets.forEach((type) => {
+      const button = new FancyButton({
+        defaultView: new Tile({
+          isoCoordinates,
+          type,
+          neighborhood,
+          disableCursor: true,
+        }),
+        anchor: 0,
+        animations: buttonAnimations,
+      });
+      button.onPress.connect(() => {
+        this.map.type = type;
+      });
+      this.addChild(button);
+      this.controls.push(button);
     });
-    this.wallButton.onPress.connect(() => (this.map.type = "wall"));
-    this.addChild(this.wallButton);
-
-    this.dirtButton = new FancyButton({
-      defaultView: new Tile({
-        isoCoordinates,
-        type: "dirt",
-        neighborhood,
-        disableCursor: true,
-      }),
-      anchor: 0,
-      animations: buttonAnimations,
-    });
-    this.dirtButton.onPress.connect(() => (this.map.type = "dirt"));
-    this.addChild(this.dirtButton);
   }
 }

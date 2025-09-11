@@ -11,7 +11,7 @@ export class Map extends Container {
 
   constructor(
     mapData: Record<string, string | undefined>,
-    public type: "wall" | "rock" | "dirt"
+    public type: string
   ) {
     super();
     for (const key in mapData) {
