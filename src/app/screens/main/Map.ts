@@ -91,11 +91,7 @@ export class Map extends Container {
   private sortTiles() {
     const sortedTiles = orderBy(
       Object.values(this.tiles),
-      [
-        "isometricCoordinates.e",
-        "isometricCoordinates.s",
-        "isometricCoordinates.u",
-      ],
+      ["isoCoordinates.e", "isoCoordinates.s", "isoCoordinates.u"],
       ["asc", "asc", "asc"]
     );
     for (let i = 0; i < sortedTiles.length; i++) {
