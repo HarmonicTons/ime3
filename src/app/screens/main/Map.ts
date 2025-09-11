@@ -30,6 +30,14 @@ export class Map extends Container {
     }
   }
 
+  public toJson(): string {
+    const result: Record<string, string> = {};
+    for (const key in this.tiles) {
+      result[key] = this.tiles[key].type;
+    }
+    return JSON.stringify(result);
+  }
+
   private createTile(
     iso: IsoCoordinates,
     type: string,

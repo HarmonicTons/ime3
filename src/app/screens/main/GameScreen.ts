@@ -3,10 +3,10 @@ import { Viewport } from "pixi-viewport";
 import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
 import { engine } from "../../getEngine";
+import { IsoCoordinates } from "./IsometricCoordinate";
 import { Map } from "./Map";
 import mapData from "./map-data.json";
 import { Tile, TileNeighborhood } from "./Tile";
-import { IsoCoordinates } from "./IsometricCoordinate";
 
 const tilesets = ["wall", "rock", "dirt", "grass1", "grass2", "moss"] as const;
 
@@ -37,9 +37,6 @@ export class GameScreen extends Container {
     this.mainContainer.scale.set(2, 2);
 
     this.initControls();
-
-    // uncomment to extract the main container as a PNG
-    // this.extractToPng();
   }
 
   public extractToPng = async () => {
@@ -47,7 +44,17 @@ export class GameScreen extends Container {
     // Download as PNG
     const link = document.createElement("a");
     link.href = base64;
-    link.download = "mainContainer.png";
+    link.download = "map.png";
+    link.click();
+  };
+
+  public extractToJson = async () => {
+    const json = this.map.toJson();
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "map.json";
     link.click();
   };
 
@@ -110,6 +117,31 @@ export class GameScreen extends Container {
         duration: 100,
       },
     };
+
+    const downloadPngButton = new FancyButton({
+      text: "⬇PNG",
+      scale: 0.6,
+      defaultTextAnchor: 0,
+      animations: buttonAnimations,
+    });
+    downloadPngButton.onPress.connect(() => {
+      this.extractToPng();
+    });
+    this.addChild(downloadPngButton);
+    this.controls.push(downloadPngButton);
+
+    const downloadJsonButton = new FancyButton({
+      text: "⬇JSON",
+      scale: 0.6,
+      defaultTextAnchor: 0,
+      animations: buttonAnimations,
+    });
+    downloadJsonButton.onPress.connect(() => {
+      this.extractToJson();
+    });
+    this.addChild(downloadJsonButton);
+    this.controls.push(downloadJsonButton);
+
     const neighborhood: TileNeighborhood = {
       up: undefined,
       north: undefined,
