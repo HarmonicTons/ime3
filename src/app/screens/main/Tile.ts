@@ -1,55 +1,33 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
 import { NoTextureFound, TileFragment, tileFragmentKeys } from "./TileFragment";
-import { IsometricCoordinates } from "./IsometricCoordinate";
-
-export const tileSides = [
-  "up",
-  "north",
-  "east",
-  "south",
-  "west",
-  "down",
-] as const;
-export type TileSide = (typeof tileSides)[number];
+import { IsoDirection, IsoCoordinates } from "./IsometricCoordinate";
 
 /**
- * Neighbors tile type of a tile
+ * Neighborhood (all neighbors types) of a tile
  */
-export type Neighborhood = Record<TileSide, string | undefined>;
-
-export const neighborsOffsets: Record<TileSide, IsometricCoordinates> = {
-  up: new IsometricCoordinates(0, 0, 1),
-  north: new IsometricCoordinates(-1, 0, 0),
-  east: new IsometricCoordinates(0, 1, 0),
-  south: new IsometricCoordinates(1, 0, 0),
-  west: new IsometricCoordinates(0, -1, 0),
-  down: new IsometricCoordinates(0, 0, -1),
-};
+export type TileNeighborhood = Record<IsoDirection, string | undefined>;
 
 /**
  * An isometric tile
  */
 export class Tile extends Container {
   public type: string;
-  public isometricCoordinates: IsometricCoordinates;
-  public neighborhood: Neighborhood;
+  public isoCoordinates: IsoCoordinates;
   constructor({
     type,
     neighborhood,
-    isometricCoordinates,
+    isoCoordinates,
   }: {
     /**
      * the type, ex: wall or stone
      */
     type: string;
-    neighborhood: Neighborhood;
-    isometricCoordinates: IsometricCoordinates;
+    neighborhood: TileNeighborhood;
+    isoCoordinates: IsoCoordinates;
   }) {
     super();
     this.type = type;
-    this.isometricCoordinates = isometricCoordinates;
-    this.neighborhood = neighborhood;
-    this.alpha = 1;
+    this.isoCoordinates = isoCoordinates;
 
     this.interactive = true;
     // The hit area is a polygon that covers the entire tile (hexagon shape)
@@ -57,8 +35,61 @@ export class Tile extends Container {
       0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
     ]);
 
-    this.setTileFragments();
+    this.setTileFragments(neighborhood);
+    this.addCursor();
+  }
 
+  /**
+   * Get the side of the tile that was clicked based on the local coordinates of the click
+   */
+  public static getSideFromLocalCoordinates({
+    x,
+    y,
+  }: {
+    x: number;
+    y: number;
+  }): IsoDirection {
+    if (x < 16) {
+      if (5 + x / 2 >= y) {
+        return "up";
+      }
+      return "south";
+    }
+    if (22 - x / 2 >= y) {
+      return "up";
+    }
+    return "east";
+  }
+
+  public updateNeighborhood(neighborhood: TileNeighborhood) {
+    this.removeChildren();
+    this.setTileFragments(neighborhood);
+  }
+
+  private setTileFragments(neighborhood: TileNeighborhood) {
+    tileFragmentKeys.forEach((key) => {
+      try {
+        new TileFragment({
+          type: this.type,
+          key,
+          neighborhood,
+          u: this.isoCoordinates.u,
+          tile: this,
+        });
+      } catch (e) {
+        if (e instanceof NoTextureFound) {
+          // can safely ignore, just means this fragment is empty
+          return;
+        }
+        throw e;
+      }
+    });
+  }
+
+  /**
+   * Add a cursor that indicates where a new tile will be added
+   */
+  private addCursor() {
     const cursorUTexture = Texture.from("cursor-u.png");
     cursorUTexture.source.scaleMode = "nearest";
     const cursorUSprite = new Sprite(cursorUTexture);
@@ -102,50 +133,5 @@ export class Tile extends Container {
       this.removeChild(cursorESprite);
       this.removeChild(cursorSSprite);
     });
-  }
-
-  public updateNeighborhood(neighborhood: Neighborhood) {
-    this.removeChildren();
-    this.neighborhood = neighborhood;
-    this.setTileFragments();
-  }
-
-  public setTileFragments() {
-    tileFragmentKeys.forEach((key) => {
-      try {
-        new TileFragment({
-          type: this.type,
-          key,
-          neighborhood: this.neighborhood,
-          z: this.isometricCoordinates.u,
-          tile: this,
-        });
-      } catch (e) {
-        if (!(e instanceof NoTextureFound)) throw e;
-        // can safely ignore, just means no texture found for this fragment
-      }
-    });
-  }
-
-  /**
-   * Get the side of the tile that was clicked based on the local coordinates of the click
-   */
-  public static getSideFromLocalCoordinates({
-    x,
-    y,
-  }: {
-    x: number;
-    y: number;
-  }): TileSide {
-    if (x < 16) {
-      if (5 + x / 2 >= y) {
-        return "up";
-      }
-      return "south";
-    }
-    if (22 - x / 2 >= y) {
-      return "up";
-    }
-    return "east";
   }
 }

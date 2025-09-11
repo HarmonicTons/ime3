@@ -1,7 +1,7 @@
 import { orderBy } from "lodash";
 import { Container, Ticker } from "pixi.js";
-import { Neighborhood, neighborsOffsets, Tile, tileSides } from "./Tile";
-import { IsometricCoordinates } from "./IsometricCoordinate";
+import { TileNeighborhood, Tile } from "./Tile";
+import { isoDirections, IsoCoordinates } from "./IsometricCoordinate";
 
 /**
  * Map class representing a collection of isometric tiles.
@@ -14,30 +14,28 @@ export class Map extends Container {
     public type: "wall" | "rock" | "dirt"
   ) {
     super();
-
-    this.tiles = {};
     for (const key in mapData) {
       const type = mapData[key];
       if (!type) continue;
-      const iso = IsometricCoordinates.fromString(key);
-      const neighborhood: Neighborhood = {
-        up: mapData[iso.add(neighborsOffsets.up).toString()],
-        north: mapData[iso.add(neighborsOffsets.north).toString()],
-        east: mapData[iso.add(neighborsOffsets.east).toString()],
-        south: mapData[iso.add(neighborsOffsets.south).toString()],
-        west: mapData[iso.add(neighborsOffsets.west).toString()],
-        down: mapData[iso.add(neighborsOffsets.down).toString()],
+      const iso = IsoCoordinates.fromString(key);
+      const neighborhood: TileNeighborhood = {
+        up: mapData[iso.move("up").toString()],
+        north: mapData[iso.move("north").toString()],
+        east: mapData[iso.move("east").toString()],
+        south: mapData[iso.move("south").toString()],
+        west: mapData[iso.move("west").toString()],
+        down: mapData[iso.move("down").toString()],
       };
       this.createTile(iso, type, neighborhood);
     }
   }
 
   private createTile(
-    iso: IsometricCoordinates,
+    iso: IsoCoordinates,
     type: string,
-    neighborhood: Neighborhood
+    neighborhood: TileNeighborhood
   ) {
-    const tile = new Tile({ type, neighborhood, isometricCoordinates: iso });
+    const tile = new Tile({ type, neighborhood, isoCoordinates: iso });
     tile.x = iso.e * 16 - iso.s * 16;
     tile.y = iso.e * 8 + iso.s * 8 - iso.u * 8;
     this.tiles[iso.toString()] = tile;
@@ -56,22 +54,22 @@ export class Map extends Container {
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSideFromLocalCoordinates({ x: localX, y: localY });
       if (side === "up") {
-        this.addTileAt(iso.add(neighborsOffsets.up), this.type);
+        this.addTileAt(iso.move("up"), this.type);
       }
       if (side === "south") {
-        this.addTileAt(iso.add(neighborsOffsets.south), this.type);
+        this.addTileAt(iso.move("south"), this.type);
       }
       if (side === "east") {
-        this.addTileAt(iso.add(neighborsOffsets.east), this.type);
+        this.addTileAt(iso.move("east"), this.type);
       }
     });
   }
 
-  private getTileAt(iso: IsometricCoordinates): Tile | undefined {
+  private getTileAt(iso: IsoCoordinates): Tile | undefined {
     return this.tiles[iso.toString()];
   }
 
-  private removeTileAt(iso: IsometricCoordinates) {
+  private removeTileAt(iso: IsoCoordinates) {
     console.log("removing tile at", iso.s, iso.e, iso.u);
     const existingTile = this.getTileAt(iso);
     if (existingTile) {
@@ -97,7 +95,7 @@ export class Map extends Container {
     }
   }
 
-  public addTileAt(iso: IsometricCoordinates, type: string) {
+  public addTileAt(iso: IsoCoordinates, type: string) {
     if (this.getTileAt(iso)) {
       console.warn("Tile already exists at", iso.s, iso.e, iso.u);
       return;
@@ -112,29 +110,27 @@ export class Map extends Container {
     this.updateTileNeighbors(iso);
   }
 
-  public updateTileNeighbors(iso: IsometricCoordinates) {
+  public updateTileNeighbors(iso: IsoCoordinates) {
     // Update neighborhood
 
-    for (const side of tileSides) {
-      const neighborTile = this.getTileAt(iso.add(neighborsOffsets[side]));
+    for (const direction of isoDirections) {
+      const neighborTile = this.getTileAt(iso.move(direction));
       if (!neighborTile) {
         continue;
       }
-      const neighborhood = this.getNeighborhood(
-        neighborTile.isometricCoordinates
-      );
+      const neighborhood = this.getNeighborhood(neighborTile.isoCoordinates);
       neighborTile.updateNeighborhood(neighborhood);
     }
   }
 
-  private getNeighborhood(iso: IsometricCoordinates): Neighborhood {
+  private getNeighborhood(iso: IsoCoordinates): TileNeighborhood {
     return {
-      up: this.getTileAt(iso.add(neighborsOffsets.up))?.type,
-      north: this.getTileAt(iso.add(neighborsOffsets.north))?.type,
-      east: this.getTileAt(iso.add(neighborsOffsets.east))?.type,
-      south: this.getTileAt(iso.add(neighborsOffsets.south))?.type,
-      west: this.getTileAt(iso.add(neighborsOffsets.west))?.type,
-      down: this.getTileAt(iso.add(neighborsOffsets.down))?.type,
+      up: this.getTileAt(iso.move("up"))?.type,
+      north: this.getTileAt(iso.move("north"))?.type,
+      east: this.getTileAt(iso.move("east"))?.type,
+      south: this.getTileAt(iso.move("south"))?.type,
+      west: this.getTileAt(iso.move("west"))?.type,
+      down: this.getTileAt(iso.move("down"))?.type,
     };
   }
 

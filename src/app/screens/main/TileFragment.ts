@@ -1,6 +1,6 @@
 import { maxBy } from "lodash";
 import { Assets, Sprite, Texture } from "pixi.js";
-import { Neighborhood, Tile } from "./Tile";
+import { TileNeighborhood, Tile } from "./Tile";
 
 /**
  * The name of the 12 tileFragments of a tile
@@ -52,12 +52,12 @@ export class TileFragment extends Sprite {
     key,
     tile,
     neighborhood,
-    z,
+    u,
   }: {
     type: string;
     key: TileFragmentKey;
-    neighborhood: Neighborhood;
-    z: number;
+    neighborhood: TileNeighborhood;
+    u: number;
     tile: Tile;
   }) {
     const neighborsString = neighborsToString(neighborhood);
@@ -73,7 +73,7 @@ export class TileFragment extends Sprite {
       scoreTexture({
         neighborsString,
         textureName,
-        z,
+        z: u,
       })
     );
 
@@ -85,7 +85,7 @@ export class TileFragment extends Sprite {
         scoreTexture({
           neighborsString,
           textureName,
-          z,
+          z: u,
           ignoreUp: true,
         })
       );
@@ -94,7 +94,7 @@ export class TileFragment extends Sprite {
     }
     if (best.score === -1) {
       throw new NoTextureFound(
-        `No texture found for tile "${type}" fragment "${key}" with neighbors "${neighborsString}" at height ${z}`
+        `No texture found for tile "${type}" fragment "${key}" with neighbors "${neighborsString}" at height ${u}`
       );
     }
     const texture = Texture.from(best.textureName);
@@ -114,7 +114,7 @@ export class TileFragment extends Sprite {
 /**
  * Serialize the neighbors into a "uneswd" string
  */
-const neighborsToString = (neighborhood: Neighborhood): string => {
+const neighborsToString = (neighborhood: TileNeighborhood): string => {
   const sides = [];
   if (neighborhood.up === undefined) sides.push("u");
   if (neighborhood.north === undefined) sides.push("n");
