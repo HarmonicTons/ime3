@@ -34,7 +34,7 @@ export class Tile extends Container {
     this.interactive = true;
     // The hit area is a polygon that covers the entire tile (hexagon shape)
     this.hitArea = new Polygon([
-      0, 7, 15, 0, 16, 0, 31, 7, 31, 15, 16, 22, 15, 22, 0, 15,
+      0, 7, 15, 0, 17, 0, 32, 7, 32, 16, 17, 23, 15, 23, 0, 16,
     ]);
 
     this.setTileFragments(neighborhood);
@@ -54,12 +54,12 @@ export class Tile extends Container {
     y: number;
   }): IsoDirection {
     if (x < 16) {
-      if (5 + x / 2 >= y) {
+      if (7.5 + x / 2 >= y) {
         return "up";
       }
       return "south";
     }
-    if (22 - x / 2 >= y) {
+    if (23.5 - x / 2 >= y) {
       return "up";
     }
     return "east";
