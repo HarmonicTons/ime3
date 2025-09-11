@@ -1,10 +1,10 @@
+import { FancyButton } from "@pixi/ui";
+import { Viewport } from "pixi-viewport";
 import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
-import { Map } from "./Map";
-import { FancyButton } from "@pixi/ui";
-import mapData from "./map-data.json";
-import { Viewport } from "pixi-viewport";
 import { engine } from "../../getEngine";
+import { Map } from "./Map";
+import mapData from "./map-data.json";
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
@@ -21,6 +21,7 @@ export class GameScreen extends Container {
   constructor() {
     super();
 
+    engine().renderer.resolution = 1;
     this.mainContainer = new Viewport({
       events: engine().renderer.events,
     });
@@ -32,6 +33,9 @@ export class GameScreen extends Container {
     this.mainContainer.addChild(map);
 
     this.mainContainer.scale.set(2, 2);
+
+    // uncomment to extract the main container as a PNG
+    // this.extractToPng();
 
     const buttonAnimations = {
       hover: {
@@ -52,7 +56,9 @@ export class GameScreen extends Container {
       anchor: 0,
       animations: buttonAnimations,
     });
-    this.rockButton.onPress.connect(() => (this.map.type = "rock"));
+    this.rockButton.onPress.connect(() => {
+      this.map.type = "rock";
+    });
     this.addChild(this.rockButton);
 
     this.wallButton = new FancyButton({
@@ -71,6 +77,15 @@ export class GameScreen extends Container {
     this.dirtButton.onPress.connect(() => (this.map.type = "dirt"));
     this.addChild(this.dirtButton);
   }
+
+  public extractToPng = async () => {
+    const base64 = await engine().renderer.extract.base64(this.mainContainer);
+    // Download as PNG
+    const link = document.createElement("a");
+    link.href = base64;
+    link.download = "mainContainer.png";
+    link.click();
+  };
 
   /** Prepare the screen just before showing */
   public prepare() {}
