@@ -127,7 +127,7 @@ export class SettingsPopup extends Container {
     await animate(
       this.panel.pivot,
       { y: 0 },
-      { duration: 0.3, ease: "backOut" },
+      { duration: 0.3, ease: "backOut" }
     );
   }
 
@@ -144,7 +144,7 @@ export class SettingsPopup extends Container {
       {
         duration: 0.3,
         ease: "backIn",
-      },
+      }
     );
   }
 }

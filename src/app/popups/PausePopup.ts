@@ -68,7 +68,7 @@ export class PausePopup extends Container {
     await animate(
       this.panel.pivot,
       { y: 0 },
-      { duration: 0.3, ease: "backOut" },
+      { duration: 0.3, ease: "backOut" }
     );
   }
 
@@ -82,7 +82,7 @@ export class PausePopup extends Container {
     await animate(
       this.panel.pivot,
       { y: -500 },
-      { duration: 0.3, ease: "backIn" },
+      { duration: 0.3, ease: "backIn" }
     );
   }
 }

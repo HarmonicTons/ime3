@@ -30,7 +30,7 @@ export class VolumeSlider extends Slider {
         border,
         width - border * 2,
         height - border * 2,
-        radius,
+        radius
       )
       .fill({ color: backgroundColor });
 
@@ -42,7 +42,7 @@ export class VolumeSlider extends Slider {
         border,
         width - border * 2,
         height - border * 2,
-        radius,
+        radius
       )
       .fill({ color: fillColor });
 
