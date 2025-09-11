@@ -5,7 +5,7 @@ import { Neighbors, Tile } from "./Tile";
 /**
  * The name of the 12 tileFragments of a tile
  */
-export const tileFragmentVariants = [
+export const tileFragmentKeys = [
   "11",
   "12",
   "13",
@@ -19,28 +19,26 @@ export const tileFragmentVariants = [
   "33",
   "34",
 ] as const;
-export type TileFragmentVariant = (typeof tileFragmentVariants)[number];
+export type TileFragmentKey = (typeof tileFragmentKeys)[number];
 
 /**
  * The X,Y position of each fragment
  */
-const tileFragmentPosition: Record<
-  TileFragmentVariant,
-  { x: number; y: number }
-> = {
-  "11": { x: 0, y: 0 },
-  "12": { x: 8, y: 0 },
-  "13": { x: 16, y: 0 },
-  "14": { x: 24, y: 0 },
-  "21": { x: 0, y: 8 },
-  "22": { x: 8, y: 8 },
-  "23": { x: 16, y: 8 },
-  "24": { x: 24, y: 8 },
-  "31": { x: 0, y: 16 },
-  "32": { x: 8, y: 16 },
-  "33": { x: 16, y: 16 },
-  "34": { x: 24, y: 16 },
-};
+const tileFragmentPosition: Record<TileFragmentKey, { x: number; y: number }> =
+  {
+    "11": { x: 0, y: 0 },
+    "12": { x: 8, y: 0 },
+    "13": { x: 16, y: 0 },
+    "14": { x: 24, y: 0 },
+    "21": { x: 0, y: 8 },
+    "22": { x: 8, y: 8 },
+    "23": { x: 16, y: 8 },
+    "24": { x: 24, y: 8 },
+    "31": { x: 0, y: 16 },
+    "32": { x: 8, y: 16 },
+    "33": { x: 16, y: 16 },
+    "34": { x: 24, y: 16 },
+  };
 
 export class NoTextureFound extends Error {}
 
@@ -51,13 +49,13 @@ export class NoTextureFound extends Error {}
 export class TileFragment extends Sprite {
   constructor({
     type,
-    variant,
+    key,
     tile,
     neighbors,
     z,
   }: {
     type: string;
-    variant: TileFragmentVariant;
+    key: TileFragmentKey;
     neighbors: Neighbors;
     z: number;
     tile: Tile;
@@ -68,7 +66,7 @@ export class TileFragment extends Sprite {
     // @ts-expect-error idgaf
     const cache = Assets.cache._cache as Map<string, Texture>;
     const tileFragmentTextures = [...cache.keys()].filter((k) =>
-      k.startsWith(`${type}-${variant}-`)
+      k.startsWith(`${type}-${key}-`)
     );
     // score all the textures
     const texturesScores = tileFragmentTextures.map((textureName) =>
@@ -81,8 +79,8 @@ export class TileFragment extends Sprite {
 
     // find the best texture for this fragment
     let best = maxBy(texturesScores, "score")!;
-    // if no texture match, try again ignoring the "up" side for some variants
-    if (best.score === -1 && ["11", "14", "21", "24"].includes(variant)) {
+    // if no texture match, try again ignoring the "up" side for some fragments
+    if (best.score === -1 && ["11", "14", "21", "24"].includes(key)) {
       const texturesScoresIgnoreUp = tileFragmentTextures.map((textureName) =>
         scoreTexture({
           neighborsString,
@@ -96,7 +94,7 @@ export class TileFragment extends Sprite {
     }
     if (best.score === -1) {
       throw new NoTextureFound(
-        `No texture found for tile "${type}" variant "${variant}" with neighbors "${neighborsString}" at height ${z}`
+        `No texture found for tile "${type}" fragment "${key}" with neighbors "${neighborsString}" at height ${z}`
       );
     }
     const texture = Texture.from(best.textureName);
@@ -105,7 +103,7 @@ export class TileFragment extends Sprite {
     }
     // keep pixel art style
     texture.source.scaleMode = "nearest";
-    const position = tileFragmentPosition[variant];
+    const position = tileFragmentPosition[key];
 
     super({ texture, position });
 

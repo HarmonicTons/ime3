@@ -1,9 +1,5 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
-import {
-  NoTextureFound,
-  TileFragment,
-  tileFragmentVariants,
-} from "./TileFragment";
+import { NoTextureFound, TileFragment, tileFragmentKeys } from "./TileFragment";
 
 type Side = "up" | "north" | "east" | "south" | "west" | "down";
 
@@ -118,11 +114,11 @@ export class Tile extends Container {
   }
 
   public setTileFragments() {
-    tileFragmentVariants.forEach((variant) => {
+    tileFragmentKeys.forEach((key) => {
       try {
         new TileFragment({
           type: this.type,
-          variant,
+          key,
           neighbors: this.neighbors,
           z: this.u,
           tile: this,
