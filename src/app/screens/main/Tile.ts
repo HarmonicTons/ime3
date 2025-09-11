@@ -1,57 +1,54 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
 import { NoTextureFound, TileFragment, tileFragmentKeys } from "./TileFragment";
+import { IsometricCoordinates } from "./IsometricCoordinate";
 
-type Side = "up" | "north" | "east" | "south" | "west" | "down";
+export const tileSides = [
+  "up",
+  "north",
+  "east",
+  "south",
+  "west",
+  "down",
+] as const;
+export type TileSide = (typeof tileSides)[number];
 
 /**
- * Neighbors of a tile
- * false means there is a tile, true means there is nothing (kinda backward)
+ * Neighbors tile type of a tile
  */
-export type Neighbors = Record<Side, boolean>;
+export type Neighborhood = Record<TileSide, string | undefined>;
+
+export const neighborsOffsets: Record<TileSide, IsometricCoordinates> = {
+  up: new IsometricCoordinates(0, 0, 1),
+  north: new IsometricCoordinates(-1, 0, 0),
+  east: new IsometricCoordinates(0, 1, 0),
+  south: new IsometricCoordinates(1, 0, 0),
+  west: new IsometricCoordinates(0, -1, 0),
+  down: new IsometricCoordinates(0, 0, -1),
+};
 
 /**
- * A tile
+ * An isometric tile
  */
 export class Tile extends Container {
   public type: string;
-  public e: number;
-  public s: number;
-  public u: number;
-  public neighbors: Neighbors;
+  public isometricCoordinates: IsometricCoordinates;
+  public neighborhood: Neighborhood;
   constructor({
     type,
-    neighbors,
-    e,
-    s,
-    u,
+    neighborhood,
+    isometricCoordinates,
   }: {
     /**
      * the type, ex: wall or stone
      */
     type: string;
-    /**
-     * the neighbors of the tile
-     */
-    neighbors: Neighbors;
-    /**
-     * The E coordinate
-     */
-    e: number;
-    /**
-     * The S coordinate
-     */
-    s: number;
-    /**
-     * The U coordinate
-     */
-    u: number;
+    neighborhood: Neighborhood;
+    isometricCoordinates: IsometricCoordinates;
   }) {
     super();
     this.type = type;
-    this.e = e;
-    this.s = s;
-    this.u = u;
-    this.neighbors = neighbors;
+    this.isometricCoordinates = isometricCoordinates;
+    this.neighborhood = neighborhood;
     this.alpha = 1;
 
     this.interactive = true;
@@ -77,7 +74,7 @@ export class Tile extends Container {
     cursorSSprite.anchor.set(0, -0.5);
 
     this.on("mousemove", (evt) => {
-      const side = Tile.getSide(evt.getLocalPosition(this));
+      const side = Tile.getSideFromLocalCoordinates(evt.getLocalPosition(this));
       if (side === "up") {
         this.addChild(cursorUSprite);
       }
@@ -89,7 +86,7 @@ export class Tile extends Container {
       }
     });
     this.on("mousemove", (evt) => {
-      const side = Tile.getSide(evt.getLocalPosition(this));
+      const side = Tile.getSideFromLocalCoordinates(evt.getLocalPosition(this));
       if (side !== "up") {
         this.removeChild(cursorUSprite);
       }
@@ -107,9 +104,9 @@ export class Tile extends Container {
     });
   }
 
-  public updateNeighbors(neighbors: Neighbors) {
+  public updateNeighborhood(neighborhood: Neighborhood) {
     this.removeChildren();
-    this.neighbors = neighbors;
+    this.neighborhood = neighborhood;
     this.setTileFragments();
   }
 
@@ -119,8 +116,8 @@ export class Tile extends Container {
         new TileFragment({
           type: this.type,
           key,
-          neighbors: this.neighbors,
-          z: this.u,
+          neighborhood: this.neighborhood,
+          z: this.isometricCoordinates.u,
           tile: this,
         });
       } catch (e) {
@@ -133,7 +130,13 @@ export class Tile extends Container {
   /**
    * Get the side of the tile that was clicked based on the local coordinates of the click
    */
-  public static getSide({ x, y }: { x: number; y: number }): Side {
+  public static getSideFromLocalCoordinates({
+    x,
+    y,
+  }: {
+    x: number;
+    y: number;
+  }): TileSide {
     if (x < 16) {
       if (5 + x / 2 >= y) {
         return "up";

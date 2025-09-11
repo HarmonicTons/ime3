@@ -1,6 +1,6 @@
 import { maxBy } from "lodash";
 import { Assets, Sprite, Texture } from "pixi.js";
-import { Neighbors, Tile } from "./Tile";
+import { Neighborhood, Tile } from "./Tile";
 
 /**
  * The name of the 12 tileFragments of a tile
@@ -43,24 +43,24 @@ const tileFragmentPosition: Record<TileFragmentKey, { x: number; y: number }> =
 export class NoTextureFound extends Error {}
 
 /**
- * A tiel fragment
- * A tile is made of 12 tileFragments (3 lines, 4 columns)
+ * An isometric tile fragment
+ * A tile is made of 12 fragments (4 columns x 3 lines)
  */
 export class TileFragment extends Sprite {
   constructor({
     type,
     key,
     tile,
-    neighbors,
+    neighborhood,
     z,
   }: {
     type: string;
     key: TileFragmentKey;
-    neighbors: Neighbors;
+    neighborhood: Neighborhood;
     z: number;
     tile: Tile;
   }) {
-    const neighborsString = neighborsToString(neighbors);
+    const neighborsString = neighborsToString(neighborhood);
     // find every textures for this type of tile into the cache of Pixi
     // TODO: use another system to register the textures instead of using Pixi's cache
     // @ts-expect-error idgaf
@@ -114,14 +114,14 @@ export class TileFragment extends Sprite {
 /**
  * Serialize the neighbors into a "uneswd" string
  */
-const neighborsToString = (neighbors: Neighbors): string => {
+const neighborsToString = (neighborhood: Neighborhood): string => {
   const sides = [];
-  if (neighbors.up) sides.push("u");
-  if (neighbors.north) sides.push("n");
-  if (neighbors.east) sides.push("e");
-  if (neighbors.south) sides.push("s");
-  if (neighbors.west) sides.push("w");
-  if (neighbors.down) sides.push("d");
+  if (neighborhood.up === undefined) sides.push("u");
+  if (neighborhood.north === undefined) sides.push("n");
+  if (neighborhood.east === undefined) sides.push("e");
+  if (neighborhood.south === undefined) sides.push("s");
+  if (neighborhood.west === undefined) sides.push("w");
+  if (neighborhood.down === undefined) sides.push("d");
   return sides.join("");
 };
 
