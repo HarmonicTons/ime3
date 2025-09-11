@@ -5,14 +5,16 @@ import { Container } from "pixi.js";
 import { engine } from "../../getEngine";
 import { Map } from "./Map";
 import mapData from "./map-data.json";
+import { Tile, TileNeighborhood } from "./Tile";
+import { IsoCoordinates } from "./IsometricCoordinate";
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
   /** Assets bundles required by this screen */
   public static assetBundles = ["game"];
-  public rockButton: FancyButton;
-  public wallButton: FancyButton;
-  public dirtButton: FancyButton;
+  public rockButton!: FancyButton;
+  public wallButton!: FancyButton;
+  public dirtButton!: FancyButton;
 
   public mainContainer: Viewport;
   private paused = false;
@@ -34,48 +36,10 @@ export class GameScreen extends Container {
 
     this.mainContainer.scale.set(2, 2);
 
+    this.initControls();
+
     // uncomment to extract the main container as a PNG
     // this.extractToPng();
-
-    const buttonAnimations = {
-      hover: {
-        props: {
-          scale: { x: 1.1, y: 1.1 },
-        },
-        duration: 100,
-      },
-      pressed: {
-        props: {
-          scale: { x: 0.9, y: 0.9 },
-        },
-        duration: 100,
-      },
-    };
-    this.rockButton = new FancyButton({
-      defaultView: "rock.png",
-      anchor: 0,
-      animations: buttonAnimations,
-    });
-    this.rockButton.onPress.connect(() => {
-      this.map.type = "rock";
-    });
-    this.addChild(this.rockButton);
-
-    this.wallButton = new FancyButton({
-      defaultView: "wall.png",
-      anchor: 0,
-      animations: buttonAnimations,
-    });
-    this.wallButton.onPress.connect(() => (this.map.type = "wall"));
-    this.addChild(this.wallButton);
-
-    this.dirtButton = new FancyButton({
-      defaultView: "dirt.png",
-      anchor: 0,
-      animations: buttonAnimations,
-    });
-    this.dirtButton.onPress.connect(() => (this.map.type = "dirt"));
-    this.addChild(this.dirtButton);
   }
 
   public extractToPng = async () => {
@@ -121,10 +85,10 @@ export class GameScreen extends Container {
     this.mainContainer.y = centerY;
     this.rockButton.x = 10;
     this.rockButton.y = 10;
-    this.wallButton.x = 80;
-    this.wallButton.y = 10;
-    this.dirtButton.x = 150;
-    this.dirtButton.y = 10;
+    this.wallButton.x = 10;
+    this.wallButton.y = 44;
+    this.dirtButton.x = 10;
+    this.dirtButton.y = 78;
   }
 
   /** Show screen with animations */
@@ -132,4 +96,71 @@ export class GameScreen extends Container {
 
   /** Hide screen with animations */
   public async hide() {}
+
+  private initControls() {
+    const buttonAnimations = {
+      hover: {
+        props: {
+          scale: { x: 1.1, y: 1.1 },
+        },
+        duration: 100,
+      },
+      pressed: {
+        props: {
+          scale: { x: 0.9, y: 0.9 },
+        },
+        duration: 100,
+      },
+    };
+    const neighborhood: TileNeighborhood = {
+      up: undefined,
+      north: undefined,
+      south: undefined,
+      east: undefined,
+      west: undefined,
+      down: undefined,
+    };
+
+    const isoCoordinates = new IsoCoordinates(0, 0, 0);
+    this.rockButton = new FancyButton({
+      defaultView: new Tile({
+        isoCoordinates,
+        type: "rock",
+        neighborhood,
+        disableCursor: true,
+      }),
+      anchor: 0,
+      animations: buttonAnimations,
+    });
+    this.rockButton.onPress.connect(() => {
+      this.map.type = "rock";
+    });
+    this.addChild(this.rockButton);
+
+    this.wallButton = new FancyButton({
+      defaultView: new Tile({
+        isoCoordinates,
+        type: "wall",
+        neighborhood,
+        disableCursor: true,
+      }),
+      anchor: 0,
+      animations: buttonAnimations,
+    });
+    this.wallButton.onPress.connect(() => (this.map.type = "wall"));
+    this.addChild(this.wallButton);
+
+    this.dirtButton = new FancyButton({
+      defaultView: new Tile({
+        isoCoordinates,
+        type: "dirt",
+        neighborhood,
+        disableCursor: true,
+      }),
+      anchor: 0,
+      animations: buttonAnimations,
+    });
+    this.dirtButton.onPress.connect(() => (this.map.type = "dirt"));
+    this.addChild(this.dirtButton);
+  }
 }

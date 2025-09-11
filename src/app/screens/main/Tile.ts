@@ -17,6 +17,7 @@ export class Tile extends Container {
     type,
     neighborhood,
     isoCoordinates,
+    disableCursor = false,
   }: {
     /**
      * the type, ex: wall or stone
@@ -24,6 +25,7 @@ export class Tile extends Container {
     type: string;
     neighborhood: TileNeighborhood;
     isoCoordinates: IsoCoordinates;
+    disableCursor?: boolean;
   }) {
     super();
     this.type = type;
@@ -36,7 +38,9 @@ export class Tile extends Container {
     ]);
 
     this.setTileFragments(neighborhood);
-    this.addCursor();
+    if (!disableCursor) {
+      this.addCursor();
+    }
   }
 
   /**
