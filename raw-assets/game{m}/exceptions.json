@@ -292,6 +292,447 @@
     },
     "dirt_stones-24-*,*,dirt_grass2,*,*,*.png": {
       "frame": { "x": 56, "y": 88, "w": 8, "h": 8 }
+    },
+
+    "dirt-11-*,*,*,*,rock,*.png": {
+      "frame": { "x": 0, "y": 96, "w": 8, "h": 8 }
+    },
+    "dirt-12-*,*,*,*,rock,*.png": {
+      "frame": { "x": 8, "y": 96, "w": 8, "h": 8 }
+    },
+    "dirt-13-*,rock,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 96, "w": 8, "h": 8 }
+    },
+    "dirt-14-*,rock,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 96, "w": 8, "h": 8 }
+    },
+    "dirt-21-*,*,*,rock,*,*.png": {
+      "frame": { "x": 0, "y": 104, "w": 8, "h": 8 }
+    },
+    "dirt-22-*,*,*,rock,*,*.png": {
+      "frame": { "x": 8, "y": 104, "w": 8, "h": 8 }
+    },
+    "dirt-23-*,*,rock,*,*,*.png": {
+      "frame": { "x": 16, "y": 104, "w": 8, "h": 8 }
+    },
+    "dirt-24-*,*,rock,*,*,*.png": {
+      "frame": { "x": 24, "y": 104, "w": 8, "h": 8 }
+    },
+    "rock-11-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 32, "y": 96, "w": 8, "h": 8 }
+    },
+    "rock-12-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 40, "y": 96, "w": 8, "h": 8 }
+    },
+    "rock-13-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 96, "w": 8, "h": 8 }
+    },
+    "rock-14-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 96, "w": 8, "h": 8 }
+    },
+    "rock-21-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 32, "y": 104, "w": 8, "h": 8 }
+    },
+    "rock-22-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 40, "y": 104, "w": 8, "h": 8 }
+    },
+    "rock-23-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 48, "y": 104, "w": 8, "h": 8 }
+    },
+    "rock-24-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 56, "y": 104, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass1-11-*,*,*,*,rock,*.png": {
+      "frame": { "x": 0, "y": 112, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-12-*,*,*,*,rock,*.png": {
+      "frame": { "x": 8, "y": 112, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-13-*,rock,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 112, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-14-*,rock,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 112, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-21-*,*,*,rock,*,*.png": {
+      "frame": { "x": 0, "y": 120, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-22-*,*,*,rock,*,*.png": {
+      "frame": { "x": 8, "y": 120, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-23-*,*,rock,*,*,*.png": {
+      "frame": { "x": 16, "y": 120, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-24-*,*,rock,*,*,*.png": {
+      "frame": { "x": 24, "y": 120, "w": 8, "h": 8 }
+    },
+    "rock-11-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 32, "y": 112, "w": 8, "h": 8 }
+    },
+    "rock-12-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 40, "y": 112, "w": 8, "h": 8 }
+    },
+    "rock-13-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 112, "w": 8, "h": 8 }
+    },
+    "rock-14-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 112, "w": 8, "h": 8 }
+    },
+    "rock-21-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 32, "y": 120, "w": 8, "h": 8 }
+    },
+    "rock-22-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 40, "y": 120, "w": 8, "h": 8 }
+    },
+    "rock-23-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 48, "y": 120, "w": 8, "h": 8 }
+    },
+    "rock-24-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 56, "y": 120, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass2-11-*,*,*,*,rock,*.png": {
+      "frame": { "x": 0, "y": 128, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-12-*,*,*,*,rock,*.png": {
+      "frame": { "x": 8, "y": 128, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-13-*,rock,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 128, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-14-*,rock,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 128, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-21-*,*,*,rock,*,*.png": {
+      "frame": { "x": 0, "y": 136, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-22-*,*,*,rock,*,*.png": {
+      "frame": { "x": 8, "y": 136, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-23-*,*,rock,*,*,*.png": {
+      "frame": { "x": 16, "y": 136, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-24-*,*,rock,*,*,*.png": {
+      "frame": { "x": 24, "y": 136, "w": 8, "h": 8 }
+    },
+    "rock-11-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 32, "y": 128, "w": 8, "h": 8 }
+    },
+    "rock-12-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 40, "y": 128, "w": 8, "h": 8 }
+    },
+    "rock-13-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 128, "w": 8, "h": 8 }
+    },
+    "rock-14-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 128, "w": 8, "h": 8 }
+    },
+    "rock-21-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 32, "y": 136, "w": 8, "h": 8 }
+    },
+    "rock-22-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 40, "y": 136, "w": 8, "h": 8 }
+    },
+    "rock-23-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 48, "y": 136, "w": 8, "h": 8 }
+    },
+    "rock-24-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 56, "y": 136, "w": 8, "h": 8 }
+    },
+
+    "dirt_stones-11-*,*,*,*,rock,*.png": {
+      "frame": { "x": 0, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt_stones-12-*,*,*,*,rock,*.png": {
+      "frame": { "x": 8, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt_stones-13-*,rock,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt_stones-14-*,rock,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt_stones-21-*,*,*,rock,*,*.png": {
+      "frame": { "x": 0, "y": 168, "w": 8, "h": 8 }
+    },
+    "dirt_stones-22-*,*,*,rock,*,*.png": {
+      "frame": { "x": 8, "y": 168, "w": 8, "h": 8 }
+    },
+    "dirt_stones-23-*,*,rock,*,*,*.png": {
+      "frame": { "x": 16, "y": 168, "w": 8, "h": 8 }
+    },
+    "dirt_stones-24-*,*,rock,*,*,*.png": {
+      "frame": { "x": 24, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock-11-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 32, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock-12-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 40, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock-13-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock-14-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock-21-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 32, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock-22-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 40, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock-23-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 48, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock-24-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 56, "y": 168, "w": 8, "h": 8 }
+    },
+
+    "dirt-11-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 0, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt-12-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 8, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt-13-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt-14-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 160, "w": 8, "h": 8 }
+    },
+    "dirt-21-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 0, "y": 168, "w": 8, "h": 8 }
+    },
+    "dirt-22-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 8, "y": 168, "w": 8, "h": 8 }
+    },
+    "dirt-23-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 16, "y": 168, "w": 8, "h": 8 }
+    },
+    "dirt-24-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 24, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock_moss-11-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 32, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock_moss-12-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 40, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock_moss-13-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock_moss-14-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 160, "w": 8, "h": 8 }
+    },
+    "rock_moss-21-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 32, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock_moss-22-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 40, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock_moss-23-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 48, "y": 168, "w": 8, "h": 8 }
+    },
+    "rock_moss-24-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 56, "y": 168, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass1-11-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 0, "y": 176, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-12-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 8, "y": 176, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-13-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 176, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-14-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 176, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-21-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 0, "y": 184, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-22-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 8, "y": 184, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-23-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 16, "y": 184, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-24-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 24, "y": 184, "w": 8, "h": 8 }
+    },
+    "rock_moss-11-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 32, "y": 176, "w": 8, "h": 8 }
+    },
+    "rock_moss-12-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 40, "y": 176, "w": 8, "h": 8 }
+    },
+    "rock_moss-13-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 176, "w": 8, "h": 8 }
+    },
+    "rock_moss-14-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 176, "w": 8, "h": 8 }
+    },
+    "rock_moss-21-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 32, "y": 184, "w": 8, "h": 8 }
+    },
+    "rock_moss-22-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 40, "y": 184, "w": 8, "h": 8 }
+    },
+    "rock_moss-23-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 48, "y": 184, "w": 8, "h": 8 }
+    },
+    "rock_moss-24-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 56, "y": 184, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass2-11-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 0, "y": 192, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-12-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 8, "y": 192, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-13-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 192, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-14-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 192, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-21-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 0, "y": 200, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-22-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 8, "y": 200, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-23-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 16, "y": 200, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-24-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 24, "y": 200, "w": 8, "h": 8 }
+    },
+    "rock_moss-11-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 32, "y": 192, "w": 8, "h": 8 }
+    },
+    "rock_moss-12-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 40, "y": 192, "w": 8, "h": 8 }
+    },
+    "rock_moss-13-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 192, "w": 8, "h": 8 }
+    },
+    "rock_moss-14-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 192, "w": 8, "h": 8 }
+    },
+    "rock_moss-21-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 32, "y": 200, "w": 8, "h": 8 }
+    },
+    "rock_moss-22-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 40, "y": 200, "w": 8, "h": 8 }
+    },
+    "rock_moss-23-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 48, "y": 200, "w": 8, "h": 8 }
+    },
+    "rock_moss-24-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 56, "y": 200, "w": 8, "h": 8 }
+    },
+
+    "dirt_stones-11-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 0, "y": 208, "w": 8, "h": 8 }
+    },
+    "dirt_stones-12-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 8, "y": 208, "w": 8, "h": 8 }
+    },
+    "dirt_stones-13-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 208, "w": 8, "h": 8 }
+    },
+    "dirt_stones-14-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 208, "w": 8, "h": 8 }
+    },
+    "dirt_stones-21-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 0, "y": 216, "w": 8, "h": 8 }
+    },
+    "dirt_stones-22-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 8, "y": 216, "w": 8, "h": 8 }
+    },
+    "dirt_stones-23-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 16, "y": 216, "w": 8, "h": 8 }
+    },
+    "dirt_stones-24-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 24, "y": 216, "w": 8, "h": 8 }
+    },
+    "rock_moss-11-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 32, "y": 208, "w": 8, "h": 8 }
+    },
+    "rock_moss-12-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 40, "y": 208, "w": 8, "h": 8 }
+    },
+    "rock_moss-13-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 208, "w": 8, "h": 8 }
+    },
+    "rock_moss-14-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 208, "w": 8, "h": 8 }
+    },
+    "rock_moss-21-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 32, "y": 216, "w": 8, "h": 8 }
+    },
+    "rock_moss-22-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 40, "y": 216, "w": 8, "h": 8 }
+    },
+    "rock_moss-23-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 48, "y": 216, "w": 8, "h": 8 }
+    },
+    "rock_moss-24-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 56, "y": 216, "w": 8, "h": 8 }
+    },
+
+    "rock-11-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 0, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock-12-*,*,*,*,rock_moss,*.png": {
+      "frame": { "x": 8, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock-13-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock-14-*,rock_moss,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock-21-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 0, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock-22-*,*,*,rock_moss,*,*.png": {
+      "frame": { "x": 8, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock-23-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 16, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock-24-*,*,rock_moss,*,*,*.png": {
+      "frame": { "x": 24, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock_moss-11-*,*,*,*,rock,*.png": {
+      "frame": { "x": 32, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock_moss-12-*,*,*,*,rock,*.png": {
+      "frame": { "x": 40, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock_moss-13-*,rock,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock_moss-14-*,rock,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 224, "w": 8, "h": 8 }
+    },
+    "rock_moss-21-*,*,*,rock,*,*.png": {
+      "frame": { "x": 32, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock_moss-22-*,*,*,rock,*,*.png": {
+      "frame": { "x": 40, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock_moss-23-*,*,rock,*,*,*.png": {
+      "frame": { "x": 48, "y": 232, "w": 8, "h": 8 }
+    },
+    "rock_moss-24-*,*,rock,*,*,*.png": {
+      "frame": { "x": 56, "y": 232, "w": 8, "h": 8 }
     }
 
   },
@@ -300,7 +741,7 @@
     "version": "1.1",
     "image": "exceptions.png",
     "format": "RGBA8888",
-    "size": { "w": 64, "h": 96 },
+    "size": { "w": 64, "h": 240 },
     "scale": "1"
   }
 }
