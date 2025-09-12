@@ -1,0 +1,306 @@
+{
+  "frames": {
+    "dirt-11-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 0, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt-12-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 8, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt-13-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt-14-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt-21-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 0, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt-22-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 8, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt-23-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 16, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt-24-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 24, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-11-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 32, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-12-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 40, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-13-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-14-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 0, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-21-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 32, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-22-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 40, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-23-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 48, "y": 8, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-24-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 56, "y": 8, "w": 8, "h": 8 }
+    },
+
+    "dirt-11-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 0, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt-12-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 8, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt-13-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt-14-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt-21-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 0, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt-22-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 8, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt-23-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 16, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt-24-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 24, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-11-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 32, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-12-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 40, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-13-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-14-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 16, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-21-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 32, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-22-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 40, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-23-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 48, "y": 24, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-24-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 56, "y": 24, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass1-11-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 0, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-12-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 8, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-13-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-14-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-21-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 0, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-22-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 8, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-23-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 16, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-24-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 24, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-11-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 32, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-12-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 40, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-13-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-14-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 32, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-21-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 32, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-22-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 40, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-23-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 48, "y": 40, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-24-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 56, "y": 40, "w": 8, "h": 8 }
+    },
+
+    "dirt-11-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 0, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt-12-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 8, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt-13-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt-14-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt-21-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 0, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt-22-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 8, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt-23-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 16, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt-24-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 24, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt_stones-11-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 32, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt_stones-12-*,*,*,*,dirt,*.png": {
+      "frame": { "x": 40, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt_stones-13-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt_stones-14-*,dirt,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 48, "w": 8, "h": 8 }
+    },
+    "dirt_stones-21-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 32, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt_stones-22-*,*,*,dirt,*,*.png": {
+      "frame": { "x": 40, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt_stones-23-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 48, "y": 56, "w": 8, "h": 8 }
+    },
+    "dirt_stones-24-*,*,dirt,*,*,*.png": {
+      "frame": { "x": 56, "y": 56, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass1-11-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 0, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-12-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 8, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-13-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-14-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-21-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 0, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-22-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 8, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-23-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 16, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_grass1-24-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 24, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_stones-11-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 32, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_stones-12-*,*,*,*,dirt_grass1,*.png": {
+      "frame": { "x": 40, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_stones-13-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_stones-14-*,dirt_grass1,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 64, "w": 8, "h": 8 }
+    },
+    "dirt_stones-21-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 32, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_stones-22-*,*,*,dirt_grass1,*,*.png": {
+      "frame": { "x": 40, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_stones-23-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 48, "y": 72, "w": 8, "h": 8 }
+    },
+    "dirt_stones-24-*,*,dirt_grass1,*,*,*.png": {
+      "frame": { "x": 56, "y": 72, "w": 8, "h": 8 }
+    },
+
+    "dirt_grass2-11-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 0, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-12-*,*,*,*,dirt_stones,*.png": {
+      "frame": { "x": 8, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-13-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 16, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-14-*,dirt_stones,*,*,*,*.png": {
+      "frame": { "x": 24, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-21-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 0, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-22-*,*,*,dirt_stones,*,*.png": {
+      "frame": { "x": 8, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-23-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 16, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_grass2-24-*,*,dirt_stones,*,*,*.png": {
+      "frame": { "x": 24, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_stones-11-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 32, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_stones-12-*,*,*,*,dirt_grass2,*.png": {
+      "frame": { "x": 40, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_stones-13-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 48, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_stones-14-*,dirt_grass2,*,*,*,*.png": {
+      "frame": { "x": 56, "y": 80, "w": 8, "h": 8 }
+    },
+    "dirt_stones-21-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 32, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_stones-22-*,*,*,dirt_grass2,*,*.png": {
+      "frame": { "x": 40, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_stones-23-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 48, "y": 88, "w": 8, "h": 8 }
+    },
+    "dirt_stones-24-*,*,dirt_grass2,*,*,*.png": {
+      "frame": { "x": 56, "y": 88, "w": 8, "h": 8 }
+    }
+
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "dirt-exceptions.png",
+    "format": "RGBA8888",
+    "size": { "w": 64, "h": 96 },
+    "scale": "1"
+  }
+}
