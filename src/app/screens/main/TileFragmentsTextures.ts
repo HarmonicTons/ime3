@@ -86,12 +86,29 @@ export class TileFragmentsTextures {
       const neighborType = fragmentData.neighborhood[dir];
       const requirement = textureData[dir];
       if (requirement === "*") return true;
-      if (requirement === "!") return neighborType !== fragmentData.type;
       if (requirement === "0") return neighborType === undefined;
       if (requirement === "1") return neighborType !== undefined;
-      if (requirement === "=") return neighborType === fragmentData.type;
+      if (requirement === "=")
+        return TileFragmentsTextures.areSameTypes(
+          neighborType,
+          fragmentData.type
+        );
+      if (requirement === "!")
+        return (
+          TileFragmentsTextures.areSameTypes(
+            neighborType,
+            fragmentData.type
+          ) === false
+        );
       return neighborType === requirement;
     });
+  }
+
+  public static areSameTypes(type1?: string, type2?: string): boolean {
+    if (type1 === type2) return true;
+    const baseType1 = type1?.split("_")[0];
+    const baseType2 = type2?.split("_")[0];
+    return baseType1 === baseType2;
   }
 
   private init() {

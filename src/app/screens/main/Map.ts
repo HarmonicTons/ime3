@@ -30,6 +30,7 @@ export class Map extends Container {
       };
       this.createTile(iso, type, neighborhood);
     }
+    this.sortTiles();
   }
 
   public toJson(): string {

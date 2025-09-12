@@ -9,7 +9,14 @@ import mapData from "./map-data.json";
 import { Tile, TileNeighborhood } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
-const tilesets = ["wall", "rock", "dirt", "grass1", "grass2", "moss"] as const;
+const tilesets = [
+  "wall",
+  "rock",
+  "rock_moss",
+  "dirt",
+  "dirt_grass1",
+  "dirt_grass2",
+] as const;
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
