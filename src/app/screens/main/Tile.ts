@@ -1,6 +1,7 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
 import { NoTextureFound, TileFragment, tileFragmentKeys } from "./TileFragment";
 import { IsoDirection, IsoCoordinates } from "./IsometricCoordinate";
+import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
 /**
  * Neighborhood (all neighbors types) of a tile
@@ -13,11 +14,13 @@ export type TileNeighborhood = Record<IsoDirection, string | undefined>;
 export class Tile extends Container {
   public type: string;
   public isoCoordinates: IsoCoordinates;
+  public tileFragmentsTextures: TileFragmentsTextures;
   constructor({
     type,
     neighborhood,
     isoCoordinates,
     disableCursor = false,
+    tileFragmentsTextures,
   }: {
     /**
      * the type, ex: wall or stone
@@ -26,10 +29,12 @@ export class Tile extends Container {
     neighborhood: TileNeighborhood;
     isoCoordinates: IsoCoordinates;
     disableCursor?: boolean;
+    tileFragmentsTextures: TileFragmentsTextures;
   }) {
     super();
     this.type = type;
     this.isoCoordinates = isoCoordinates;
+    this.tileFragmentsTextures = tileFragmentsTextures;
 
     this.interactive = true;
     // The hit area is a polygon that covers the entire tile (hexagon shape)
@@ -79,6 +84,7 @@ export class Tile extends Container {
           neighborhood,
           u: this.isoCoordinates.u,
           tile: this,
+          tileFragmentsTextures: this.tileFragmentsTextures,
         });
       } catch (e) {
         if (e instanceof NoTextureFound) {

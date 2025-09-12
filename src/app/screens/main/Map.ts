@@ -2,6 +2,7 @@ import { orderBy } from "lodash";
 import { Container, Ticker } from "pixi.js";
 import { TileNeighborhood, Tile } from "./Tile";
 import { isoDirections, IsoCoordinates } from "./IsometricCoordinate";
+import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
 /**
  * Map class representing a collection of isometric tiles.
@@ -11,7 +12,8 @@ export class Map extends Container {
 
   constructor(
     mapData: Record<string, string | undefined>,
-    public type: string
+    public type: string,
+    public tileFragmentsTextures: TileFragmentsTextures
   ) {
     super();
     for (const key in mapData) {
@@ -43,7 +45,12 @@ export class Map extends Container {
     type: string,
     neighborhood: TileNeighborhood
   ) {
-    const tile = new Tile({ type, neighborhood, isoCoordinates: iso });
+    const tile = new Tile({
+      type,
+      neighborhood,
+      isoCoordinates: iso,
+      tileFragmentsTextures: this.tileFragmentsTextures,
+    });
     tile.x = iso.e * 16 - iso.s * 16;
     tile.y = iso.e * 8 + iso.s * 8 - iso.u * 8;
     this.tiles[iso.toString()] = tile;

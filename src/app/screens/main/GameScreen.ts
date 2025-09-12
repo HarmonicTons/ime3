@@ -7,6 +7,7 @@ import { IsoCoordinates } from "./IsometricCoordinate";
 import { Map } from "./Map";
 import mapData from "./map-data.json";
 import { Tile, TileNeighborhood } from "./Tile";
+import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
 const tilesets = ["wall", "rock", "dirt", "grass1", "grass2", "moss"] as const;
 
@@ -19,6 +20,7 @@ export class GameScreen extends Container {
   public mainContainer: Viewport;
   private paused = false;
   private map: Map;
+  public tileFragmentsTextures: TileFragmentsTextures;
 
   constructor() {
     super();
@@ -30,7 +32,9 @@ export class GameScreen extends Container {
     this.addChild(this.mainContainer);
     this.mainContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
 
-    const map = new Map(mapData, tilesets[0]);
+    this.tileFragmentsTextures = new TileFragmentsTextures();
+
+    const map = new Map(mapData, tilesets[0], this.tileFragmentsTextures);
     this.map = map;
     this.mainContainer.addChild(map);
 
@@ -160,6 +164,7 @@ export class GameScreen extends Container {
           type,
           neighborhood,
           disableCursor: true,
+          tileFragmentsTextures: this.tileFragmentsTextures,
         }),
         anchor: 0,
         animations: buttonAnimations,
