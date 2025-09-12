@@ -42,7 +42,7 @@ export class TileFragmentsTextures {
       if (n === "*") return 0;
       if (n === "1") return 1;
       if (n === "!") return 2;
-      return 3;
+      return 5;
     });
 
     const [up, north, east, south, west, down] = neighborhood;

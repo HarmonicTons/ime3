@@ -442,52 +442,52 @@
     },
 
     "dirt_stones-11-*,*,*,*,rock,*.png": {
-      "frame": { "x": 0, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 0, "y": 144, "w": 8, "h": 8 }
     },
     "dirt_stones-12-*,*,*,*,rock,*.png": {
-      "frame": { "x": 8, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 8, "y": 144, "w": 8, "h": 8 }
     },
     "dirt_stones-13-*,rock,*,*,*,*.png": {
-      "frame": { "x": 16, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 16, "y": 144, "w": 8, "h": 8 }
     },
     "dirt_stones-14-*,rock,*,*,*,*.png": {
-      "frame": { "x": 24, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 24, "y": 144, "w": 8, "h": 8 }
     },
     "dirt_stones-21-*,*,*,rock,*,*.png": {
-      "frame": { "x": 0, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 0, "y": 152, "w": 8, "h": 8 }
     },
     "dirt_stones-22-*,*,*,rock,*,*.png": {
-      "frame": { "x": 8, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 8, "y": 152, "w": 8, "h": 8 }
     },
     "dirt_stones-23-*,*,rock,*,*,*.png": {
-      "frame": { "x": 16, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 16, "y": 152, "w": 8, "h": 8 }
     },
     "dirt_stones-24-*,*,rock,*,*,*.png": {
-      "frame": { "x": 24, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 24, "y": 152, "w": 8, "h": 8 }
     },
     "rock-11-*,*,*,*,dirt_stones,*.png": {
-      "frame": { "x": 32, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 32, "y": 144, "w": 8, "h": 8 }
     },
     "rock-12-*,*,*,*,dirt_stones,*.png": {
-      "frame": { "x": 40, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 40, "y": 144, "w": 8, "h": 8 }
     },
     "rock-13-*,dirt_stones,*,*,*,*.png": {
-      "frame": { "x": 48, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 48, "y": 144, "w": 8, "h": 8 }
     },
     "rock-14-*,dirt_stones,*,*,*,*.png": {
-      "frame": { "x": 56, "y": 160, "w": 8, "h": 8 }
+      "frame": { "x": 56, "y": 144, "w": 8, "h": 8 }
     },
     "rock-21-*,*,*,dirt_stones,*,*.png": {
-      "frame": { "x": 32, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 32, "y": 152, "w": 8, "h": 8 }
     },
     "rock-22-*,*,*,dirt_stones,*,*.png": {
-      "frame": { "x": 40, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 40, "y": 152, "w": 8, "h": 8 }
     },
     "rock-23-*,*,dirt_stones,*,*,*.png": {
-      "frame": { "x": 48, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 48, "y": 152, "w": 8, "h": 8 }
     },
     "rock-24-*,*,dirt_stones,*,*,*.png": {
-      "frame": { "x": 56, "y": 168, "w": 8, "h": 8 }
+      "frame": { "x": 56, "y": 152, "w": 8, "h": 8 }
     },
 
     "dirt-11-*,*,*,*,rock_moss,*.png": {
