@@ -16,6 +16,7 @@ const tilesets = [
   "dirt",
   "dirt_grass1",
   "dirt_grass2",
+  "dirt_stones",
 ] as const;
 
 /** The screen that holds the app */

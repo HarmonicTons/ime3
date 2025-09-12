@@ -298,7 +298,7 @@
   "meta": {
     "app": "https://www.codeandweb.com/texturepacker",
     "version": "1.1",
-    "image": "dirt-exceptions.png",
+    "image": "exceptions.png",
     "format": "RGBA8888",
     "size": { "w": 64, "h": 96 },
     "scale": "1"
