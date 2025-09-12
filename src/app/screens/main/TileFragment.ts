@@ -52,13 +52,13 @@ export class TileFragment extends Sprite {
     key,
     tile,
     neighborhood,
-    u,
+    height,
     tileFragmentsTextures,
   }: {
     type: string;
     key: TileFragmentKey;
     neighborhood: TileNeighborhood;
-    u: number;
+    height: number;
     tile: Tile;
     tileFragmentsTextures: TileFragmentsTextures;
   }) {
@@ -66,13 +66,13 @@ export class TileFragment extends Sprite {
       type,
       fragment: key,
       neighborhood,
-      height: u,
+      height,
     });
     if (!texture) {
       throw new NoTextureFound(
         `No texture found for fragment ${key} of type ${type} with neighbors ${JSON.stringify(
           neighborhood
-        )} at height ${u}`
+        )} at height ${height}`
       );
     }
     const position = tileFragmentPosition[key];

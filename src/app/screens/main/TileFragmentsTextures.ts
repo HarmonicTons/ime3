@@ -40,8 +40,9 @@ export class TileFragmentsTextures {
 
     const score = sumBy(neighborhood, (n) => {
       if (n === "*") return 0;
-      if (n === "!") return 1;
-      return 2;
+      if (n === "1") return 1;
+      if (n === "!") return 2;
+      return 3;
     });
 
     const [up, north, east, south, west, down] = neighborhood;
@@ -160,6 +161,7 @@ export class TileFragmentsTextures {
       return null;
     }
     const textureData = maxBy(validTextures, "score")!;
+
     const texture = Texture.from(textureData.name);
     if (!texture) {
       return null;

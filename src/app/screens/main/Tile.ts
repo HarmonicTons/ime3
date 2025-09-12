@@ -82,7 +82,7 @@ export class Tile extends Container {
           type: this.type,
           key,
           neighborhood,
-          u: this.isoCoordinates.u,
+          height: this.isoCoordinates.u,
           tile: this,
           tileFragmentsTextures: this.tileFragmentsTextures,
         });
