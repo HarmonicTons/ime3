@@ -24,6 +24,7 @@ export class MapObject extends Sprite {
     texture.source.scaleMode = "nearest";
 
     super({ texture });
+    this.anchor.set(0, 1);
     this.isoCoordinates = isoCoordinates;
   }
 }

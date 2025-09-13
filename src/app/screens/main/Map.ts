@@ -59,7 +59,7 @@ export class Map extends Container {
   private createObject(iso: IsoCoordinates, type: string) {
     const mapObject = new MapObject({ type, isoCoordinates: iso });
     mapObject.x = iso.e * 16 - iso.s * 16;
-    mapObject.y = iso.e * 8 + iso.s * 8 - iso.u * 8 - 8;
+    mapObject.y = iso.e * 8 + iso.s * 8 - iso.u * 8 + 16;
     this.objects[iso.toString()] = mapObject;
     this.addChild(mapObject);
   }

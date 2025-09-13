@@ -1,7 +1,16 @@
 {
   "objects": {
     "8,1,8": "flower",
-    "1,5,14": "flower"
+    "1,5,14": "flower",
+    "3,0,13": "small_pine",
+    "3,1,13": "small_pine",
+    "3,2,13": "small_pine",
+    "2,9,6": "small_pine",
+    "3,8,3": "small_pine",
+    "4,8,3": "small_pine",
+    "5,8,3": "small_pine",
+    "6,5,4": "small_pine",
+    "6,6,4": "small_pine"
   },
   "tiles": {
     "0,0,0": "wall",
