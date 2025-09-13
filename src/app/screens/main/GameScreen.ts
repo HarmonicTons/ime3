@@ -5,7 +5,7 @@ import { Container } from "pixi.js";
 import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { Map } from "./Map";
-import mapData from "./maps/koring-wood.json";
+import mapData from "./maps/deti-plains.json";
 import { Tile, TileNeighborhood } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 

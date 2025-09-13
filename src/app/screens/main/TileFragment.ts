@@ -1,6 +1,7 @@
 import { Sprite } from "pixi.js";
 import { Tile, TileNeighborhood } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
+import { NoTextureFoundError } from "./NoTextureFoundError";
 
 /**
  * The name of the 12 tileFragments of a tile
@@ -40,8 +41,6 @@ const tileFragmentPosition: Record<TileFragmentKey, { x: number; y: number }> =
     "34": { x: 24, y: 16 },
   };
 
-export class NoTextureFound extends Error {}
-
 /**
  * An isometric tile fragment
  * A tile is made of 12 fragments (4 columns x 3 lines)
@@ -69,7 +68,7 @@ export class TileFragment extends Sprite {
       height,
     });
     if (!texture) {
-      throw new NoTextureFound(
+      throw new NoTextureFoundError(
         `No texture found for fragment ${key} of type ${type} with neighbors ${JSON.stringify(
           neighborhood
         )} at height ${height}`

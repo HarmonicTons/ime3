@@ -1,7 +1,8 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
-import { NoTextureFound, TileFragment, tileFragmentKeys } from "./TileFragment";
+import { TileFragment, tileFragmentKeys } from "./TileFragment";
 import { IsoDirection, IsoCoordinates } from "./IsometricCoordinate";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
+import { NoTextureFoundError } from "./NoTextureFoundError";
 
 /**
  * Neighborhood (all neighbors types) of a tile
@@ -87,7 +88,7 @@ export class Tile extends Container {
           tileFragmentsTextures: this.tileFragmentsTextures,
         });
       } catch (e) {
-        if (e instanceof NoTextureFound) {
+        if (e instanceof NoTextureFoundError) {
           // can safely ignore, just means this fragment is empty
           return;
         }

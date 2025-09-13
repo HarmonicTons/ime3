@@ -1,36 +1,51 @@
 import { orderBy } from "lodash";
 import { Container, Ticker } from "pixi.js";
-import { TileNeighborhood, Tile } from "./Tile";
-import { isoDirections, IsoCoordinates } from "./IsometricCoordinate";
+import { IsoCoordinates, isoDirections } from "./IsometricCoordinate";
+import { MapObject } from "./MapObject";
+import { Tile, TileNeighborhood } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
+
+export type MapData = {
+  objects: Record<string, string>;
+  tiles: Record<string, string>;
+};
 
 /**
  * Map class representing a collection of isometric tiles.
  */
 export class Map extends Container {
   public tiles: Record<string, Tile> = {};
+  public objects: Record<string, MapObject> = {};
 
   constructor(
-    mapData: Record<string, string | undefined>,
+    mapData: MapData,
     public type: string,
     public tileFragmentsTextures: TileFragmentsTextures
   ) {
     super();
-    for (const key in mapData) {
-      const type = mapData[key];
+    const { tiles, objects } = mapData;
+    for (const key in tiles) {
+      const type = tiles[key];
       if (!type) continue;
       const iso = IsoCoordinates.fromString(key);
       const neighborhood: TileNeighborhood = {
-        up: mapData[iso.move("up").toString()],
-        north: mapData[iso.move("north").toString()],
-        east: mapData[iso.move("east").toString()],
-        south: mapData[iso.move("south").toString()],
-        west: mapData[iso.move("west").toString()],
-        down: mapData[iso.move("down").toString()],
+        up: tiles[iso.move("up").toString()],
+        north: tiles[iso.move("north").toString()],
+        east: tiles[iso.move("east").toString()],
+        south: tiles[iso.move("south").toString()],
+        west: tiles[iso.move("west").toString()],
+        down: tiles[iso.move("down").toString()],
       };
       this.createTile(iso, type, neighborhood);
     }
-    this.sortTiles();
+    for (const key in objects) {
+      const type = objects[key];
+      if (!type) continue;
+      const iso = IsoCoordinates.fromString(key);
+      this.createObject(iso, type);
+    }
+
+    this.sortEntities();
   }
 
   public toJson(): string {
@@ -39,6 +54,14 @@ export class Map extends Container {
       result[key] = this.tiles[key].type;
     }
     return JSON.stringify(result);
+  }
+
+  private createObject(iso: IsoCoordinates, type: string) {
+    const mapObject = new MapObject({ type, isoCoordinates: iso });
+    mapObject.x = iso.e * 16 - iso.s * 16;
+    mapObject.y = iso.e * 8 + iso.s * 8 - iso.u * 8 - 8;
+    this.objects[iso.toString()] = mapObject;
+    this.addChild(mapObject);
   }
 
   private createTile(
@@ -96,14 +119,18 @@ export class Map extends Container {
     }
   }
 
-  private sortTiles() {
-    const sortedTiles = orderBy(
-      Object.values(this.tiles),
+  private get entities(): (Tile | MapObject)[] {
+    return [...Object.values(this.tiles), ...Object.values(this.objects)];
+  }
+
+  private sortEntities() {
+    const sortedEntities = orderBy(
+      this.entities,
       ["isoCoordinates.e", "isoCoordinates.s", "isoCoordinates.u"],
       ["asc", "asc", "asc"]
     );
-    for (let i = 0; i < sortedTiles.length; i++) {
-      this.setChildIndex(sortedTiles[i], i);
+    for (let i = 0; i < sortedEntities.length; i++) {
+      this.setChildIndex(sortedEntities[i], i);
     }
   }
 
@@ -117,7 +144,7 @@ export class Map extends Container {
     this.createTile(iso, type, neighborhood);
 
     // Reorder the tiles
-    this.sortTiles();
+    this.sortEntities();
     // Update neighborhood
     this.updateTileNeighbors(iso);
   }
