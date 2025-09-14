@@ -4,10 +4,11 @@ import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
 import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
-import { Map } from "./Map";
+import { CursorAction, Map } from "./Map";
 import mapData from "./maps/deti-plains.json";
 import { Tile, TileNeighborhood } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
+import { MapObject } from "./MapObject";
 
 const tilesets = [
   "wall",
@@ -17,6 +18,13 @@ const tilesets = [
   "dirt_grass1",
   "dirt_grass2",
   "dirt_stones",
+] as const;
+
+const mapObjects = [
+  "flower",
+  "small_pine",
+  "large_pine",
+  "large-rock",
 ] as const;
 
 /** The screen that holds the app */
@@ -42,7 +50,11 @@ export class GameScreen extends Container {
 
     this.tileFragmentsTextures = new TileFragmentsTextures();
 
-    const map = new Map(mapData, tilesets[0], this.tileFragmentsTextures);
+    const cursorAction: CursorAction = {
+      entityType: "tile",
+      type: tilesets[0],
+    };
+    const map = new Map(mapData, cursorAction, this.tileFragmentsTextures);
     this.map = map;
     this.mainContainer.addChild(map);
 
@@ -102,9 +114,11 @@ export class GameScreen extends Container {
 
     this.mainContainer.x = centerX;
     this.mainContainer.y = centerY;
-    this.controls.forEach((control, i) => {
+    let y = 0;
+    this.controls.forEach((control) => {
       control.x = 10;
-      control.y = 10 + i * 34;
+      control.y = 10 + y;
+      y += control.height + 10;
     });
   }
 
@@ -178,7 +192,29 @@ export class GameScreen extends Container {
         animations: buttonAnimations,
       });
       button.onPress.connect(() => {
-        this.map.type = type;
+        this.map.currentCursorAction = {
+          entityType: "tile",
+          type,
+        };
+      });
+      this.addChild(button);
+      this.controls.push(button);
+    });
+
+    mapObjects.forEach((type) => {
+      const button = new FancyButton({
+        defaultView: new MapObject({
+          isoCoordinates,
+          type,
+        }),
+        anchor: 0,
+        animations: buttonAnimations,
+      });
+      button.onPress.connect(() => {
+        this.map.currentCursorAction = {
+          entityType: "object",
+          type,
+        };
       });
       this.addChild(button);
       this.controls.push(button);

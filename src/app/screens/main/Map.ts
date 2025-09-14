@@ -10,6 +10,11 @@ export type MapData = {
   tiles: Record<string, string>;
 };
 
+export type CursorAction = {
+  entityType: "tile" | "object";
+  type: string;
+};
+
 /**
  * Map class representing a collection of isometric tiles.
  */
@@ -19,7 +24,7 @@ export class Map extends Container {
 
   constructor(
     mapData: MapData,
-    public type: string,
+    public currentCursorAction: CursorAction,
     public tileFragmentsTextures: TileFragmentsTextures
   ) {
     super();
@@ -62,9 +67,14 @@ export class Map extends Container {
   private createObject(iso: IsoCoordinates, type: string) {
     const mapObject = new MapObject({ type, isoCoordinates: iso });
     mapObject.x = iso.e * 16 - iso.s * 16;
-    mapObject.y = iso.e * 8 + iso.s * 8 - iso.u * 8 + 16;
+    mapObject.y = iso.e * 8 + iso.s * 8 - iso.u * 8 + 24;
     this.objects[iso.toString()] = mapObject;
     this.addChild(mapObject);
+
+    mapObject.on("rightdown", (evt) => {
+      evt.stopPropagation();
+      this.removeMapObjectAt(iso);
+    });
   }
 
   private createTile(
@@ -95,20 +105,39 @@ export class Map extends Container {
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSideFromLocalCoordinates({ x: localX, y: localY });
-      if (side === "up") {
-        this.addTileAt(iso.move("up"), this.type);
+      if (this.currentCursorAction.entityType === "tile") {
+        if (side === "up") {
+          this.addTileAt(iso.move("up"), this.currentCursorAction.type);
+        }
+        if (side === "south") {
+          this.addTileAt(iso.move("south"), this.currentCursorAction.type);
+        }
+        if (side === "east") {
+          this.addTileAt(iso.move("east"), this.currentCursorAction.type);
+        }
       }
-      if (side === "south") {
-        this.addTileAt(iso.move("south"), this.type);
-      }
-      if (side === "east") {
-        this.addTileAt(iso.move("east"), this.type);
+      if (this.currentCursorAction.entityType === "object") {
+        if (side === "up") {
+          this.addMapObjectAt(iso.move("up"), this.currentCursorAction.type);
+        }
+        if (side === "south") {
+          this.addMapObjectAt(iso.move("south"), this.currentCursorAction.type);
+        }
+        if (side === "east") {
+          this.addMapObjectAt(iso.move("east"), this.currentCursorAction.type);
+        }
       }
     });
   }
 
   private getTileAt(iso: IsoCoordinates): Tile | undefined {
     return this.tiles[iso.toString()];
+  }
+  private getMapObjectAt(iso: IsoCoordinates): MapObject | undefined {
+    return this.objects[iso.toString()];
+  }
+  private getEntityAt(iso: IsoCoordinates): Tile | MapObject | undefined {
+    return this.getTileAt(iso) || this.getMapObjectAt(iso);
   }
 
   private removeTileAt(iso: IsoCoordinates) {
@@ -119,6 +148,15 @@ export class Map extends Container {
       delete this.tiles[iso.toString()];
       // Update neighborhood
       this.updateTileNeighbors(iso);
+    }
+  }
+
+  private removeMapObjectAt(iso: IsoCoordinates) {
+    console.log("removing map object at", iso.s, iso.e, iso.u);
+    const existingObject = this.getMapObjectAt(iso);
+    if (existingObject) {
+      this.removeChild(existingObject);
+      delete this.objects[iso.toString()];
     }
   }
 
@@ -138,13 +176,27 @@ export class Map extends Container {
   }
 
   public addTileAt(iso: IsoCoordinates, type: string) {
-    if (this.getTileAt(iso)) {
-      console.warn("Tile already exists at", iso.s, iso.e, iso.u);
+    if (this.getEntityAt(iso)) {
+      console.warn("Entity already exists at", iso.s, iso.e, iso.u);
       return;
     }
     console.log("adding tile at", iso.s, iso.e, iso.u);
     const neighborhood = this.getNeighborhood(iso);
     this.createTile(iso, type, neighborhood);
+
+    // Reorder the tiles
+    this.sortEntities();
+    // Update neighborhood
+    this.updateTileNeighbors(iso);
+  }
+
+  public addMapObjectAt(iso: IsoCoordinates, type: string) {
+    if (this.getEntityAt(iso)) {
+      console.warn("Entity already exists at", iso.s, iso.e, iso.u);
+      return;
+    }
+    console.log("adding map object at", iso.s, iso.e, iso.u);
+    this.createObject(iso, type);
 
     // Reorder the tiles
     this.sortEntities();

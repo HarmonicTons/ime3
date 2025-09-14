@@ -28,5 +28,6 @@ export class MapObject extends Sprite {
     this.type = type;
     this.anchor.set(0, 1);
     this.isoCoordinates = isoCoordinates;
+    this.interactive = true;
   }
 }
