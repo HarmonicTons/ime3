@@ -667,7 +667,6 @@
     "4,1,12": "dirt_stones",
     "4,2,12": "dirt_stones",
     "4,3,12": "dirt_grass1",
-    "4,4,12": "dirt_grass1",
     "3,4,12": "dirt_grass1",
     "4,0,13": "dirt",
     "4,5,0": "dirt",
@@ -695,7 +694,6 @@
     "4,5,10": "dirt",
     "4,5,11": "dirt",
     "4,5,12": "dirt_grass1",
-    "3,5,12": "dirt_grass1",
     "3,6,0": "dirt",
     "3,6,1": "dirt",
     "3,6,2": "dirt",
@@ -1248,6 +1246,8 @@
     "4,12,1": "dirt_grass1",
     "5,12,1": "dirt",
     "6,12,1": "dirt_grass1",
-    "8,9,1": "dirt_grass1"
-   }
+    "8,9,1": "dirt_grass1",
+    "4,4,12": "dirt_grass2",
+    "3,5,12": "dirt_grass2"
+  }
 }
