@@ -7,6 +7,7 @@ import { NoTextureFoundError } from "./NoTextureFoundError";
  */
 export class MapObject extends Sprite {
   public isoCoordinates: IsoCoordinates;
+  public type: string;
   constructor({
     type,
     isoCoordinates,
@@ -24,6 +25,7 @@ export class MapObject extends Sprite {
     texture.source.scaleMode = "nearest";
 
     super({ texture });
+    this.type = type;
     this.anchor.set(0, 1);
     this.isoCoordinates = isoCoordinates;
   }

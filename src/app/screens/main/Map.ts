@@ -49,9 +49,12 @@ export class Map extends Container {
   }
 
   public toJson(): string {
-    const result: Record<string, string> = {};
+    const result: MapData = { objects: {}, tiles: {} };
+    for (const key in this.objects) {
+      result.objects[key] = this.objects[key].type;
+    }
     for (const key in this.tiles) {
-      result[key] = this.tiles[key].type;
+      result.tiles[key] = this.tiles[key].type;
     }
     return JSON.stringify(result);
   }
