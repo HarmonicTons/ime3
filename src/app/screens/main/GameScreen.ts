@@ -5,7 +5,7 @@ import { Container } from "pixi.js";
 import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { CursorAction, Map } from "./Map";
-import mapData from "./maps/koring-wood.json";
+import mapData from "./maps/deti-plains.json";
 import { Tile, TileNeighborhood } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 import { MapObject } from "./MapObject";
@@ -18,6 +18,7 @@ const tilesets = [
   "dirt_grass1",
   "dirt_grass2",
   "dirt_stones",
+  "dirt_pile",
 ] as const;
 
 const mapObjects = [
