@@ -29,6 +29,14 @@ export class TileFragmentsTextures {
     this.texturesInCache = new Map();
 
     this.init();
+
+    this.texturesInCache.forEach((byFragment) => {
+      byFragment.forEach((textures) => {
+        textures.forEach((texture) =>
+          console.log(TileFragmentsTextures.toNewTextureName(texture))
+        );
+      });
+    });
   }
 
   public static parseTextureName(textureName: string): TextureData {
@@ -62,6 +70,25 @@ export class TileFragmentsTextures {
         ? (height.split(":").map(Number) as [number, number])
         : null,
     };
+  }
+
+  public static toNewTextureName(textureData: TextureData): string {
+    const {
+      type,
+      fragment,
+      height,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      score: _score,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      name: _name,
+      ...neighborhood
+    } = textureData;
+    const newNeighborhood: string[] = [];
+    Object.entries(neighborhood).forEach(([k, v]) => {
+      if (v === "*") return;
+      newNeighborhood.push(`${k[0]}:${v}`);
+    });
+    return `${type}-${fragment}-${newNeighborhood.join(",")}${height ? `-${height[0]}:${height[1]}` : ""}.png`;
   }
 
   public static isTexureValid({
