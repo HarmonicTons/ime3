@@ -1,8 +1,8 @@
-import { Assets, Texture } from "pixi.js";
-import { IsoDirection, isoDirections } from "./IsometricCoordinate";
-import { TileFragmentKey } from "./TileFragment";
 import { maxBy, sumBy } from "lodash";
-import { TileNeighborhood } from "./Tile";
+import { Assets, Texture } from "pixi.js";
+import { IsoCoordinates } from "./IsometricCoordinate";
+import { GetTileNeighbor } from "./Tile";
+import { TileFragmentKey } from "./TileFragment";
 
 export type TextureData = {
   name: string;
@@ -10,18 +10,31 @@ export type TextureData = {
   fragment: TileFragmentKey;
   height: [number, number] | null;
   score: number;
-} & Record<IsoDirection, string>;
+  neighborhood: Array<{
+    relativeCoordinates: IsoCoordinates;
+    rule: string;
+  }>;
+};
 
 export type FragmentData = {
   type: string;
   fragment: TileFragmentKey;
-  neighborhood: TileNeighborhood;
+  getTileNeighbor: GetTileNeighbor;
   height: number;
 };
 
 export type TextureByFragment = Map<TileFragmentKey, Array<TextureData>>;
 
 export type TextureByTileType = Map<string, TextureByFragment>;
+
+const directionMapping: Record<string, IsoCoordinates> = {
+  u: new IsoCoordinates(0, 0, 1),
+  n: new IsoCoordinates(-1, 0, 0),
+  e: new IsoCoordinates(0, 1, 0),
+  s: new IsoCoordinates(1, 0, 0),
+  w: new IsoCoordinates(0, -1, 0),
+  d: new IsoCoordinates(0, 0, -1),
+};
 
 export class TileFragmentsTextures {
   public texturesInCache: TextureByTileType;
@@ -30,13 +43,7 @@ export class TileFragmentsTextures {
 
     this.init();
 
-    this.texturesInCache.forEach((byFragment) => {
-      byFragment.forEach((textures) => {
-        textures.forEach((texture) =>
-          console.log(TileFragmentsTextures.toNewTextureName(texture))
-        );
-      });
-    });
+    console.log(this.texturesInCache);
   }
 
   public static parseTextureName(textureName: string): TextureData {
@@ -44,51 +51,38 @@ export class TileFragmentsTextures {
       .slice(0, ".png".length * -1)
       .split("-");
 
-    const neighborhood = neighborhoodStr.split(",");
-
-    const score = sumBy(neighborhood, (n) => {
-      if (n === "*") return 0;
-      if (n === "1") return 1;
-      if (n === "!") return 2;
-      return 5;
+    const neighborhood = neighborhoodStr.split(",").map((s) => {
+      const [directions, rule] = s.split(":");
+      const relativeCoordinates = directions.split("").reduce(
+        (iso, direction) => {
+          const offset = directionMapping[direction];
+          return iso.add(offset);
+        },
+        new IsoCoordinates(0, 0, 0)
+      );
+      return {
+        relativeCoordinates,
+        rule,
+      };
     });
 
-    const [up, north, east, south, west, down] = neighborhood;
+    const score = sumBy(neighborhood, ({ rule }) => {
+      if (rule === "*") return 0;
+      if (rule === "1") return 1;
+      if (rule === "!") return 2;
+      return 5;
+    });
 
     return {
       name: textureName,
       type,
       fragment: fragment as TileFragmentKey,
-      up,
-      north,
-      east,
-      south,
-      west,
-      down,
+      neighborhood,
       score,
       height: height
         ? (height.split(":").map(Number) as [number, number])
         : null,
     };
-  }
-
-  public static toNewTextureName(textureData: TextureData): string {
-    const {
-      type,
-      fragment,
-      height,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      score: _score,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      name: _name,
-      ...neighborhood
-    } = textureData;
-    const newNeighborhood: string[] = [];
-    Object.entries(neighborhood).forEach(([k, v]) => {
-      if (v === "*") return;
-      newNeighborhood.push(`${k[0]}:${v}`);
-    });
-    return `${type}-${fragment}-${newNeighborhood.join(",")}${height ? `-${height[0]}:${height[1]}` : ""}.png`;
   }
 
   public static isTexureValid({
@@ -110,25 +104,25 @@ export class TileFragmentsTextures {
         return false;
       }
     }
-    return isoDirections.every((dir) => {
-      const neighborType = fragmentData.neighborhood[dir];
-      const requirement = textureData[dir];
-      if (requirement === "*") return true;
-      if (requirement === "0") return neighborType === undefined;
-      if (requirement === "1") return neighborType !== undefined;
-      if (requirement === "=")
+
+    return textureData.neighborhood.every(({ relativeCoordinates, rule }) => {
+      const neighborType = fragmentData.getTileNeighbor(relativeCoordinates);
+      if (rule === "*") return true;
+      if (rule === "0") return neighborType === undefined;
+      if (rule === "1") return neighborType !== undefined;
+      if (rule === "=")
         return TileFragmentsTextures.areSameTypes(
           neighborType,
           fragmentData.type
         );
-      if (requirement === "!")
+      if (rule === "!")
         return (
           TileFragmentsTextures.areSameTypes(
             neighborType,
             fragmentData.type
           ) === false
         );
-      return neighborType === requirement;
+      return neighborType === rule;
     });
   }
 
@@ -144,22 +138,26 @@ export class TileFragmentsTextures {
     // @ts-expect-error hack to access private property
     const cache = Assets.cache._cache as Map<string, Texture>;
     const fragmentTextureRegex =
-      /([a-z0-9]+)-([1-4]{2})-([^,]+,){5}[^,]+(-\d+:\d+)?\.png/;
+      /([a-z0-9_]+)-([1-4]{2})-([u,n,e,s,w,d]+:[^,-]+)+(,[u,n,e,s,w,d]+:[^,-]+)*(-\d+:\d+)?\.png/;
     const validTextures = [...cache.keys()].filter((k) =>
       fragmentTextureRegex.test(k)
     );
     validTextures.forEach((textureName) => {
-      const data = TileFragmentsTextures.parseTextureName(textureName);
-
-      if (!this.texturesInCache.has(data.type)) {
-        this.texturesInCache.set(data.type, new Map());
+      try {
+        const data = TileFragmentsTextures.parseTextureName(textureName);
+        if (!this.texturesInCache.has(data.type)) {
+          this.texturesInCache.set(data.type, new Map());
+        }
+        const byFragment = this.texturesInCache.get(data.type)!;
+        if (!byFragment.has(data.fragment)) {
+          byFragment.set(data.fragment, []);
+        }
+        const textures = byFragment.get(data.fragment)!;
+        textures.push(data);
+      } catch (e) {
+        console.warn(`Unable to parse texture named "${textureName}"`, e);
+        return;
       }
-      const byFragment = this.texturesInCache.get(data.type)!;
-      if (!byFragment.has(data.fragment)) {
-        byFragment.set(data.fragment, []);
-      }
-      const textures = byFragment.get(data.fragment)!;
-      textures.push(data);
     });
   }
 

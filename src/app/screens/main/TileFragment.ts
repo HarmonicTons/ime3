@@ -1,7 +1,7 @@
 import { Sprite } from "pixi.js";
-import { Tile, TileNeighborhood } from "./Tile";
-import { TileFragmentsTextures } from "./TileFragmentsTextures";
 import { NoTextureFoundError } from "./NoTextureFoundError";
+import { GetTileNeighbor, Tile } from "./Tile";
+import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
 /**
  * The name of the 12 tileFragments of a tile
@@ -50,13 +50,13 @@ export class TileFragment extends Sprite {
     type,
     key,
     tile,
-    neighborhood,
+    getTileNeighbor,
     height,
     tileFragmentsTextures,
   }: {
     type: string;
     key: TileFragmentKey;
-    neighborhood: TileNeighborhood;
+    getTileNeighbor: GetTileNeighbor;
     height: number;
     tile: Tile;
     tileFragmentsTextures: TileFragmentsTextures;
@@ -64,15 +64,11 @@ export class TileFragment extends Sprite {
     const texture = tileFragmentsTextures.getFragmentTexture({
       type,
       fragment: key,
-      neighborhood,
+      getTileNeighbor,
       height,
     });
     if (!texture) {
-      throw new NoTextureFoundError(
-        `No texture found for fragment ${key} of type ${type} with neighbors ${JSON.stringify(
-          neighborhood
-        )} at height ${height}`
-      );
+      throw new NoTextureFoundError();
     }
     const position = tileFragmentPosition[key];
 

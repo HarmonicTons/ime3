@@ -1,13 +1,12 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
-import { TileFragment, tileFragmentKeys } from "./TileFragment";
-import { IsoDirection, IsoCoordinates } from "./IsometricCoordinate";
-import { TileFragmentsTextures } from "./TileFragmentsTextures";
+import { IsoCoordinates, IsoDirection } from "./IsometricCoordinate";
 import { NoTextureFoundError } from "./NoTextureFoundError";
+import { TileFragment, tileFragmentKeys } from "./TileFragment";
+import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
-/**
- * Neighborhood (all neighbors types) of a tile
- */
-export type TileNeighborhood = Record<IsoDirection, string | undefined>;
+export type GetTileNeighbor = (
+  relativeCoordinates: IsoCoordinates
+) => string | undefined;
 
 /**
  * An isometric tile
@@ -16,9 +15,10 @@ export class Tile extends Container {
   public type: string;
   public isoCoordinates: IsoCoordinates;
   public tileFragmentsTextures: TileFragmentsTextures;
+  public getTileNeighbor: GetTileNeighbor;
   constructor({
     type,
-    neighborhood,
+    getTileNeighbor,
     isoCoordinates,
     disableCursor = false,
     tileFragmentsTextures,
@@ -27,7 +27,7 @@ export class Tile extends Container {
      * the type, ex: wall or stone
      */
     type: string;
-    neighborhood: TileNeighborhood;
+    getTileNeighbor: GetTileNeighbor;
     isoCoordinates: IsoCoordinates;
     disableCursor?: boolean;
     tileFragmentsTextures: TileFragmentsTextures;
@@ -36,6 +36,7 @@ export class Tile extends Container {
     this.type = type;
     this.isoCoordinates = isoCoordinates;
     this.tileFragmentsTextures = tileFragmentsTextures;
+    this.getTileNeighbor = getTileNeighbor;
 
     this.interactive = true;
     // The hit area is a polygon that covers the entire tile (hexagon shape)
@@ -43,7 +44,7 @@ export class Tile extends Container {
       0, 7, 15, 0, 17, 0, 32, 7, 32, 16, 17, 23, 15, 23, 0, 16,
     ]);
 
-    this.setTileFragments(neighborhood);
+    this.setTileFragments();
     if (!disableCursor) {
       this.addCursor();
     }
@@ -71,18 +72,18 @@ export class Tile extends Container {
     return "east";
   }
 
-  public updateNeighborhood(neighborhood: TileNeighborhood) {
+  public updateNeighborhood() {
     this.removeChildren();
-    this.setTileFragments(neighborhood);
+    this.setTileFragments();
   }
 
-  private setTileFragments(neighborhood: TileNeighborhood) {
+  private setTileFragments() {
     tileFragmentKeys.forEach((key) => {
       try {
         new TileFragment({
           type: this.type,
           key,
-          neighborhood,
+          getTileNeighbor: this.getTileNeighbor,
           height: this.isoCoordinates.u,
           tile: this,
           tileFragmentsTextures: this.tileFragmentsTextures,

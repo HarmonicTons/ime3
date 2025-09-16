@@ -2,7 +2,7 @@ import { orderBy } from "lodash";
 import { Container, Ticker } from "pixi.js";
 import { IsoCoordinates, isoDirections } from "./IsometricCoordinate";
 import { MapObject } from "./MapObject";
-import { Tile, TileNeighborhood } from "./Tile";
+import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
 export type MapData = {
@@ -33,15 +33,7 @@ export class Map extends Container {
       const type = tiles[key];
       if (!type) continue;
       const iso = IsoCoordinates.fromString(key);
-      const neighborhood: TileNeighborhood = {
-        up: tiles[iso.move("up").toString()],
-        north: tiles[iso.move("north").toString()],
-        east: tiles[iso.move("east").toString()],
-        south: tiles[iso.move("south").toString()],
-        west: tiles[iso.move("west").toString()],
-        down: tiles[iso.move("down").toString()],
-      };
-      this.createTile(iso, type, neighborhood);
+      this.createTile(iso, type);
     }
     for (const key in objects) {
       const type = objects[key];
@@ -50,6 +42,7 @@ export class Map extends Container {
       this.createObject(iso, type);
     }
 
+    this.updateAllTileNeighborhood();
     this.sortEntities();
   }
 
@@ -77,14 +70,14 @@ export class Map extends Container {
     });
   }
 
-  private createTile(
-    iso: IsoCoordinates,
-    type: string,
-    neighborhood: TileNeighborhood
-  ) {
+  private createTile(iso: IsoCoordinates, type: string) {
     const tile = new Tile({
       type,
-      neighborhood,
+      getTileNeighbor: (relativeCoordinates) => {
+        const neighborIso = iso.add(relativeCoordinates);
+        const neighborTile = this.getTileAt(neighborIso);
+        return neighborTile ? neighborTile.type : undefined;
+      },
       isoCoordinates: iso,
       tileFragmentsTextures: this.tileFragmentsTextures,
     });
@@ -181,8 +174,7 @@ export class Map extends Container {
       return;
     }
     console.log("adding tile at", iso.s, iso.e, iso.u);
-    const neighborhood = this.getNeighborhood(iso);
-    this.createTile(iso, type, neighborhood);
+    this.createTile(iso, type);
 
     // Reorder the tiles
     this.sortEntities();
@@ -200,8 +192,6 @@ export class Map extends Container {
 
     // Reorder the tiles
     this.sortEntities();
-    // Update neighborhood
-    this.updateTileNeighbors(iso);
   }
 
   public updateTileNeighbors(iso: IsoCoordinates) {
@@ -212,20 +202,15 @@ export class Map extends Container {
       if (!neighborTile) {
         continue;
       }
-      const neighborhood = this.getNeighborhood(neighborTile.isoCoordinates);
-      neighborTile.updateNeighborhood(neighborhood);
+      neighborTile.updateNeighborhood();
     }
   }
 
-  private getNeighborhood(iso: IsoCoordinates): TileNeighborhood {
-    return {
-      up: this.getTileAt(iso.move("up"))?.type,
-      north: this.getTileAt(iso.move("north"))?.type,
-      east: this.getTileAt(iso.move("east"))?.type,
-      south: this.getTileAt(iso.move("south"))?.type,
-      west: this.getTileAt(iso.move("west"))?.type,
-      down: this.getTileAt(iso.move("down"))?.type,
-    };
+  private updateAllTileNeighborhood() {
+    for (const key in this.tiles) {
+      const tile = this.tiles[key];
+      tile.updateNeighborhood();
+    }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -6,7 +6,7 @@ import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { CursorAction, Map } from "./Map";
 import mapData from "./maps/koring-wood.json";
-import { Tile, TileNeighborhood } from "./Tile";
+import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 import { MapObject } from "./MapObject";
 
@@ -169,15 +169,6 @@ export class GameScreen extends Container {
     this.addChild(downloadJsonButton);
     this.controls.push(downloadJsonButton);
 
-    const neighborhood: TileNeighborhood = {
-      up: undefined,
-      north: undefined,
-      south: undefined,
-      east: undefined,
-      west: undefined,
-      down: undefined,
-    };
-
     const isoCoordinates = new IsoCoordinates(0, 0, 0);
 
     tilesets.forEach((type) => {
@@ -185,7 +176,7 @@ export class GameScreen extends Container {
         defaultView: new Tile({
           isoCoordinates,
           type,
-          neighborhood,
+          getTileNeighbor: () => undefined,
           disableCursor: true,
           tileFragmentsTextures: this.tileFragmentsTextures,
         }),
