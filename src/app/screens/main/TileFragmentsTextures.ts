@@ -42,8 +42,6 @@ export class TileFragmentsTextures {
     this.texturesInCache = new Map();
 
     this.init();
-
-    console.log(this.texturesInCache);
   }
 
   public static parseTextureName(textureName: string): TextureData {
