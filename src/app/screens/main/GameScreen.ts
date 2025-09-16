@@ -23,6 +23,7 @@ const tilesets = [
 
 const mapObjects = [
   "flower",
+  "bush",
   "small_pine",
   "large_pine",
   "large-rock",

@@ -160,8 +160,10 @@ export class Map extends Container {
   private sortEntities() {
     const sortedEntities = orderBy(
       this.entities,
-      ["isoCoordinates.e", "isoCoordinates.s", "isoCoordinates.u"],
-      ["asc", "asc", "asc"]
+      (entity) =>
+        entity.isoCoordinates.s +
+        entity.isoCoordinates.e +
+        entity.isoCoordinates.u / 3
     );
     for (let i = 0; i < sortedEntities.length; i++) {
       this.setChildIndex(sortedEntities[i], i);
@@ -194,6 +196,10 @@ export class Map extends Container {
     this.sortEntities();
   }
 
+  /**
+   * This won't work with tiles that are not UNESWD
+   * TODO note which tile depends on which tile in a linked list
+   */
   public updateTileNeighbors(iso: IsoCoordinates) {
     // Update neighborhood
 
