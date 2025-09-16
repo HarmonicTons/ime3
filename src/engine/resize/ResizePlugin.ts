@@ -72,7 +72,7 @@ export class CreationResizePlugin {
         get() {
           return this._resizeTo;
         },
-      },
+      }
     );
 
     /**
@@ -124,7 +124,7 @@ export class CreationResizePlugin {
         canvasHeight,
         app.resizeOptions.minWidth,
         app.resizeOptions.minHeight,
-        app.resizeOptions.letterbox,
+        app.resizeOptions.letterbox
       );
 
       app.renderer.canvas.style.width = `${canvasWidth}px`;
