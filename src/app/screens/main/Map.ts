@@ -210,6 +210,19 @@ export class Map extends Container {
       }
       neighborTile.updateNeighborhood();
     }
+    // HACK: hard code tiles to update
+    const uuNeighborTile = this.getTileAt(iso.move("up").move("up"));
+    uuNeighborTile?.updateNeighborhood();
+    const unNeighborTile = this.getTileAt(iso.move("up").move("north"));
+    unNeighborTile?.updateNeighborhood();
+    const uwNeighborTile = this.getTileAt(iso.move("up").move("west"));
+    uwNeighborTile?.updateNeighborhood();
+    const ddNeighborTile = this.getTileAt(iso.move("down").move("down"));
+    ddNeighborTile?.updateNeighborhood();
+    const dsNeighborTile = this.getTileAt(iso.move("down").move("south"));
+    dsNeighborTile?.updateNeighborhood();
+    const deNeighborTile = this.getTileAt(iso.move("down").move("east"));
+    deNeighborTile?.updateNeighborhood();
   }
 
   private updateAllTileNeighborhood() {
