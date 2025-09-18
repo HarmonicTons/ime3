@@ -19,8 +19,8 @@ setEngine(engine);
   await engine.init({
     background: "#D1F0FF",
     resizeOptions: { minWidth: 768, minHeight: 1024, letterbox: false },
-    // pixi-perfect options
-    roundPixels: true,
+    // pixel-perfect option: disabled because it generates small gaps on some zoom level
+    // roundPixels: true,
     antialias: false,
     resolution: 1,
   });
