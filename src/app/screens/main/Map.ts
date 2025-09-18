@@ -158,13 +158,11 @@ export class Map extends Container {
   }
 
   private sortEntities() {
-    const sortedEntities = orderBy(
-      this.entities,
-      (entity) =>
-        entity.isoCoordinates.s +
-        entity.isoCoordinates.e +
-        entity.isoCoordinates.u / 3
-    );
+    const sortedEntities = orderBy(this.entities, [
+      "isoCoordinates.s",
+      "isoCoordinates.e",
+      "isoCoordinates.u",
+    ]);
     for (let i = 0; i < sortedEntities.length; i++) {
       this.setChildIndex(sortedEntities[i], i);
     }
