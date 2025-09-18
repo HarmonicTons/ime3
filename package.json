@@ -8,7 +8,7 @@
     "build": "npm run lint && tsc && vite build",
     "lint": "eslint .",
     "dev": "vite",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build &&gh-pages -d dist"
   },
   "dependencies": {
     "@esotericsoftware/spine-pixi-v8": "4.2.74",
