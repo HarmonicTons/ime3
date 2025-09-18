@@ -45,6 +45,10 @@ export class GameScreen extends Container {
 
     this.mainContainer = new Viewport({
       events: engine().renderer.events,
+      // HACK: the * 2 should not be necessary,
+      // but idk why without it the full screen is not interactive
+      screenWidth: window.innerWidth * 2,
+      screenHeight: window.innerHeight * 2,
     });
     this.addChild(this.mainContainer);
     this.mainContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
