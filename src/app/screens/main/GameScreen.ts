@@ -110,8 +110,8 @@ export class GameScreen extends Container {
 
   /** Resize the screen, fired whenever window size changes */
   public resize(width: number, height: number) {
-    const centerX = width * 0.5;
-    const centerY = height * 0.5;
+    const centerX = Math.round(width * 0.5);
+    const centerY = Math.round(height * 0.5);
 
     this.mainContainer.x = centerX;
     this.mainContainer.y = centerY;
