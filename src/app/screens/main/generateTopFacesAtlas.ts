@@ -8,6 +8,7 @@ export const generateTopFacesAtlas = (
     "dirt_grass2",
     "dirt_stones",
     "dirt_pile",
+    "dirt_bush",
     "rock",
     "rock_moss",
   ]

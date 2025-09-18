@@ -480,10 +480,74 @@
         "h": 8
       }
     },
-    "dirt-11-w:rock,wu:0,u:!.png": {
+    "dirt-11-w:dirt_bush,wu:0,u:!.png": {
       "frame": {
         "x": 0,
         "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 8,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 16,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 24,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 0,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 8,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 16,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 24,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt-11-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 0,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -491,7 +555,7 @@
     "dirt-12-w:rock,wu:0,u:!.png": {
       "frame": {
         "x": 8,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -499,7 +563,7 @@
     "dirt-13-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 16,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -507,7 +571,7 @@
     "dirt-14-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 24,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -515,7 +579,7 @@
     "dirt-21-s:rock,u:!.png": {
       "frame": {
         "x": 0,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -523,7 +587,7 @@
     "dirt-22-s:rock,u:!.png": {
       "frame": {
         "x": 8,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -531,7 +595,7 @@
     "dirt-23-e:rock,u:!.png": {
       "frame": {
         "x": 16,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -539,7 +603,7 @@
     "dirt-24-e:rock,u:!.png": {
       "frame": {
         "x": 24,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -547,7 +611,7 @@
     "dirt-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 0,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -555,7 +619,7 @@
     "dirt-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 8,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -563,7 +627,7 @@
     "dirt-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 16,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -571,7 +635,7 @@
     "dirt-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 24,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -579,7 +643,7 @@
     "dirt-21-s:rock_moss,u:!.png": {
       "frame": {
         "x": 0,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -587,7 +651,7 @@
     "dirt-22-s:rock_moss,u:!.png": {
       "frame": {
         "x": 8,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -595,7 +659,7 @@
     "dirt-23-e:rock_moss,u:!.png": {
       "frame": {
         "x": 16,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -603,7 +667,7 @@
     "dirt-24-e:rock_moss,u:!.png": {
       "frame": {
         "x": 24,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1088,10 +1152,74 @@
         "h": 8
       }
     },
-    "dirt_grass1-11-w:rock,wu:0,u:!.png": {
+    "dirt_grass1-11-w:dirt_bush,wu:0,u:!.png": {
       "frame": {
         "x": 32,
         "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 40,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 48,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 56,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 32,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 40,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 48,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 56,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass1-11-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 32,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1099,7 +1227,7 @@
     "dirt_grass1-12-w:rock,wu:0,u:!.png": {
       "frame": {
         "x": 40,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1107,7 +1235,7 @@
     "dirt_grass1-13-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 48,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1115,7 +1243,7 @@
     "dirt_grass1-14-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 56,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1123,7 +1251,7 @@
     "dirt_grass1-21-s:rock,u:!.png": {
       "frame": {
         "x": 32,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1131,7 +1259,7 @@
     "dirt_grass1-22-s:rock,u:!.png": {
       "frame": {
         "x": 40,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1139,7 +1267,7 @@
     "dirt_grass1-23-e:rock,u:!.png": {
       "frame": {
         "x": 48,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1147,7 +1275,7 @@
     "dirt_grass1-24-e:rock,u:!.png": {
       "frame": {
         "x": 56,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1155,7 +1283,7 @@
     "dirt_grass1-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 32,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1163,7 +1291,7 @@
     "dirt_grass1-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 40,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1171,7 +1299,7 @@
     "dirt_grass1-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 48,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1179,7 +1307,7 @@
     "dirt_grass1-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 56,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1187,7 +1315,7 @@
     "dirt_grass1-21-s:rock_moss,u:!.png": {
       "frame": {
         "x": 32,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1195,7 +1323,7 @@
     "dirt_grass1-22-s:rock_moss,u:!.png": {
       "frame": {
         "x": 40,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1203,7 +1331,7 @@
     "dirt_grass1-23-e:rock_moss,u:!.png": {
       "frame": {
         "x": 48,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1211,7 +1339,7 @@
     "dirt_grass1-24-e:rock_moss,u:!.png": {
       "frame": {
         "x": 56,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1696,10 +1824,74 @@
         "h": 8
       }
     },
-    "dirt_grass2-11-w:rock,wu:0,u:!.png": {
+    "dirt_grass2-11-w:dirt_bush,wu:0,u:!.png": {
       "frame": {
         "x": 64,
         "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 72,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 80,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 88,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 64,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 72,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 80,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 88,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_grass2-11-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 64,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1707,7 +1899,7 @@
     "dirt_grass2-12-w:rock,wu:0,u:!.png": {
       "frame": {
         "x": 72,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1715,7 +1907,7 @@
     "dirt_grass2-13-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 80,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1723,7 +1915,7 @@
     "dirt_grass2-14-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 88,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -1731,7 +1923,7 @@
     "dirt_grass2-21-s:rock,u:!.png": {
       "frame": {
         "x": 64,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1739,7 +1931,7 @@
     "dirt_grass2-22-s:rock,u:!.png": {
       "frame": {
         "x": 72,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1747,7 +1939,7 @@
     "dirt_grass2-23-e:rock,u:!.png": {
       "frame": {
         "x": 80,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1755,7 +1947,7 @@
     "dirt_grass2-24-e:rock,u:!.png": {
       "frame": {
         "x": 88,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -1763,7 +1955,7 @@
     "dirt_grass2-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 64,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1771,7 +1963,7 @@
     "dirt_grass2-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 72,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1779,7 +1971,7 @@
     "dirt_grass2-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 80,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1787,7 +1979,7 @@
     "dirt_grass2-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 88,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -1795,7 +1987,7 @@
     "dirt_grass2-21-s:rock_moss,u:!.png": {
       "frame": {
         "x": 64,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1803,7 +1995,7 @@
     "dirt_grass2-22-s:rock_moss,u:!.png": {
       "frame": {
         "x": 72,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1811,7 +2003,7 @@
     "dirt_grass2-23-e:rock_moss,u:!.png": {
       "frame": {
         "x": 80,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -1819,7 +2011,7 @@
     "dirt_grass2-24-e:rock_moss,u:!.png": {
       "frame": {
         "x": 88,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -2304,10 +2496,74 @@
         "h": 8
       }
     },
-    "dirt_stones-11-w:rock,wu:0,u:!.png": {
+    "dirt_stones-11-w:dirt_bush,wu:0,u:!.png": {
       "frame": {
         "x": 96,
         "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 104,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 112,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 120,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 96,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 104,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 112,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 120,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_stones-11-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 96,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2315,7 +2571,7 @@
     "dirt_stones-12-w:rock,wu:0,u:!.png": {
       "frame": {
         "x": 104,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2323,7 +2579,7 @@
     "dirt_stones-13-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 112,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2331,7 +2587,7 @@
     "dirt_stones-14-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 120,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2339,7 +2595,7 @@
     "dirt_stones-21-s:rock,u:!.png": {
       "frame": {
         "x": 96,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2347,7 +2603,7 @@
     "dirt_stones-22-s:rock,u:!.png": {
       "frame": {
         "x": 104,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2355,7 +2611,7 @@
     "dirt_stones-23-e:rock,u:!.png": {
       "frame": {
         "x": 112,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2363,7 +2619,7 @@
     "dirt_stones-24-e:rock,u:!.png": {
       "frame": {
         "x": 120,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2371,7 +2627,7 @@
     "dirt_stones-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 96,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -2379,7 +2635,7 @@
     "dirt_stones-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 104,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -2387,7 +2643,7 @@
     "dirt_stones-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 112,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -2395,7 +2651,7 @@
     "dirt_stones-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 120,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -2403,7 +2659,7 @@
     "dirt_stones-21-s:rock_moss,u:!.png": {
       "frame": {
         "x": 96,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -2411,7 +2667,7 @@
     "dirt_stones-22-s:rock_moss,u:!.png": {
       "frame": {
         "x": 104,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -2419,7 +2675,7 @@
     "dirt_stones-23-e:rock_moss,u:!.png": {
       "frame": {
         "x": 112,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -2427,7 +2683,7 @@
     "dirt_stones-24-e:rock_moss,u:!.png": {
       "frame": {
         "x": 120,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -2912,10 +3168,74 @@
         "h": 8
       }
     },
-    "dirt_pile-11-w:rock,wu:0,u:!.png": {
+    "dirt_pile-11-w:dirt_bush,wu:0,u:!.png": {
       "frame": {
         "x": 128,
         "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 136,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 144,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 152,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 128,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 136,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 144,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 152,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_pile-11-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2923,7 +3243,7 @@
     "dirt_pile-12-w:rock,wu:0,u:!.png": {
       "frame": {
         "x": 136,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2931,7 +3251,7 @@
     "dirt_pile-13-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 144,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2939,7 +3259,7 @@
     "dirt_pile-14-n:rock,nu:0,u:!.png": {
       "frame": {
         "x": 152,
-        "y": 128,
+        "y": 144,
         "w": 8,
         "h": 8
       }
@@ -2947,7 +3267,7 @@
     "dirt_pile-21-s:rock,u:!.png": {
       "frame": {
         "x": 128,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2955,7 +3275,7 @@
     "dirt_pile-22-s:rock,u:!.png": {
       "frame": {
         "x": 136,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2963,7 +3283,7 @@
     "dirt_pile-23-e:rock,u:!.png": {
       "frame": {
         "x": 144,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2971,7 +3291,7 @@
     "dirt_pile-24-e:rock,u:!.png": {
       "frame": {
         "x": 152,
-        "y": 136,
+        "y": 152,
         "w": 8,
         "h": 8
       }
@@ -2979,7 +3299,7 @@
     "dirt_pile-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 128,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -2987,7 +3307,7 @@
     "dirt_pile-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
         "x": 136,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -2995,7 +3315,7 @@
     "dirt_pile-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 144,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -3003,7 +3323,7 @@
     "dirt_pile-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
         "x": 152,
-        "y": 144,
+        "y": 160,
         "w": 8,
         "h": 8
       }
@@ -3011,7 +3331,7 @@
     "dirt_pile-21-s:rock_moss,u:!.png": {
       "frame": {
         "x": 128,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -3019,7 +3339,7 @@
     "dirt_pile-22-s:rock_moss,u:!.png": {
       "frame": {
         "x": 136,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -3027,7 +3347,7 @@
     "dirt_pile-23-e:rock_moss,u:!.png": {
       "frame": {
         "x": 144,
-        "y": 152,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -3035,14 +3355,686 @@
     "dirt_pile-24-e:rock_moss,u:!.png": {
       "frame": {
         "x": 152,
+        "y": 168,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:0,u:!,s:0.png": {
+      "frame": {
+        "x": 160,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:0,u:!,n:0.png": {
+      "frame": {
+        "x": 168,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:0,u:!,w:0.png": {
+      "frame": {
+        "x": 176,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:0,u:!,e:0.png": {
+      "frame": {
+        "x": 184,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:0,u:!,w:0.png": {
+      "frame": {
+        "x": 160,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:0,u:!,e:0.png": {
+      "frame": {
+        "x": 168,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:0,u:!,s:0.png": {
+      "frame": {
+        "x": 176,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:0,u:!,n:0.png": {
+      "frame": {
+        "x": 184,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:!,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:!,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:!,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:!,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:1,wu:1,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 32,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:1,wu:1,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 32,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:1,nu:1,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 32,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:1,nu:1,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 32,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:dirt,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 48,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:dirt,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 48,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:dirt,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 48,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:dirt,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 48,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:dirt,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 56,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:dirt,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 56,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:dirt,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 56,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:dirt,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 56,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:dirt_grass1,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 64,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:dirt_grass1,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 64,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:dirt_grass1,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 64,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:dirt_grass1,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 64,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:dirt_grass1,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 72,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:dirt_grass1,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 72,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:dirt_grass1,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 72,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:dirt_grass1,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 72,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:dirt_grass2,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 80,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:dirt_grass2,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 80,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:dirt_grass2,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 80,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:dirt_grass2,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 80,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:dirt_grass2,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 88,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:dirt_grass2,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 88,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:dirt_grass2,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 88,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:dirt_grass2,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 88,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:dirt_stones,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 96,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:dirt_stones,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 96,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:dirt_stones,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 96,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:dirt_stones,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 96,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:dirt_stones,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 104,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:dirt_stones,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 104,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:dirt_stones,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 104,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:dirt_stones,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 104,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:dirt_pile,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 112,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:dirt_pile,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 112,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:dirt_pile,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 112,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:dirt_pile,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 112,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:dirt_pile,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 120,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:dirt_pile,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 120,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:dirt_pile,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 120,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:dirt_pile,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 120,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 144,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:rock,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 144,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:rock,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 144,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:rock,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 144,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:rock,u:!.png": {
+      "frame": {
+        "x": 160,
         "y": 152,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:rock,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 152,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:rock,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 152,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:rock,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 152,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-11-w:rock_moss,wu:0,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 160,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-12-w:rock_moss,wu:0,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 160,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-13-n:rock_moss,nu:0,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 160,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-14-n:rock_moss,nu:0,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 160,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-s:rock_moss,u:!.png": {
+      "frame": {
+        "x": 160,
+        "y": 168,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-s:rock_moss,u:!.png": {
+      "frame": {
+        "x": 168,
+        "y": 168,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-e:rock_moss,u:!.png": {
+      "frame": {
+        "x": 176,
+        "y": 168,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-e:rock_moss,u:!.png": {
+      "frame": {
+        "x": 184,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock-11-w:0,u:!,s:0.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3050,7 +4042,7 @@
     },
     "rock-12-w:0,u:!,n:0.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3058,7 +4050,7 @@
     },
     "rock-13-n:0,u:!,w:0.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3066,7 +4058,7 @@
     },
     "rock-14-n:0,u:!,e:0.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3074,7 +4066,7 @@
     },
     "rock-21-s:0,u:!,w:0.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3082,7 +4074,7 @@
     },
     "rock-22-s:0,u:!,e:0.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3090,7 +4082,7 @@
     },
     "rock-23-e:0,u:!,s:0.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3098,7 +4090,7 @@
     },
     "rock-24-e:0,u:!,n:0.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3106,7 +4098,7 @@
     },
     "rock-11-w:0,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3114,7 +4106,7 @@
     },
     "rock-12-w:0,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3122,7 +4114,7 @@
     },
     "rock-13-n:0,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3130,7 +4122,7 @@
     },
     "rock-14-n:0,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3138,7 +4130,7 @@
     },
     "rock-21-s:!,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3146,7 +4138,7 @@
     },
     "rock-22-s:!,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3154,7 +4146,7 @@
     },
     "rock-23-e:!,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3162,7 +4154,7 @@
     },
     "rock-24-e:!,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3170,7 +4162,7 @@
     },
     "rock-11-w:1,wu:1,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3178,7 +4170,7 @@
     },
     "rock-12-w:1,wu:1,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3186,7 +4178,7 @@
     },
     "rock-13-n:1,nu:1,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3194,7 +4186,7 @@
     },
     "rock-14-n:1,nu:1,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3202,7 +4194,7 @@
     },
     "rock-11-w:dirt,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3210,7 +4202,7 @@
     },
     "rock-12-w:dirt,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3218,7 +4210,7 @@
     },
     "rock-13-n:dirt,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3226,7 +4218,7 @@
     },
     "rock-14-n:dirt,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3234,7 +4226,7 @@
     },
     "rock-21-s:dirt,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3242,7 +4234,7 @@
     },
     "rock-22-s:dirt,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3250,7 +4242,7 @@
     },
     "rock-23-e:dirt,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3258,7 +4250,7 @@
     },
     "rock-24-e:dirt,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3266,7 +4258,7 @@
     },
     "rock-11-w:dirt_grass1,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3274,7 +4266,7 @@
     },
     "rock-12-w:dirt_grass1,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3282,7 +4274,7 @@
     },
     "rock-13-n:dirt_grass1,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3290,7 +4282,7 @@
     },
     "rock-14-n:dirt_grass1,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3298,7 +4290,7 @@
     },
     "rock-21-s:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3306,7 +4298,7 @@
     },
     "rock-22-s:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3314,7 +4306,7 @@
     },
     "rock-23-e:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3322,7 +4314,7 @@
     },
     "rock-24-e:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3330,7 +4322,7 @@
     },
     "rock-11-w:dirt_grass2,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3338,7 +4330,7 @@
     },
     "rock-12-w:dirt_grass2,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3346,7 +4338,7 @@
     },
     "rock-13-n:dirt_grass2,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3354,7 +4346,7 @@
     },
     "rock-14-n:dirt_grass2,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3362,7 +4354,7 @@
     },
     "rock-21-s:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3370,7 +4362,7 @@
     },
     "rock-22-s:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3378,7 +4370,7 @@
     },
     "rock-23-e:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3386,7 +4378,7 @@
     },
     "rock-24-e:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3394,7 +4386,7 @@
     },
     "rock-11-w:dirt_stones,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 96,
         "w": 8,
         "h": 8
@@ -3402,7 +4394,7 @@
     },
     "rock-12-w:dirt_stones,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 96,
         "w": 8,
         "h": 8
@@ -3410,7 +4402,7 @@
     },
     "rock-13-n:dirt_stones,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 96,
         "w": 8,
         "h": 8
@@ -3418,7 +4410,7 @@
     },
     "rock-14-n:dirt_stones,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 96,
         "w": 8,
         "h": 8
@@ -3426,7 +4418,7 @@
     },
     "rock-21-s:dirt_stones,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 104,
         "w": 8,
         "h": 8
@@ -3434,7 +4426,7 @@
     },
     "rock-22-s:dirt_stones,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 104,
         "w": 8,
         "h": 8
@@ -3442,7 +4434,7 @@
     },
     "rock-23-e:dirt_stones,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 104,
         "w": 8,
         "h": 8
@@ -3450,7 +4442,7 @@
     },
     "rock-24-e:dirt_stones,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 104,
         "w": 8,
         "h": 8
@@ -3458,7 +4450,7 @@
     },
     "rock-11-w:dirt_pile,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 112,
         "w": 8,
         "h": 8
@@ -3466,7 +4458,7 @@
     },
     "rock-12-w:dirt_pile,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 112,
         "w": 8,
         "h": 8
@@ -3474,7 +4466,7 @@
     },
     "rock-13-n:dirt_pile,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 112,
         "w": 8,
         "h": 8
@@ -3482,7 +4474,7 @@
     },
     "rock-14-n:dirt_pile,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 112,
         "w": 8,
         "h": 8
@@ -3490,7 +4482,7 @@
     },
     "rock-21-s:dirt_pile,u:!.png": {
       "frame": {
-        "x": 160,
+        "x": 192,
         "y": 120,
         "w": 8,
         "h": 8
@@ -3498,7 +4490,7 @@
     },
     "rock-22-s:dirt_pile,u:!.png": {
       "frame": {
-        "x": 168,
+        "x": 200,
         "y": 120,
         "w": 8,
         "h": 8
@@ -3506,7 +4498,7 @@
     },
     "rock-23-e:dirt_pile,u:!.png": {
       "frame": {
-        "x": 176,
+        "x": 208,
         "y": 120,
         "w": 8,
         "h": 8
@@ -3514,143 +4506,207 @@
     },
     "rock-24-e:dirt_pile,u:!.png": {
       "frame": {
-        "x": 184,
+        "x": 216,
         "y": 120,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-11-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 192,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 200,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 208,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 216,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 192,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 200,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 208,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 216,
+        "y": 136,
         "w": 8,
         "h": 8
       }
     },
     "rock-11-w:rock,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
-        "y": 128,
+        "x": 192,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock-12-w:rock,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
-        "y": 128,
+        "x": 200,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock-13-n:rock,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
-        "y": 128,
+        "x": 208,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock-14-n:rock,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
-        "y": 128,
+        "x": 216,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock-21-s:rock,u:!.png": {
       "frame": {
-        "x": 160,
-        "y": 136,
+        "x": 192,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock-22-s:rock,u:!.png": {
       "frame": {
-        "x": 168,
-        "y": 136,
+        "x": 200,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock-23-e:rock,u:!.png": {
       "frame": {
-        "x": 176,
-        "y": 136,
+        "x": 208,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock-24-e:rock,u:!.png": {
       "frame": {
-        "x": 184,
-        "y": 136,
+        "x": 216,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
-        "x": 160,
-        "y": 144,
+        "x": 192,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
-        "x": 168,
-        "y": 144,
+        "x": 200,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
-        "x": 176,
-        "y": 144,
+        "x": 208,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
-        "x": 184,
-        "y": 144,
+        "x": 216,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock-21-s:rock_moss,u:!.png": {
       "frame": {
-        "x": 160,
-        "y": 152,
+        "x": 192,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock-22-s:rock_moss,u:!.png": {
       "frame": {
-        "x": 168,
-        "y": 152,
+        "x": 200,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock-23-e:rock_moss,u:!.png": {
       "frame": {
-        "x": 176,
-        "y": 152,
+        "x": 208,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock-24-e:rock_moss,u:!.png": {
       "frame": {
-        "x": 184,
-        "y": 152,
+        "x": 216,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-11-w:0,u:!,s:0.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3658,7 +4714,7 @@
     },
     "rock_moss-12-w:0,u:!,n:0.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3666,7 +4722,7 @@
     },
     "rock_moss-13-n:0,u:!,w:0.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3674,7 +4730,7 @@
     },
     "rock_moss-14-n:0,u:!,e:0.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 0,
         "w": 8,
         "h": 8
@@ -3682,7 +4738,7 @@
     },
     "rock_moss-21-s:0,u:!,w:0.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3690,7 +4746,7 @@
     },
     "rock_moss-22-s:0,u:!,e:0.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3698,7 +4754,7 @@
     },
     "rock_moss-23-e:0,u:!,s:0.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3706,7 +4762,7 @@
     },
     "rock_moss-24-e:0,u:!,n:0.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 8,
         "w": 8,
         "h": 8
@@ -3714,7 +4770,7 @@
     },
     "rock_moss-11-w:0,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3722,7 +4778,7 @@
     },
     "rock_moss-12-w:0,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3730,7 +4786,7 @@
     },
     "rock_moss-13-n:0,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3738,7 +4794,7 @@
     },
     "rock_moss-14-n:0,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 16,
         "w": 8,
         "h": 8
@@ -3746,7 +4802,7 @@
     },
     "rock_moss-21-s:!,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3754,7 +4810,7 @@
     },
     "rock_moss-22-s:!,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3762,7 +4818,7 @@
     },
     "rock_moss-23-e:!,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3770,7 +4826,7 @@
     },
     "rock_moss-24-e:!,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 24,
         "w": 8,
         "h": 8
@@ -3778,7 +4834,7 @@
     },
     "rock_moss-11-w:1,wu:1,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3786,7 +4842,7 @@
     },
     "rock_moss-12-w:1,wu:1,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3794,7 +4850,7 @@
     },
     "rock_moss-13-n:1,nu:1,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3802,7 +4858,7 @@
     },
     "rock_moss-14-n:1,nu:1,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 32,
         "w": 8,
         "h": 8
@@ -3810,7 +4866,7 @@
     },
     "rock_moss-11-w:dirt,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3818,7 +4874,7 @@
     },
     "rock_moss-12-w:dirt,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3826,7 +4882,7 @@
     },
     "rock_moss-13-n:dirt,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3834,7 +4890,7 @@
     },
     "rock_moss-14-n:dirt,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 48,
         "w": 8,
         "h": 8
@@ -3842,7 +4898,7 @@
     },
     "rock_moss-21-s:dirt,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3850,7 +4906,7 @@
     },
     "rock_moss-22-s:dirt,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3858,7 +4914,7 @@
     },
     "rock_moss-23-e:dirt,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3866,7 +4922,7 @@
     },
     "rock_moss-24-e:dirt,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 56,
         "w": 8,
         "h": 8
@@ -3874,7 +4930,7 @@
     },
     "rock_moss-11-w:dirt_grass1,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3882,7 +4938,7 @@
     },
     "rock_moss-12-w:dirt_grass1,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3890,7 +4946,7 @@
     },
     "rock_moss-13-n:dirt_grass1,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3898,7 +4954,7 @@
     },
     "rock_moss-14-n:dirt_grass1,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 64,
         "w": 8,
         "h": 8
@@ -3906,7 +4962,7 @@
     },
     "rock_moss-21-s:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3914,7 +4970,7 @@
     },
     "rock_moss-22-s:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3922,7 +4978,7 @@
     },
     "rock_moss-23-e:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3930,7 +4986,7 @@
     },
     "rock_moss-24-e:dirt_grass1,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 72,
         "w": 8,
         "h": 8
@@ -3938,7 +4994,7 @@
     },
     "rock_moss-11-w:dirt_grass2,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3946,7 +5002,7 @@
     },
     "rock_moss-12-w:dirt_grass2,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3954,7 +5010,7 @@
     },
     "rock_moss-13-n:dirt_grass2,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3962,7 +5018,7 @@
     },
     "rock_moss-14-n:dirt_grass2,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 80,
         "w": 8,
         "h": 8
@@ -3970,7 +5026,7 @@
     },
     "rock_moss-21-s:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3978,7 +5034,7 @@
     },
     "rock_moss-22-s:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3986,7 +5042,7 @@
     },
     "rock_moss-23-e:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 88,
         "w": 8,
         "h": 8
@@ -3994,7 +5050,7 @@
     },
     "rock_moss-24-e:dirt_grass2,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 88,
         "w": 8,
         "h": 8
@@ -4002,7 +5058,7 @@
     },
     "rock_moss-11-w:dirt_stones,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 96,
         "w": 8,
         "h": 8
@@ -4010,7 +5066,7 @@
     },
     "rock_moss-12-w:dirt_stones,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 96,
         "w": 8,
         "h": 8
@@ -4018,7 +5074,7 @@
     },
     "rock_moss-13-n:dirt_stones,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 96,
         "w": 8,
         "h": 8
@@ -4026,7 +5082,7 @@
     },
     "rock_moss-14-n:dirt_stones,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 96,
         "w": 8,
         "h": 8
@@ -4034,7 +5090,7 @@
     },
     "rock_moss-21-s:dirt_stones,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 104,
         "w": 8,
         "h": 8
@@ -4042,7 +5098,7 @@
     },
     "rock_moss-22-s:dirt_stones,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 104,
         "w": 8,
         "h": 8
@@ -4050,7 +5106,7 @@
     },
     "rock_moss-23-e:dirt_stones,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 104,
         "w": 8,
         "h": 8
@@ -4058,7 +5114,7 @@
     },
     "rock_moss-24-e:dirt_stones,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 104,
         "w": 8,
         "h": 8
@@ -4066,7 +5122,7 @@
     },
     "rock_moss-11-w:dirt_pile,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 112,
         "w": 8,
         "h": 8
@@ -4074,7 +5130,7 @@
     },
     "rock_moss-12-w:dirt_pile,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 112,
         "w": 8,
         "h": 8
@@ -4082,7 +5138,7 @@
     },
     "rock_moss-13-n:dirt_pile,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 112,
         "w": 8,
         "h": 8
@@ -4090,7 +5146,7 @@
     },
     "rock_moss-14-n:dirt_pile,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 112,
         "w": 8,
         "h": 8
@@ -4098,7 +5154,7 @@
     },
     "rock_moss-21-s:dirt_pile,u:!.png": {
       "frame": {
-        "x": 192,
+        "x": 224,
         "y": 120,
         "w": 8,
         "h": 8
@@ -4106,7 +5162,7 @@
     },
     "rock_moss-22-s:dirt_pile,u:!.png": {
       "frame": {
-        "x": 200,
+        "x": 232,
         "y": 120,
         "w": 8,
         "h": 8
@@ -4114,7 +5170,7 @@
     },
     "rock_moss-23-e:dirt_pile,u:!.png": {
       "frame": {
-        "x": 208,
+        "x": 240,
         "y": 120,
         "w": 8,
         "h": 8
@@ -4122,136 +5178,200 @@
     },
     "rock_moss-24-e:dirt_pile,u:!.png": {
       "frame": {
-        "x": 216,
+        "x": 248,
         "y": 120,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-11-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 224,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-12-w:dirt_bush,wu:0,u:!.png": {
+      "frame": {
+        "x": 232,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-13-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 240,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-14-n:dirt_bush,nu:0,u:!.png": {
+      "frame": {
+        "x": 248,
+        "y": 128,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-21-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 224,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-22-s:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 232,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-23-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 240,
+        "y": 136,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_moss-24-e:dirt_bush,u:!.png": {
+      "frame": {
+        "x": 248,
+        "y": 136,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-11-w:rock,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
-        "y": 128,
+        "x": 224,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-12-w:rock,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
-        "y": 128,
+        "x": 232,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-13-n:rock,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
-        "y": 128,
+        "x": 240,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-14-n:rock,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
-        "y": 128,
+        "x": 248,
+        "y": 144,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-21-s:rock,u:!.png": {
       "frame": {
-        "x": 192,
-        "y": 136,
+        "x": 224,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-22-s:rock,u:!.png": {
       "frame": {
-        "x": 200,
-        "y": 136,
+        "x": 232,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-23-e:rock,u:!.png": {
       "frame": {
-        "x": 208,
-        "y": 136,
+        "x": 240,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-24-e:rock,u:!.png": {
       "frame": {
-        "x": 216,
-        "y": 136,
+        "x": 248,
+        "y": 152,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-11-w:rock_moss,wu:0,u:!.png": {
       "frame": {
-        "x": 192,
-        "y": 144,
+        "x": 224,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-12-w:rock_moss,wu:0,u:!.png": {
       "frame": {
-        "x": 200,
-        "y": 144,
+        "x": 232,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-13-n:rock_moss,nu:0,u:!.png": {
       "frame": {
-        "x": 208,
-        "y": 144,
+        "x": 240,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-14-n:rock_moss,nu:0,u:!.png": {
       "frame": {
-        "x": 216,
-        "y": 144,
+        "x": 248,
+        "y": 160,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-21-s:rock_moss,u:!.png": {
       "frame": {
-        "x": 192,
-        "y": 152,
+        "x": 224,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-22-s:rock_moss,u:!.png": {
       "frame": {
-        "x": 200,
-        "y": 152,
+        "x": 232,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-23-e:rock_moss,u:!.png": {
       "frame": {
-        "x": 208,
-        "y": 152,
+        "x": 240,
+        "y": 168,
         "w": 8,
         "h": 8
       }
     },
     "rock_moss-24-e:rock_moss,u:!.png": {
       "frame": {
-        "x": 216,
-        "y": 152,
+        "x": 248,
+        "y": 168,
         "w": 8,
         "h": 8
       }
@@ -4261,8 +5381,8 @@
     "image": "top-faces.png",
     "format": "RGBA8888",
     "size": {
-      "w": 224,
-      "h": 160
+      "w": 256,
+      "h": 176
     },
     "scale": "1"
   }
