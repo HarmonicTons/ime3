@@ -4258,8 +4258,6 @@
     }
   },
   "meta": {
-    "app": "https://www.codeandweb.com/texturepacker",
-    "version": "1.1",
     "image": "top-faces.png",
     "format": "RGBA8888",
     "size": {

@@ -116,5 +116,16 @@ export const generateTopFacesAtlas = (
     });
     Object.assign(frames, tileFrames);
   });
-  return frames;
+  return {
+    frames,
+    meta: {
+      image: "top-faces.png",
+      format: "RGBA8888",
+      size: {
+        w: 32 * tiles.length,
+        h: (3 + tiles.length) * 16,
+      },
+      scale: "1",
+    },
+  };
 };
