@@ -1,0 +1,272 @@
+{
+  "frames": {
+    "dirt_bush-31-u:!,s:0,w:0.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-32-u:!,s:0,e:0.png": {
+      "frame": {
+        "x": 8,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-uu:!,u:=,s:0,w:0.png": {
+      "frame": {
+        "x": 0,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-uu:!,u:=,s:0,e:0.png": {
+      "frame": {
+        "x": 8,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-31-uu:!,u:=,s:0,w:0.png": {
+      "frame": {
+        "x": 0,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-32-uu:!,u:=,s:0,e:0.png": {
+      "frame": {
+        "x": 8,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-uuu:!,uu:=,u:=,s:0,w:0.png": {
+      "frame": {
+        "x": 0,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-uuu:!,uu:=,u:=,s:0,e:0.png": {
+      "frame": {
+        "x": 8,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+
+    "dirt_bush-31-u:!,s:!.png": {
+      "frame": {
+        "x": 16,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-32-u:!,s:!.png": {
+      "frame": {
+        "x": 24,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-uu:!,u:=,s:!.png": {
+      "frame": {
+        "x": 16,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-uu:!,u:=,s:!.png": {
+      "frame": {
+        "x": 24,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-31-uu:!,u:=,s:!.png": {
+      "frame": {
+        "x": 16,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-32-uu:!,u:=,s:!.png": {
+      "frame": {
+        "x": 24,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-21-uuu:!,uu:=,u:=,s:!.png": {
+      "frame": {
+        "x": 16,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-22-uuu:!,uu:=,u:=,s:!.png": {
+      "frame": {
+        "x": 24,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+
+    "dirt_bush-33-u:!,e:!.png": {
+      "frame": {
+        "x": 32,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-34-u:!,e:!.png": {
+      "frame": {
+        "x": 40,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-uu:!,u:=,e:!.png": {
+      "frame": {
+        "x": 32,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-uu:!,u:=,e:!.png": {
+      "frame": {
+        "x": 40,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-33-uu:!,u:=,e:!.png": {
+      "frame": {
+        "x": 32,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-34-uu:!,u:=,e:!.png": {
+      "frame": {
+        "x": 40,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-uuu:!,uu:=,u:=,e:!.png": {
+      "frame": {
+        "x": 32,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-uuu:!,uu:=,u:=,e:!.png": {
+      "frame": {
+        "x": 40,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+
+    "dirt_bush-33-u:!,e:0,s:0.png": {
+      "frame": {
+        "x": 48,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-34-u:!,e:0,n:0.png": {
+      "frame": {
+        "x": 56,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-uu:!,u:=,e:0,s:0.png": {
+      "frame": {
+        "x": 48,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-uu:!,u:=,e:0,n:0.png": {
+      "frame": {
+        "x": 56,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-33-uu:!,u:=,e:0,s:0.png": {
+      "frame": {
+        "x": 48,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-34-uu:!,u:=,e:0,n:0.png": {
+      "frame": {
+        "x": 56,
+        "y": 16,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-23-uuu:!,uu:=,u:=,e:0,s:0.png": {
+      "frame": {
+        "x": 48,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "dirt_bush-24-uuu:!,uu:=,u:=,e:0,n:0.png": {
+      "frame": {
+        "x": 56,
+        "y": 24,
+        "w": 8,
+        "h": 8
+      }
+    }
+  },
+  "meta": {
+    "image": "dirt_bush-sides.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 64,
+      "h": 32
+    },
+    "scale": "1"
+  }
+}

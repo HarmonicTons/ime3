@@ -209,6 +209,10 @@ export class Map extends Container {
       neighborTile.updateNeighborhood();
     }
     // HACK: hard code tiles to update
+    const uuuNeighborTile = this.getTileAt(
+      iso.move("up").move("up").move("up")
+    );
+    uuuNeighborTile?.updateNeighborhood();
     const uuNeighborTile = this.getTileAt(iso.move("up").move("up"));
     uuNeighborTile?.updateNeighborhood();
     const unNeighborTile = this.getTileAt(iso.move("up").move("north"));
