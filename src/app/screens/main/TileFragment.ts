@@ -74,6 +74,7 @@ export class TileFragment extends Sprite {
 
     super({ texture, position });
 
+    this.roundPixels = true;
     tile.addChild(this);
   }
 }

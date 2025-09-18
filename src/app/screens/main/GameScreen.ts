@@ -5,7 +5,7 @@ import { Container } from "pixi.js";
 import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { CursorAction, Map } from "./Map";
-import mapData from "./maps/rock-cubes.json";
+import mapData from "./maps/koring-wood.json";
 import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 import { MapObject } from "./MapObject";

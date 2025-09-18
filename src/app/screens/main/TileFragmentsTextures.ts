@@ -184,7 +184,6 @@ export class TileFragmentsTextures {
       return null;
     }
     const textureData = maxBy(validTextures, "score")!;
-    console.log(fragmentData, textureData);
 
     const texture = Texture.from(textureData.name);
     if (!texture) {
