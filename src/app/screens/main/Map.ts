@@ -134,7 +134,7 @@ export class Map extends Container {
   }
 
   private removeTileAt(iso: IsoCoordinates) {
-    console.log("removing tile at", iso.s, iso.e, iso.u);
+    console.info("removing tile at", iso.s, iso.e, iso.u);
     const existingTile = this.getTileAt(iso);
     if (existingTile) {
       this.removeChild(existingTile);
@@ -145,7 +145,7 @@ export class Map extends Container {
   }
 
   private removeMapObjectAt(iso: IsoCoordinates) {
-    console.log("removing map object at", iso.s, iso.e, iso.u);
+    console.info("removing map object at", iso.s, iso.e, iso.u);
     const existingObject = this.getMapObjectAt(iso);
     if (existingObject) {
       this.removeChild(existingObject);
@@ -175,7 +175,7 @@ export class Map extends Container {
       console.warn("Entity already exists at", iso.s, iso.e, iso.u);
       return;
     }
-    console.log("adding tile at", iso.s, iso.e, iso.u);
+    console.info("adding tile at", iso.s, iso.e, iso.u);
     this.createTile(iso, type);
 
     // Reorder the tiles
@@ -189,7 +189,7 @@ export class Map extends Container {
       console.warn("Entity already exists at", iso.s, iso.e, iso.u);
       return;
     }
-    console.log("adding map object at", iso.s, iso.e, iso.u);
+    console.info("adding map object at", iso.s, iso.e, iso.u);
     this.createObject(iso, type);
 
     // Reorder the tiles

@@ -179,9 +179,20 @@ export class TileFragmentsTextures {
   }
 
   public getFragmentTexture(fragmentData: FragmentData): Texture | null {
-    const validTextures = this.getAllValidTexturesForFragment(fragmentData);
+    let validTextures = this.getAllValidTexturesForFragment(fragmentData);
     if (validTextures.length === 0) {
-      return null;
+      const [type, variant] = fragmentData.type.split("_");
+      if (!type || !variant) {
+        return null;
+      }
+      // try to fallback to base type
+      validTextures = this.getAllValidTexturesForFragment({
+        ...fragmentData,
+        type,
+      });
+      if (validTextures.length === 0) {
+        return null;
+      }
     }
     const textureData = maxBy(validTextures, "score")!;
 
