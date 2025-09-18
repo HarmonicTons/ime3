@@ -23,9 +23,9 @@ export class MapObject extends Sprite {
     }
     // keep pixel art style
     texture.source.scaleMode = "nearest";
+    texture.source.wrapMode = "clamp-to-edge";
 
     super({ texture });
-    this.roundPixels = true;
     this.type = type;
     this.anchor.set(0, 1);
     this.isoCoordinates = isoCoordinates;

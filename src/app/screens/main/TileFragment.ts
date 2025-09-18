@@ -73,8 +73,6 @@ export class TileFragment extends Sprite {
     const position = tileFragmentPosition[key];
 
     super({ texture, position });
-
-    this.roundPixels = true;
     tile.addChild(this);
   }
 }

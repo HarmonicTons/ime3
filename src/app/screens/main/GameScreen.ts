@@ -43,7 +43,6 @@ export class GameScreen extends Container {
   constructor() {
     super();
 
-    engine().renderer.resolution = 1;
     this.mainContainer = new Viewport({
       events: engine().renderer.events,
     });
