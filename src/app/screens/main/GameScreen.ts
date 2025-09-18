@@ -6,7 +6,7 @@ import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { CursorAction, Map } from "./Map";
 import { MapObject } from "./MapObject";
-import mapData from "./maps/koring-wood.json";
+import mapData from "./maps/deti-plains.json";
 import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
