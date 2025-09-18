@@ -1,0 +1,45 @@
+{
+  "frames": {
+    "rock_hole-22-s:0,u:!,e:0,d:1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_hole-23-e:0,u:!,s:0,d:1.png": {
+      "frame": {
+        "x": 8,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_hole-32-s:0,u:!,e:0,d:1.png": {
+      "frame": {
+        "x": 0,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    },
+    "rock_hole-33-e:0,u:!,s:0,d:1.png": {
+      "frame": {
+        "x": 8,
+        "y": 8,
+        "w": 8,
+        "h": 8
+      }
+    }
+  },
+  "meta": {
+    "image": "rock_hole.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 16,
+      "h": 16
+    },
+    "scale": "1"
+  }
+}

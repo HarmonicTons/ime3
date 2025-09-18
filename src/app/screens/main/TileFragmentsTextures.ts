@@ -179,21 +179,21 @@ export class TileFragmentsTextures {
   }
 
   public getFragmentTexture(fragmentData: FragmentData): Texture | null {
-    let validTextures = this.getAllValidTexturesForFragment(fragmentData);
+    const [type, variant] = fragmentData.type.split("_");
+    const validTextures = [
+      ...this.getAllValidTexturesForFragment(fragmentData),
+      ...(variant
+        ? this.getAllValidTexturesForFragment({
+            ...fragmentData,
+            type,
+          }).map((t) => ({ ...t, score: t.score - 1 }))
+        : []),
+    ];
+
     if (validTextures.length === 0) {
-      const [type, variant] = fragmentData.type.split("_");
-      if (!type || !variant) {
-        return null;
-      }
-      // try to fallback to base type
-      validTextures = this.getAllValidTexturesForFragment({
-        ...fragmentData,
-        type,
-      });
-      if (validTextures.length === 0) {
-        return null;
-      }
+      return null;
     }
+
     const textureData = maxBy(validTextures, "score")!;
 
     const texture = Texture.from(textureData.name);
