@@ -103,7 +103,7 @@ export class ControlBar extends Container {
     const removeButton = new FancyButton({
       text: "❌",
       scale: 1.2,
-      defaultTextAnchor: 0,
+      defaultTextAnchor: 0.5,
       animations: buttonAnimations,
     });
     removeButton.onPress.connect(() => {
@@ -125,7 +125,7 @@ export class ControlBar extends Container {
           tileFragmentsTextures,
         }),
         scale: 1.5,
-        anchor: 0,
+        anchor: 0.5,
         animations: buttonAnimations,
       });
       button.onPress.connect(() => {
@@ -143,7 +143,7 @@ export class ControlBar extends Container {
           type,
         }),
         scale: 1.5,
-        anchor: 0,
+        anchor: 0.5,
         animations: buttonAnimations,
       });
       button.onPress.connect(() => {
@@ -166,8 +166,8 @@ export class ControlBar extends Container {
 
     let y = 10;
     this.controls.forEach(({ button }) => {
-      button.x = 10;
-      button.y = y;
+      button.x = 32;
+      button.y = y + button.height / 2;
       y += button.height + 10;
     });
   }
