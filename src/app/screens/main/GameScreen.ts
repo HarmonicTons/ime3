@@ -13,7 +13,7 @@ import { TileFragmentsTextures } from "./TileFragmentsTextures";
 const tilesets = [
   "wall",
   "rock",
-  "rock_hole",
+  // "rock_hole",
   "rock_moss",
   "dirt",
   "dirt_grass1",

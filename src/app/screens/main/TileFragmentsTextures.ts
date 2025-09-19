@@ -202,7 +202,7 @@ export class TileFragmentsTextures {
     }
     // keep pixel art style
     texture.source.scaleMode = "nearest";
-    texture.source.wrapMode = "clamp-to-edge";
+    texture.source.addressMode = "clamp-to-edge";
     return texture;
   }
 }
