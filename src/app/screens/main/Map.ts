@@ -13,6 +13,7 @@ export type MapData = {
 export type CursorAction = {
   entityType: "tile" | "object";
   type: string;
+  mode: "add" | "remove";
 };
 
 /**
@@ -92,6 +93,10 @@ export class Map extends Container {
     });
 
     const handlePress = (evt: FederatedPointerEvent) => {
+      if (this.currentCursorAction.mode === "remove") {
+        this.removeTileAt(iso);
+        return;
+      }
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSideFromLocalCoordinates({ x: localX, y: localY });

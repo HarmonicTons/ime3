@@ -59,6 +59,7 @@ export class GameScreen extends Container {
     const cursorAction: CursorAction = {
       entityType: "tile",
       type: tilesets[0],
+      mode: "add",
     };
     const map = new Map(mapData, cursorAction, this.tileFragmentsTextures);
     this.map = map;
@@ -174,6 +175,22 @@ export class GameScreen extends Container {
     this.addChild(downloadJsonButton);
     this.controls.push(downloadJsonButton);
 
+    const removeJsonButton = new FancyButton({
+      text: "❌",
+      scale: 0.6,
+      defaultTextAnchor: 0,
+      animations: buttonAnimations,
+    });
+    removeJsonButton.onPress.connect(() => {
+      this.map.currentCursorAction = {
+        entityType: "tile",
+        type: "",
+        mode: "remove",
+      };
+    });
+    this.addChild(removeJsonButton);
+    this.controls.push(removeJsonButton);
+
     const isoCoordinates = new IsoCoordinates(0, 0, 0);
 
     tilesets.forEach((type) => {
@@ -192,6 +209,7 @@ export class GameScreen extends Container {
         this.map.currentCursorAction = {
           entityType: "tile",
           type,
+          mode: "add",
         };
       });
       this.addChild(button);
@@ -211,6 +229,7 @@ export class GameScreen extends Container {
         this.map.currentCursorAction = {
           entityType: "object",
           type,
+          mode: "add",
         };
       });
       this.addChild(button);
