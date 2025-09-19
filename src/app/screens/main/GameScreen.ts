@@ -72,6 +72,7 @@ export class GameScreen extends Container {
     this.mapContainer.scale.set(2, 2);
 
     this.controlBar = new ControlBar({
+      getCursorAction: () => this.cursorAction,
       onClickRemove: () => {
         this.cursorAction = {
           mode: "remove",

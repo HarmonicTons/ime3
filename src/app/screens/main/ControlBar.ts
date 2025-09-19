@@ -5,6 +5,7 @@ import { engine } from "../../getEngine";
 import { FancyButton } from "@pixi/ui";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 import { IsoCoordinates } from "./IsometricCoordinate";
+import { CursorAction } from "./GameScreen";
 
 const buttonAnimations = {
   hover: {
@@ -41,22 +42,31 @@ const mapObjects = [
   "large-rock",
 ] as const;
 
+type Control = {
+  button: FancyButton;
+  type: string;
+};
+
 export class ControlBar extends Container {
-  public controls: FancyButton[] = [];
+  public controls: Control[] = [];
   public background: Graphics;
+  private getCursorAction: () => CursorAction;
 
   constructor({
     onClickRemove,
     onClickObject,
     onClickTile,
     tileFragmentsTextures,
+    getCursorAction,
   }: {
     onClickRemove: () => void;
     onClickTile: (type: string) => void;
     onClickObject: (type: string) => void;
     tileFragmentsTextures: TileFragmentsTextures;
+    getCursorAction: () => CursorAction;
   }) {
     super();
+    this.getCursorAction = getCursorAction;
 
     const background = new Graphics()
       .rect(0, 0, 68, engine().screen.height)
@@ -98,9 +108,10 @@ export class ControlBar extends Container {
     });
     removeButton.onPress.connect(() => {
       onClickRemove();
+      this.update();
     });
     this.addChild(removeButton);
-    this.controls.push(removeButton);
+    this.controls.push({ button: removeButton, type: "remove" });
 
     const isoCoordinates = new IsoCoordinates(0, 0, 0);
 
@@ -119,9 +130,10 @@ export class ControlBar extends Container {
       });
       button.onPress.connect(() => {
         onClickTile(type);
+        this.update();
       });
       this.addChild(button);
-      this.controls.push(button);
+      this.controls.push({ button, type });
     });
 
     mapObjects.forEach((type) => {
@@ -136,10 +148,13 @@ export class ControlBar extends Container {
       });
       button.onPress.connect(() => {
         onClickObject(type);
+        this.update();
       });
       this.addChild(button);
-      this.controls.push(button);
+      this.controls.push({ button, type });
     });
+
+    this.update();
   }
 
   public resize(_width: number, height: number) {
@@ -150,10 +165,31 @@ export class ControlBar extends Container {
       .stroke({ color: 0x202828, width: 2 });
 
     let y = 10;
-    this.controls.forEach((button) => {
+    this.controls.forEach(({ button }) => {
       button.x = 10;
       button.y = y;
       y += button.height + 10;
+    });
+  }
+
+  public update() {
+    const cursorAction = this.getCursorAction();
+    this.controls.forEach(({ button, type }) => {
+      if (cursorAction.mode === "remove") {
+        if (type === "remove") {
+          button.alpha = 1;
+          return;
+        }
+        button.alpha = 0.5;
+        return;
+      }
+
+      if (cursorAction.type === type) {
+        button.alpha = 1;
+        return;
+      }
+
+      button.alpha = 0.5;
     });
   }
 }
