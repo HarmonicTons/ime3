@@ -29,7 +29,7 @@ export class Map extends Container {
 
   constructor(
     mapData: MapData,
-    public currentCursorAction: CursorAction,
+    public getCursorAction: () => CursorAction,
     public tileFragmentsTextures: TileFragmentsTextures
   ) {
     super();
@@ -97,33 +97,34 @@ export class Map extends Container {
     });
 
     const handlePress = (evt: FederatedPointerEvent) => {
-      if (this.currentCursorAction.mode === "remove") {
+      const action = this.getCursorAction();
+      if (action.mode === "remove") {
         this.removeTileAt(iso);
         return;
       }
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSideFromLocalCoordinates({ x: localX, y: localY });
-      if (this.currentCursorAction.entityType === "tile") {
+      if (action.entityType === "tile") {
         if (side === "up") {
-          this.addTileAt(iso.move("up"), this.currentCursorAction.type);
+          this.addTileAt(iso.move("up"), action.type);
         }
         if (side === "south") {
-          this.addTileAt(iso.move("south"), this.currentCursorAction.type);
+          this.addTileAt(iso.move("south"), action.type);
         }
         if (side === "east") {
-          this.addTileAt(iso.move("east"), this.currentCursorAction.type);
+          this.addTileAt(iso.move("east"), action.type);
         }
       }
-      if (this.currentCursorAction.entityType === "object") {
+      if (action.entityType === "object") {
         if (side === "up") {
-          this.addMapObjectAt(iso.move("up"), this.currentCursorAction.type);
+          this.addMapObjectAt(iso.move("up"), action.type);
         }
         if (side === "south") {
-          this.addMapObjectAt(iso.move("south"), this.currentCursorAction.type);
+          this.addMapObjectAt(iso.move("south"), action.type);
         }
         if (side === "east") {
-          this.addMapObjectAt(iso.move("east"), this.currentCursorAction.type);
+          this.addMapObjectAt(iso.move("east"), action.type);
         }
       }
     };

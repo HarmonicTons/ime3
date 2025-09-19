@@ -10,6 +10,8 @@ import { CreationEngine } from "./engine/engine";
 import "@pixi/sound";
 // import "@esotericsoftware/spine-pixi-v8";
 
+// Ensure the font is loaded before starting the application
+await document.fonts.load('1em "Final Fantasy Tactics Advance"');
 // Create a new creation engine instance
 const engine = new CreationEngine();
 setEngine(engine);
@@ -17,8 +19,8 @@ setEngine(engine);
 (async () => {
   // Initialize the creation engine instance
   await engine.init({
-    background: "#D1F0FF",
-    resizeOptions: { minWidth: 768, minHeight: 1024, letterbox: false },
+    background: "#202828",
+    resizeOptions: { minWidth: 0, minHeight: 0, letterbox: false },
     // pixel-perfect option: disabled because it generates small gaps on some zoom level
     // roundPixels: true,
     resolution: window.devicePixelRatio ?? 1,

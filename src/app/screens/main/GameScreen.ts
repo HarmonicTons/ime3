@@ -1,7 +1,7 @@
 import { FancyButton } from "@pixi/ui";
 import { Viewport } from "pixi-viewport";
 import type { Ticker } from "pixi.js";
-import { Container, Graphics } from "pixi.js";
+import { Container, FillGradient, Graphics } from "pixi.js";
 import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { CursorAction, Map } from "./Map";
@@ -9,6 +9,8 @@ import { MapObject } from "./MapObject";
 import mapData from "./maps/koring-wood.json";
 import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
+import { Text } from "pixi.js";
+import { clamp } from "lodash";
 
 const tilesets = [
   "wall",
@@ -36,39 +38,76 @@ export class GameScreen extends Container {
   public static assetBundles = ["game"];
   public controls: Array<FancyButton> = [];
 
-  public mainContainer: Viewport;
+  public mapContainer: Viewport;
   private paused = false;
   private map: Map;
   public tileFragmentsTextures: TileFragmentsTextures;
+  public cursorAction: CursorAction;
+  public title: Text;
 
   constructor() {
     super();
-    this.mainContainer = new Viewport({
+
+    this.setBackground();
+
+    const title = new Text({
+      text: "Isometric Map Editor",
+    });
+    title.style.fill = "white";
+    title.alpha = 0.5;
+    title.style.fontFamily = "Final Fantasy Tactics Advance";
+    title.anchor.set(1, 1);
+    this.addChild(title);
+    this.title = title;
+
+    this.mapContainer = new Viewport({
       events: engine().renderer.events,
       screenWidth: engine().screen.width,
       screenHeight: engine().screen.height,
     });
-    this.addChild(this.mainContainer);
-    this.mainContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
+    this.addChild(this.mapContainer);
+    this.mapContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
 
     this.tileFragmentsTextures = new TileFragmentsTextures();
 
-    const cursorAction: CursorAction = {
+    this.cursorAction = {
       entityType: "tile",
       type: tilesets[0],
       mode: "add",
     };
-    const map = new Map(mapData, cursorAction, this.tileFragmentsTextures);
+    const map = new Map(
+      mapData,
+      () => this.cursorAction,
+      this.tileFragmentsTextures
+    );
     this.map = map;
-    this.mainContainer.addChild(map);
+    this.mapContainer.addChild(map);
 
-    this.mainContainer.scale.set(2, 2);
+    this.mapContainer.scale.set(2, 2);
 
     this.initControls();
   }
 
+  public setBackground() {
+    const linearGradient = new FillGradient({
+      type: "linear",
+      start: { x: 0, y: 0 },
+      end: { x: 0, y: 1 },
+      colorStops: [
+        { offset: 0, color: "#54b8f5" },
+        { offset: 1, color: "#d5fcfd" },
+      ],
+      textureSpace: "local",
+    });
+    const background = new Graphics()
+      .rect(0, 0, engine().screen.width, engine().screen.height)
+      .fill(linearGradient);
+    // this.removeChildAt(0);
+    this.addChildAt(background, 0);
+  }
+
   public extractToPng = async () => {
-    const base64 = await engine().renderer.extract.base64(this.mainContainer);
+    const base64 = await engine().renderer.extract.base64(this.mapContainer);
     // Download as PNG
     const link = document.createElement("a");
     link.href = base64;
@@ -98,13 +137,13 @@ export class GameScreen extends Container {
 
   /** Pause gameplay - automatically fired when a popup is presented */
   public async pause() {
-    this.mainContainer.interactiveChildren = false;
+    this.mapContainer.interactiveChildren = false;
     this.paused = true;
   }
 
   /** Resume gameplay */
   public async resume() {
-    this.mainContainer.interactiveChildren = true;
+    this.mapContainer.interactiveChildren = true;
     this.paused = false;
   }
 
@@ -113,11 +152,19 @@ export class GameScreen extends Container {
 
   /** Resize the screen, fired whenever window size changes */
   public resize(width: number, height: number) {
+    const isLandscape = width > height;
+    this.setBackground();
+
+    this.title.style.fontSize = clamp(Math.floor(width / 10), 50, 150);
+    this.title.anchor.set(1, isLandscape ? 1 : 0);
+    this.title.x = isLandscape ? width - 32 : width - 12;
+    this.title.y = isLandscape ? height - 32 : 0;
+
     const centerX = Math.round(width * 0.5);
     const centerY = Math.round(height * 0.5);
+    this.mapContainer.x = centerX;
+    this.mapContainer.y = centerY;
 
-    this.mainContainer.x = centerX;
-    this.mainContainer.y = centerY;
     let y = 0;
     this.controls.forEach((control) => {
       control.x = 10;
@@ -150,8 +197,8 @@ export class GameScreen extends Container {
 
     const graphics = new Graphics()
       .rect(0, 0, 52, engine().screen.height)
-      .fill(0xffffff)
-      .stroke(0x000000);
+      .fill(0xf8f8e8)
+      .stroke({ color: 0x202828, width: 2 });
     this.addChild(graphics);
     graphics.interactive = true;
 
@@ -186,7 +233,7 @@ export class GameScreen extends Container {
       animations: buttonAnimations,
     });
     removeJsonButton.onPress.connect(() => {
-      this.map.currentCursorAction = {
+      this.cursorAction = {
         mode: "remove",
       };
     });
@@ -208,7 +255,7 @@ export class GameScreen extends Container {
         animations: buttonAnimations,
       });
       button.onPress.connect(() => {
-        this.map.currentCursorAction = {
+        this.cursorAction = {
           entityType: "tile",
           type,
           mode: "add",
@@ -228,7 +275,7 @@ export class GameScreen extends Container {
         animations: buttonAnimations,
       });
       button.onPress.connect(() => {
-        this.map.currentCursorAction = {
+        this.cursorAction = {
           entityType: "object",
           type,
           mode: "add",
