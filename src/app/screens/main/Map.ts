@@ -4,21 +4,12 @@ import { IsoCoordinates, isoDirections } from "./IsometricCoordinate";
 import { MapObject } from "./MapObject";
 import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
+import { CursorAction } from "./GameScreen";
 
 export type MapData = {
   objects: Record<string, string>;
   tiles: Record<string, string>;
 };
-
-export type CursorAction =
-  | {
-      entityType: "tile" | "object";
-      type: string;
-      mode: "add";
-    }
-  | {
-      mode: "remove";
-    };
 
 /**
  * Map class representing a collection of isometric tiles.

@@ -1,42 +1,28 @@
-import { FancyButton } from "@pixi/ui";
+import { clamp } from "lodash";
 import { Viewport } from "pixi-viewport";
 import type { Ticker } from "pixi.js";
-import { Container, FillGradient, Graphics } from "pixi.js";
+import { Container, FillGradient, Graphics, Text } from "pixi.js";
 import { engine } from "../../getEngine";
-import { IsoCoordinates } from "./IsometricCoordinate";
-import { CursorAction, Map } from "./Map";
-import { MapObject } from "./MapObject";
+import { ControlBar } from "./ControlBar";
+import { Map } from "./Map";
 import mapData from "./maps/koring-wood.json";
-import { Tile } from "./Tile";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
-import { Text } from "pixi.js";
-import { clamp } from "lodash";
 
-const tilesets = [
-  "wall",
-  "rock",
-  // "rock_hole",
-  "rock_moss",
-  "dirt",
-  "dirt_grass1",
-  "dirt_grass2",
-  "dirt_stones",
-  "dirt_pile",
-  "dirt_bush",
-] as const;
-
-const mapObjects = [
-  "flower",
-  "small_pine",
-  "large_pine",
-  "large-rock",
-] as const;
+export type CursorAction =
+  | {
+      entityType: "tile" | "object";
+      type: string;
+      mode: "add";
+    }
+  | {
+      mode: "remove";
+    };
 
 /** The screen that holds the app */
 export class GameScreen extends Container {
   /** Assets bundles required by this screen */
   public static assetBundles = ["game"];
-  public controls: Array<FancyButton> = [];
+  public controlBar: ControlBar;
 
   public mapContainer: Viewport;
   private paused = false;
@@ -72,7 +58,7 @@ export class GameScreen extends Container {
 
     this.cursorAction = {
       entityType: "tile",
-      type: tilesets[0],
+      type: "dirt",
       mode: "add",
     };
     const map = new Map(
@@ -85,7 +71,29 @@ export class GameScreen extends Container {
 
     this.mapContainer.scale.set(2, 2);
 
-    this.initControls();
+    this.controlBar = new ControlBar({
+      onClickRemove: () => {
+        this.cursorAction = {
+          mode: "remove",
+        };
+      },
+      onClickTile: (type) => {
+        this.cursorAction = {
+          entityType: "tile",
+          type,
+          mode: "add",
+        };
+      },
+      onClickObject: (type) => {
+        this.cursorAction = {
+          entityType: "object",
+          type,
+          mode: "add",
+        };
+      },
+      tileFragmentsTextures: this.tileFragmentsTextures,
+    });
+    this.addChild(this.controlBar);
   }
 
   public setBackground() {
@@ -165,12 +173,7 @@ export class GameScreen extends Container {
     this.mapContainer.x = centerX;
     this.mapContainer.y = centerY;
 
-    let y = 0;
-    this.controls.forEach((control) => {
-      control.x = 10;
-      control.y = 10 + y;
-      y += control.height + 10;
-    });
+    this.controlBar.resize(width, height);
   }
 
   /** Show screen with animations */
@@ -178,111 +181,4 @@ export class GameScreen extends Container {
 
   /** Hide screen with animations */
   public async hide() {}
-
-  private initControls() {
-    const buttonAnimations = {
-      hover: {
-        props: {
-          scale: { x: 1.1, y: 1.1 },
-        },
-        duration: 100,
-      },
-      pressed: {
-        props: {
-          scale: { x: 0.9, y: 0.9 },
-        },
-        duration: 100,
-      },
-    };
-
-    const graphics = new Graphics()
-      .rect(0, 0, 52, engine().screen.height)
-      .fill(0xf8f8e8)
-      .stroke({ color: 0x202828, width: 2 });
-    this.addChild(graphics);
-    graphics.interactive = true;
-
-    const downloadPngButton = new FancyButton({
-      text: "⬇PNG",
-      scale: 0.6,
-      defaultTextAnchor: 0,
-      animations: buttonAnimations,
-    });
-    downloadPngButton.onPress.connect(() => {
-      this.extractToPng();
-    });
-    this.addChild(downloadPngButton);
-    this.controls.push(downloadPngButton);
-
-    const downloadJsonButton = new FancyButton({
-      text: "⬇JSON",
-      scale: 0.6,
-      defaultTextAnchor: 0,
-      animations: buttonAnimations,
-    });
-    downloadJsonButton.onPress.connect(() => {
-      this.extractToJson();
-    });
-    this.addChild(downloadJsonButton);
-    this.controls.push(downloadJsonButton);
-
-    const removeJsonButton = new FancyButton({
-      text: "❌",
-      scale: 1.1,
-      defaultTextAnchor: 0,
-      animations: buttonAnimations,
-    });
-    removeJsonButton.onPress.connect(() => {
-      this.cursorAction = {
-        mode: "remove",
-      };
-    });
-    this.addChild(removeJsonButton);
-    this.controls.push(removeJsonButton);
-
-    const isoCoordinates = new IsoCoordinates(0, 0, 0);
-
-    tilesets.forEach((type) => {
-      const button = new FancyButton({
-        defaultView: new Tile({
-          isoCoordinates,
-          type,
-          getTileNeighbor: () => undefined,
-          disableCursor: true,
-          tileFragmentsTextures: this.tileFragmentsTextures,
-        }),
-        anchor: 0,
-        animations: buttonAnimations,
-      });
-      button.onPress.connect(() => {
-        this.cursorAction = {
-          entityType: "tile",
-          type,
-          mode: "add",
-        };
-      });
-      this.addChild(button);
-      this.controls.push(button);
-    });
-
-    mapObjects.forEach((type) => {
-      const button = new FancyButton({
-        defaultView: new MapObject({
-          isoCoordinates,
-          type,
-        }),
-        anchor: 0,
-        animations: buttonAnimations,
-      });
-      button.onPress.connect(() => {
-        this.cursorAction = {
-          entityType: "object",
-          type,
-          mode: "add",
-        };
-      });
-      this.addChild(button);
-      this.controls.push(button);
-    });
-  }
 }
