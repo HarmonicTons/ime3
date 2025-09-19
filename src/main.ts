@@ -10,13 +10,13 @@ import { CreationEngine } from "./engine/engine";
 import "@pixi/sound";
 // import "@esotericsoftware/spine-pixi-v8";
 
-// Ensure the font is loaded before starting the application
-await document.fonts.load('1em "Final Fantasy Tactics Advance"');
-// Create a new creation engine instance
-const engine = new CreationEngine();
-setEngine(engine);
-
 (async () => {
+  // Ensure the font is loaded before starting the application
+  await document.fonts.load('1em "Final Fantasy Tactics Advance"');
+  // Create a new creation engine instance
+  const engine = new CreationEngine();
+  setEngine(engine);
+
   // Initialize the creation engine instance
   await engine.init({
     background: "#202828",
