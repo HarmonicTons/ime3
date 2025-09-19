@@ -1,5 +1,5 @@
 import { orderBy } from "lodash";
-import { Container, Ticker } from "pixi.js";
+import { Container, FederatedPointerEvent, Point, Ticker } from "pixi.js";
 import { IsoCoordinates, isoDirections } from "./IsometricCoordinate";
 import { MapObject } from "./MapObject";
 import { Tile } from "./Tile";
@@ -91,10 +91,7 @@ export class Map extends Container {
       this.removeTileAt(iso);
     });
 
-    tile.on("mousedown", (evt) => {
-      // ignore right and middle clicks
-      if (evt.button !== 0) return;
-      evt.stopPropagation();
+    const handlePress = (evt: FederatedPointerEvent) => {
       const localX = Math.floor(evt.getLocalPosition(tile).x);
       const localY = Math.floor(evt.getLocalPosition(tile).y);
       const side = Tile.getSideFromLocalCoordinates({ x: localX, y: localY });
@@ -120,7 +117,30 @@ export class Map extends Container {
           this.addMapObjectAt(iso.move("east"), this.currentCursorAction.type);
         }
       }
+    };
+
+    tile.on("mousedown", (evt) => {
+      // ignore right and middle clicks
+      if (evt.button !== 0) return;
+      evt.stopPropagation();
+      handlePress(evt);
     });
+
+    let startPos: Point | null = null;
+    tile
+      .on("pointerdown", (evt) => {
+        startPos = evt.global.clone();
+      })
+      .on("pointerup", (evt) => {
+        const endPos = evt.global;
+        if (startPos === null) return;
+        const moved =
+          Math.abs(endPos.x - startPos.x) > 5 ||
+          Math.abs(endPos.y - startPos.y) > 5;
+        startPos = null;
+        if (moved) return;
+        handlePress(evt);
+      });
   }
 
   private getTileAt(iso: IsoCoordinates): Tile | undefined {
