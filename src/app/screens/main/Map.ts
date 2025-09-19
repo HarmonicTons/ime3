@@ -10,11 +10,15 @@ export type MapData = {
   tiles: Record<string, string>;
 };
 
-export type CursorAction = {
-  entityType: "tile" | "object";
-  type: string;
-  mode: "add" | "remove";
-};
+export type CursorAction =
+  | {
+      entityType: "tile" | "object";
+      type: string;
+      mode: "add";
+    }
+  | {
+      mode: "remove";
+    };
 
 /**
  * Map class representing a collection of isometric tiles.

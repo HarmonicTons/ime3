@@ -21,8 +21,9 @@ setEngine(engine);
     resizeOptions: { minWidth: 768, minHeight: 1024, letterbox: false },
     // pixel-perfect option: disabled because it generates small gaps on some zoom level
     // roundPixels: true,
-    antialias: false,
-    resolution: 1,
+    resolution: window.devicePixelRatio ?? 1,
+    resizeTo: window,
+    autoDensity: true,
   });
 
   // Initialize the user settings

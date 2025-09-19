@@ -1,7 +1,7 @@
 import { FancyButton } from "@pixi/ui";
 import { Viewport } from "pixi-viewport";
 import type { Ticker } from "pixi.js";
-import { Container } from "pixi.js";
+import { Container, Graphics } from "pixi.js";
 import { engine } from "../../getEngine";
 import { IsoCoordinates } from "./IsometricCoordinate";
 import { CursorAction, Map } from "./Map";
@@ -43,13 +43,10 @@ export class GameScreen extends Container {
 
   constructor() {
     super();
-
     this.mainContainer = new Viewport({
       events: engine().renderer.events,
-      // HACK: the * 2 should not be necessary,
-      // but idk why without it the full screen is not interactive
-      screenWidth: window.innerWidth * 2,
-      screenHeight: window.innerHeight * 2,
+      screenWidth: engine().screen.width,
+      screenHeight: engine().screen.height,
     });
     this.addChild(this.mainContainer);
     this.mainContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
@@ -151,6 +148,13 @@ export class GameScreen extends Container {
       },
     };
 
+    const graphics = new Graphics()
+      .rect(0, 0, 52, engine().screen.height)
+      .fill(0xffffff)
+      .stroke(0x000000);
+    this.addChild(graphics);
+    graphics.interactive = true;
+
     const downloadPngButton = new FancyButton({
       text: "⬇PNG",
       scale: 0.6,
@@ -177,14 +181,12 @@ export class GameScreen extends Container {
 
     const removeJsonButton = new FancyButton({
       text: "❌",
-      scale: 0.6,
+      scale: 1.1,
       defaultTextAnchor: 0,
       animations: buttonAnimations,
     });
     removeJsonButton.onPress.connect(() => {
       this.map.currentCursorAction = {
-        entityType: "tile",
-        type: "",
         mode: "remove",
       };
     });
