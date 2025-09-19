@@ -120,13 +120,6 @@ export class Map extends Container {
       }
     };
 
-    tile.on("mousedown", (evt) => {
-      // ignore right and middle clicks
-      if (evt.button !== 0) return;
-      evt.stopPropagation();
-      handlePress(evt);
-    });
-
     let startPos: Point | null = null;
     tile
       .on("pointerdown", (evt) => {
