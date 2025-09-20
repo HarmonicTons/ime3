@@ -5,3 +5,5 @@ This project uses the PixiJS starter template. It provides an isometric map edit
 
 - `npm run dev` to start
 - `npm run deploy` to push to GH pages (https://harmonictons.github.io/ime3/)
+
+Most of the code can be found in `/src/app/screens/main`

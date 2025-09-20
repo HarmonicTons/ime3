@@ -5,7 +5,7 @@ import { Container, FillGradient, Graphics, Text } from "pixi.js";
 import { engine } from "../../getEngine";
 import { ControlBar } from "./ControlBar";
 import { Map } from "./Map";
-import mapData from "./maps/koring-wood.json";
+import mapData from "./maps/deti-plains.json";
 import { TileFragmentsTextures } from "./TileFragmentsTextures";
 
 export type CursorAction =
@@ -53,6 +53,11 @@ export class GameScreen extends Container {
     });
     this.addChild(this.mapContainer);
     this.mapContainer.drag({ mouseButtons: "middle" }).pinch().wheel();
+    this.mapContainer.setZoom(1);
+    const centerX = Math.round(engine().screen.width * 0.5);
+    const centerY = Math.round(engine().screen.height * 0.5);
+    this.mapContainer.x = centerX;
+    this.mapContainer.y = centerY;
 
     this.tileFragmentsTextures = new TileFragmentsTextures();
 
@@ -68,8 +73,6 @@ export class GameScreen extends Container {
     );
     this.map = map;
     this.mapContainer.addChild(map);
-
-    this.mapContainer.scale.set(2, 2);
 
     this.controlBar = new ControlBar({
       getCursorAction: () => this.cursorAction,
@@ -164,15 +167,10 @@ export class GameScreen extends Container {
     const isLandscape = width > height;
     this.setBackground();
 
-    this.title.style.fontSize = clamp(Math.floor(width / 10), 50, 150);
+    this.title.style.fontSize = clamp(Math.floor(width / 15), 45, 120);
     this.title.anchor.set(1, isLandscape ? 1 : 0);
     this.title.x = isLandscape ? width - 32 : width - 12;
     this.title.y = isLandscape ? height - 32 : 0;
-
-    const centerX = Math.round(width * 0.5);
-    const centerY = Math.round(height * 0.5);
-    this.mapContainer.x = centerX;
-    this.mapContainer.y = centerY;
 
     this.controlBar.resize(width, height);
   }
