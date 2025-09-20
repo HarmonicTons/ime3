@@ -10,6 +10,13 @@ import { CreationEngine } from "./engine/engine";
 import "@pixi/sound";
 // import "@esotericsoftware/spine-pixi-v8";
 
+// Register service worker for PWA support
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js");
+  });
+}
+
 (async () => {
   // Ensure the font is loaded before starting the application
   await document.fonts.load('1em "Final Fantasy Tactics Advance"');

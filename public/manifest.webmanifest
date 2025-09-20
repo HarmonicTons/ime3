@@ -1,0 +1,26 @@
+{
+  "name": "IME3",
+  "short_name": "IME3",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "IME3 web app.",
+  "icons": [
+    {
+      "src": "/public/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
