@@ -64,6 +64,25 @@ export class Map extends Container {
       evt.stopPropagation();
       this.removeMapObjectAt(iso);
     });
+
+    let startPos: Point | null = null;
+    mapObject
+      .on("pointerdown", (evt) => {
+        startPos = evt.global.clone();
+      })
+      .on("pointerup", (evt) => {
+        const endPos = evt.global;
+        if (startPos === null) return;
+        const moved =
+          Math.abs(endPos.x - startPos.x) > 5 ||
+          Math.abs(endPos.y - startPos.y) > 5;
+        startPos = null;
+        if (moved) return;
+        const action = this.getCursorAction();
+        if (action.mode === "remove") {
+          this.removeMapObjectAt(iso);
+        }
+      });
   }
 
   private createTile(iso: IsoCoordinates, type: string) {
