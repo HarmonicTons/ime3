@@ -1,4 +1,4 @@
-import { Container, Graphics } from "pixi.js";
+import { Container, Graphics, Sprite } from "pixi.js";
 import { MapObject } from "./MapObject";
 import { Tile } from "./Tile";
 import { engine } from "../../getEngine";
@@ -100,10 +100,12 @@ export class ControlBar extends Container {
     // this.addChild(downloadJsonButton);
     // this.controls.push(downloadJsonButton);
 
+    const eraserSprite = Sprite.from("game/eraser.png");
+    eraserSprite.texture.source.scaleMode = "nearest";
     const removeButton = new FancyButton({
-      text: "❌",
-      scale: 1.2,
-      defaultTextAnchor: 0.5,
+      defaultView: Sprite.from("game/eraser.png"),
+      scale: 1.8,
+      anchor: 0.5,
       animations: buttonAnimations,
     });
     removeButton.onPress.connect(() => {
